@@ -352,8 +352,9 @@
         </a>
         <div class="abstract-content">
             先来看看效果：优化前：
-优化后：
-
+优化后：经过优化，可以发现代码行数减少了一半，而除去的代码其实就是我们为了解析JSON的模板代码。对于我来说这些甚至可以说是冗余的代码，我是坚决的瘦Model的拥护者。Model层中除必要的数据结构，我不希望出现有其他冗余的代码，影响阅读。但我们又必须让我们Model拥有解析JSON的能力。基于上述的需求，我的解决方法是利用Sourcery实现AutoUnbox，在不增加模板代码的基础上，让Model实现Unboxable。（本文中以Unbox为例，也可替换为Codable等）
+第一步：认识Sourcery
+Sourcery is a code generator...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
