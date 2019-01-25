@@ -354,10 +354,9 @@
             
 关于组件化，目前比较流行的方案大概有三种：Router, Protocol, Target-Action。不论是选择哪一种方案，都需要通过建立私有Pod来管理项目。本文希望通过建立一个组件化中常用的Base库能将这个事情讲清楚。
 
-创建仓库(Repository)私有库也需要单独一个Repository来存储我们的代码，就像RxSwfit。此处用Github的私有库为例，一般创建在公司的GitLab上。
-创建Podclone 仓库1git clone https://github.com/Wrapperss/Base.git
-进入仓库根目录1cd Base
-创建Base库的podspe...
+创建Pod创建Base库的podspec选择合适的本地路径创建modularization文件夹其中的podspec包含了这个库的信息（包括名称，版本和描述等）.下面是官方定义：
+
+A specification describes a version of Pod library. It includes details about where the s...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
