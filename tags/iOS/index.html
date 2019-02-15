@@ -352,8 +352,7 @@
         </a>
         <div class="abstract-content">
             描述OC语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以OC不止需要依赖编译器，还需要依赖运行时环境。OC语言在编译期都会被编译为C语言的Runtime代码。二进制执行过程中执行的都是C语言代码。OC的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime是一套由C，C++，汇编实现的API，所有的方法调用都叫做发送消息。Runtime在NSObject中定义了一些基础操作。
-数据结构
-基础定义123456typedef struct objc_class *Class; typedef struct objc_object *id;typed...
+数据结构简单解释一下下面这张图：一个普通的实例对象(objc_object)中有一个isa指针，这个指针指向的是该实例对象所对应的类对象(objc_class)。因为ob...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -752,9 +751,9 @@ Sourcery is a cod...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
-    
         <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
         <span class="sidebar-tag-name" data-tags="resume"><span class="iconfont-archer">&#xe606;</span>resume</span>
     
