@@ -658,8 +658,11 @@ Sourcery is a cod...
                 <span>iOS面试题</span>
         </a>
         <div class="abstract-content">
-            分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？分类（Category）是表示一个指向分类的结构体的指针。原则上它只能增加方法，不能增加成员（实例）变量，因为分类的结构体指针中没有属性列表。Extension是Category的一个特例。类扩展与分类相比只少了分类的名称，所以称之为“匿名分类”。  
-①类别中原则上只能增加方法（能添加属性的的原因只是通过runtime解决无setter/getter的问题而已）；②类扩展不仅可以增加方法，还可以增加实例变量（或者属性），只是该实例变量默认是@private类型的（用范围只能在自身类，而不是子类或其他...
+            iOS部分iOS中主要的设计模式？MVC和MVVM之间的区别？MVVM与双向绑定的结合？Objective-C部分浅拷贝和深拷贝的区别？答：浅拷贝是指复制指向对象的指针，而不是复制对象本身。深拷贝：复制对象本身，两者完全独立。
+用@property声明NSString / NSArray / NSDictionary 经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？答：  
+
+因为父类指针可以指向子类对象，使用copy的目的是为了让本对象的属性不受外界影响，使用copy无论为传入一个可变对象还是不可变对象，我本身持有的就是一个不可变的副本。
+如果使用stro...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -951,6 +954,10 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 9
@@ -1032,9 +1039,9 @@ Sourcery is a cod...
     
         <span class="sidebar-tag-name" data-tags="resume"><span class="iconfont-archer">&#xe606;</span>resume</span>
     
-        <span class="sidebar-tag-name" data-tags="Swift"><span class="iconfont-archer">&#xe606;</span>Swift</span>
-    
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="Swift"><span class="iconfont-archer">&#xe606;</span>Swift</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
