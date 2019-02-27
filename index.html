@@ -460,12 +460,12 @@ Goals(目标)
 更注重代码的逻辑，而不是代码风格
 
 PS：简洁不是我们最主要的追求。只有代码质量得到保证（例如：可读性等），我们才会适当追求简洁。
-Xcode Formatting(Xcode样式)
-每行中最多包含100个单词
-用4个空格来进行缩减
+Xcode Formatting(Xcode 样式)
+每行中最多包含 100 个单词
+用 4 个空格来进行缩减
 在每一行末尾以及在文件的末尾不要留有无用的空格
 
-Naming(命名)类和协议使用大驼峰式大小写(也叫帕斯卡命名法PascalCase)例如：12...
+Naming(命名)类和协议使用大驼峰式大小写(也叫帕斯卡命名法 PascalCase...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -491,11 +491,11 @@ Naming(命名)类和协议使用大驼峰式大小写(也叫帕斯卡命名法Pa
     <article class="index-post">
         <a class="abstract-title" href="/2019/02/11/iOS知识补齐-Runtime/">
             
-                <span>iOS知识补齐-Runtime</span>
+                <span>iOS 知识补齐-Runtime</span>
         </a>
         <div class="abstract-content">
-            描述OC语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以OC不止需要依赖编译器，还需要依赖运行时环境。OC语言在编译期都会被编译为C语言的Runtime代码。二进制执行过程中执行的都是C语言代码。OC的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime是一套由C，C++，汇编实现的API，所有的方法调用都叫做发送消息。Runtime在NSObject中定义了一些基础操作。
-数据结构简单解释一下下面这张图：一个普通的实例对象(objc_object)中有一个isa指针，这个指针指向的是该实例对象所对应的类对象(objc_class)。因为ob...
+            描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的Runtime代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Runtime在NSObject中定义了一些基础操作。
+数据结构简单解释一下下面这张图：一个普通的实例对象(objc_object)中有一个isa指针，这个指针指向的是该实例对象所对应的类对象(objc_...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -521,13 +521,13 @@ Naming(命名)类和协议使用大驼峰式大小写(也叫帕斯卡命名法Pa
     <article class="index-post">
         <a class="abstract-title" href="/2019/01/31/RxSwift源码解读/">
             
-                <span>RxSwift源码解读</span>
+                <span>RxSwift 源码解读</span>
         </a>
         <div class="abstract-content">
             
-RxSwift是我非常喜欢的一个库，希望能通过这篇文章对它有更深入的了解本文基于RxSwift 4.4.0 书写，不保证其他版本完全相同为更加简明扼要，文中代码有部分删减
+RxSwift 是我非常喜欢的一个库，希望能通过这篇文章对它有更深入的了解本文基于 RxSwift 4.4.0 书写，不保证其他版本完全相同为更加简明扼要，文中代码有部分删减
 
-Observable - 可被监听的序列ObservableObservable可以用于描述元素异步产生的序列，实现如下：123456789public class Observable&lt;Element&gt; : ObservableType &#123;    public typealias E = Element    public func subscribe&lt;O: ObserverType&...
+Observable - 可被监听的序列ObservableObservable 可以用于描述元素异步产生的序列，实现如下：123456789public class Observable&lt;Element&gt; : ObservableType &#123;    public typealias E = Element    public func subscribe&lt;O: ObserverTy...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -553,15 +553,15 @@ Observable - 可被监听的序列ObservableObservable可以用于描述元素�
     <article class="index-post">
         <a class="abstract-title" href="/2019/01/25/组件化第一步，创建私有Pod/">
             
-                <span>组件化第一步，创建私有Pod</span>
+                <span>组件化第一步，创建私有 Pod</span>
         </a>
         <div class="abstract-content">
             
-关于组件化，目前比较流行的方案大概有三种：Router, Protocol, Target-Action。不论是选择哪一种方案，都需要通过建立私有Pod来管理项目。本文希望通过建立一个组件化中常用的Base库能将这个事情讲清楚。
+关于组件化，目前比较流行的方案大概有三种：Router, Protocol, Target-Action。不论是选择哪一种方案，都需要通过建立私有 Pod 来管理项目。本文希望通过建立一个组件化中常用的Base库能将这个事情讲清楚。
 
-创建Pod创建Base库的podspec选择合适的本地路径创建modularization文件夹其中的podspec包含了这个库的信息（包括名称，版本和描述等）.下面是官方定义：
+创建 Pod创建 Base 库的 podspec选择合适的本地路径创建modularization文件夹其中的podspec包含了这个库的信息（包括名称，版本和描述等）.下面是官方定义：
 
-A specification describes a version of Pod library. It includes details about where the s...
+A specification describes a version of Pod library. It includes details about where...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -655,16 +655,16 @@ Sourcery is a cod...
     <article class="index-post">
         <a class="abstract-title" href="/2018/11/29/iOS面试题/">
             
-                <span>iOS面试题</span>
+                <span>iOS 面试题</span>
         </a>
         <div class="abstract-content">
-            计算机部分设计模式？
+            计算机部分设计模式
 策略模式（Strategy），它定义了算法家族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化，不会影响到使用算法的客户。
 装饰模式（Decorator），动态地给一个对象添加一些额外的职责，就增加功能来说，装饰模式比生成子类更为灵活。
 代理模式（Proxy），为其他对象提供一种代理以控制对这个对象的访问。
 工厂方法模式（Factory Method），定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。
 原型模式（Prototype），用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。
-模板方法模式（...
+模板方法模式（T...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -950,10 +950,6 @@ Sourcery is a cod...
     
     
     
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 9
@@ -996,17 +992,17 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/11</span><a class="archive-post-title" href="/2019/02/11/iOS知识补齐-Runtime/">iOS知识补齐-Runtime</a>
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href="/2019/02/11/iOS知识补齐-Runtime/">iOS 知识补齐-Runtime</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/31</span><a class="archive-post-title" href="/2019/01/31/RxSwift源码解读/">RxSwift源码解读</a>
+            <span class="archive-post-date">01/31</span><a class="archive-post-title" href="/2019/01/31/RxSwift源码解读/">RxSwift 源码解读</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href="/2019/01/25/组件化第一步，创建私有Pod/">组件化第一步，创建私有Pod</a>
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href="/2019/01/25/组件化第一步，创建私有Pod/">组件化第一步，创建私有 Pod</a>
         </li>
     
     
@@ -1030,7 +1026,7 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/29</span><a class="archive-post-title" href="/2018/11/29/iOS面试题/">iOS面试题</a>
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href="/2018/11/29/iOS面试题/">iOS 面试题</a>
         </li>
     
     </ul></div>
