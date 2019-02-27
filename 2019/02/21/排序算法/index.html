@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">181</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">667</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -404,12 +404,15 @@ height:50vh;
         <blockquote>
 <p>本文算法实现的语言为<strong>Swift</strong></p>
 </blockquote>
-<h1 id="快速排序-Quicksort"><a href="#快速排序-Quicksort" class="headerlink" title="快速排序(Quicksort)"></a>快速排序(Quicksort)</h1><p>快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。<br><strong>步骤</strong>：  </p>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。<br><strong>步骤</strong>：  </p>
 <ol>
 <li>从数列中挑出一个元素，称为“基准”（pivot），</li>
 <li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分割结束之后，该基准就处于数列的中间位置。这个称为分割（partition）操作。</li>
 <li>递归地（recursively）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
 </ol>
+<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p><a href="https://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">冒泡排序</a>（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。<br><img src="Bubblesort-edited-color.svg" alt="Bubble Sort"><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bubbleSort</span> <span class="params">(arr: <span class="keyword">inout</span> [Int])</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;arr.<span class="built_in">count</span> - <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;arr.<span class="built_in">count</span> - <span class="number">1</span> - i &#123;</span><br><span class="line">            <span class="keyword">if</span> arr[j] &gt; arr[j+<span class="number">1</span>] &#123;</span><br><span class="line">                arr.swapAt(j, j+<span class="number">1</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testSort</span> <span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 生成随机数数组进行排序操作</span></span><br><span class="line">    <span class="keyword">var</span> list:[<span class="type">Int</span>] = []</span><br><span class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">99</span> &#123;</span><br><span class="line">        list.append(<span class="type">Int</span>(arc4random_uniform(<span class="number">100</span>)))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(list)"</span>)</span><br><span class="line">    bubbleSort(arr:&amp;list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(list)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p><a href="https://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">插入排序</a>（英语：Insertion Sort）是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到 {\displaystyle O(1)} {\displaystyle O(1)}的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..&lt;arr.endIndex &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = arr[i]</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> (<span class="number">0</span>..&lt;i).reversed() &#123;</span><br><span class="line">        <span class="keyword">if</span> arr[j] &gt; temp &#123;</span><br><span class="line">            arr.swapAt(j, j+<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p><a href="https://zh.wikipedia.org/wiki/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">归并排序</a>（英语：Merge sort，或mergesort），是创建在归并操作上的一种有效的排序算法，效率为 {\displaystyle O(n\log n)} {\displaystyle O(n\log n)}（大O符号）。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。</p>
 
     </article>
     <!-- license  -->
@@ -418,7 +421,7 @@ height:50vh;
             <p>原文作者：<a href="http://yoursite.com">Wrappers</a>
             </p><p>原文链接：<a href="http://yoursite.com/2019/02/21/排序算法/">http://yoursite.com/2019/02/21/排序算法/</a>
             </p><p>发表日期：<a href="http://yoursite.com/2019/02/21/排序算法/">February 21st 2019, 4:24:00 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/02/21/排序算法/">February 21st 2019, 4:36:58 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/02/21/排序算法/">February 27th 2019, 2:19:58 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -570,7 +573,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#快速排序-Quicksort"><span class="toc-number">1.</span> <span class="toc-text">快速排序(Quicksort)</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#快速排序"><span class="toc-number">1.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#冒泡排序"><span class="toc-number">2.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插入排序"><span class="toc-number">3.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#归并排序"><span class="toc-number">4.</span> <span class="toc-text">归并排序</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -583,6 +586,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
