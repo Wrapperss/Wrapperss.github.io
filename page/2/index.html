@@ -78,8 +78,6 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -203,8 +201,10 @@
 </head>
 
     
+        <body class="home-body">
     
-<header class="header">
+    
+<header class="header index-header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,21 +220,34 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Wrappres' Studio.
+            <!-- 文章页  -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
+            
+            
+                Work Hard, Play Harder
+            
+            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -346,134 +359,6 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/02/11/iOS知识补齐-Runtime/">
-            
-                <span>iOS 知识补齐-Runtime</span>
-        </a>
-        <div class="abstract-content">
-            描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的Runtime代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Runtime在NSObject中定义了一些基础操作。
-数据结构简单解释一下下面这张图：一个普通的实例对象(objc_object)中有一个isa指针，这个指针指向的是该实例对象所对应的类对象(objc_...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/31/RxSwift源码解读/">
-            
-                <span>RxSwift 源码解读</span>
-        </a>
-        <div class="abstract-content">
-            
-RxSwift 是我非常喜欢的一个库，希望能通过这篇文章对它有更深入的了解本文基于 RxSwift 4.4.0 书写，不保证其他版本完全相同为更加简明扼要，文中代码有部分删减
-
-Observable - 可被监听的序列ObservableObservable 可以用于描述元素异步产生的序列，实现如下：123456789public class Observable&lt;Element&gt; : ObservableType &#123;    public typealias E = Element    public func subscribe&lt;O: ObserverTy...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/31</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/25/组件化第一步，创建私有Pod/">
-            
-                <span>组件化第一步，创建私有 Pod</span>
-        </a>
-        <div class="abstract-content">
-            
-关于组件化，目前比较流行的方案大概有三种：Router, Protocol, Target-Action。不论是选择哪一种方案，都需要通过建立私有 Pod 来管理项目。本文希望通过建立一个组件化中常用的Base库能将这个事情讲清楚。
-
-创建 Pod创建 Base 库的 podspec选择合适的本地路径创建modularization文件夹其中的podspec包含了这个库的信息（包括名称，版本和描述等）.下面是官方定义：
-
-A specification describes a version of Pod library. It includes details about where...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/">
-            
-                <span>利用 Sourcery，进一步优化 Model 层，减少模板代码</span>
-        </a>
-        <div class="abstract-content">
-            先来看看效果优化前
-优化后经过优化，可以发现代码行数减少了一半，而除去的代码其实就是我们为了解析 JSON 的模板代码。对于我来说这些甚至可以说是冗余的代码，我是坚决的瘦 Model 的拥护者。Model 层中除必要的数据结构，我不希望出现有其他冗余的代码，影响阅读。但我们又必须让我们 Model 拥有解析 JSON 的能力。基于上述的需求，我的解决方法是利用Sourcery实现AutoUnbox，在不增加模板代码的基础上，让 Model 实现Unboxable。（本文中以 Unbox 为例，也可替换为Codable等）
-第一步: 认识Sourcery
-Sourcery is a cod...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href="/2018/11/29/iOS面试题/">
             
                 <span>iOS 面试题</span>
@@ -505,8 +390,90 @@ Sourcery is a cod...
     
     <!-- paginator  -->
     
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+    
 </main>
             <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src="/avatar/Wrappers.jpeg">
+    <div class="profile-name">Wrappers</div>
+    
+    <div class="profile-signature">
+        rich and money
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:wrappers@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Wrapperss" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpeg">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    
+    
+        <div class="about-me">
+            <a href="/about">ABOUT ME</a>
+        </div>
+    
+</div>
             
         </div>
         <footer class="footer footer-unloaded">
