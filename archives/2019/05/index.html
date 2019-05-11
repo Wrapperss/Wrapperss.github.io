@@ -346,6 +346,69 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/05/11/网络知识/">
+            
+                <span>网络知识</span>
+        </a>
+        <div class="abstract-content">
+            网络Http 和 Https 的区别？为什么更加安全？
+HTTPS 需要向机构申请证书，大都是付费的，也有免费的，比如 letsencrypt。。，certbot
+HTTP 是明文传输
+HTTPS 基于 SSL 进行加密传输
+HTTPS 是加密传输，有身份验证的环节，更加安全。
+
+SSL(安全套接层) TLS(传输层安全)以上两者在传输层之上，对网络连接进行加密处理，保障数据的完整性，更加的安全。
+HTTP 特性、请求方式
+GET POST PUT DELETE HEAD OPTIONS TRACE CONNECT
+
+特性
+
+无状态
+无连接
+
+HTTP 报文结构请求：
+
+请求行：请求方式...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/05/11/解析UIKit/">
+            
+                <span>解析UIKit</span>
+        </a>
+        <div class="abstract-content">
+            界面更新当操作 UI 时，比如改变了 frame、更新 UIView/CALayer 的层级、或者手动调用了 setNeedDisplay 时，这个 UIView/CALayer 就会被标记为待处理，放到一个全局容器中，苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv。这个函数里会遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/05/09/Runloop的理解/">
             
                 <span>Runloop 的理解</span>
@@ -630,9 +693,29 @@ iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 11
+        Total : 13
         </div>
         <!-- search  -->
         
@@ -645,6 +728,16 @@ iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事�
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/网络知识/">网络知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/解析UIKit/">解析UIKit</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -717,9 +810,9 @@ iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事�
     
         <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
     
-        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
-    
         <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     

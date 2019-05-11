@@ -346,6 +346,69 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/05/11/网络知识/">
+            
+                <span>网络知识</span>
+        </a>
+        <div class="abstract-content">
+            网络Http 和 Https 的区别？为什么更加安全？
+HTTPS 需要向机构申请证书，大都是付费的，也有免费的，比如 letsencrypt。。，certbot
+HTTP 是明文传输
+HTTPS 基于 SSL 进行加密传输
+HTTPS 是加密传输，有身份验证的环节，更加安全。
+
+SSL(安全套接层) TLS(传输层安全)以上两者在传输层之上，对网络连接进行加密处理，保障数据的完整性，更加的安全。
+HTTP 特性、请求方式
+GET POST PUT DELETE HEAD OPTIONS TRACE CONNECT
+
+特性
+
+无状态
+无连接
+
+HTTP 报文结构请求：
+
+请求行：请求方式...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/05/11/解析UIKit/">
+            
+                <span>解析UIKit</span>
+        </a>
+        <div class="abstract-content">
+            界面更新当操作 UI 时，比如改变了 frame、更新 UIView/CALayer 的层级、或者手动调用了 setNeedDisplay 时，这个 UIView/CALayer 就会被标记为待处理，放到一个全局容器中，苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv。这个函数里会遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/05/09/Runloop的理解/">
             
                 <span>Runloop 的理解</span>
@@ -634,74 +697,6 @@ A specification describes a version of Pod library. It includes details about wh
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/03/2019-Target/">
-            
-                <span>2019 Target</span>
-        </a>
-        <div class="abstract-content">
-            
- xxxxxx
- xxxxxx
- xxxxxx
- xxxx
- xxxxxx
-
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="target">target</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/">
-            
-                <span>利用 Sourcery，进一步优化 Model 层，减少模板代码</span>
-        </a>
-        <div class="abstract-content">
-            先来看看效果优化前
-优化后经过优化，可以发现代码行数减少了一半，而除去的代码其实就是我们为了解析 JSON 的模板代码。对于我来说这些甚至可以说是冗余的代码，我是坚决的瘦 Model 的拥护者。Model 层中除必要的数据结构，我不希望出现有其他冗余的代码，影响阅读。但我们又必须让我们 Model 拥有解析 JSON 的能力。基于上述的需求，我的解决方法是利用Sourcery实现AutoUnbox，在不增加模板代码的基础上，让 Model 实现Unboxable。（本文中以 Unbox 为例，也可替换为Codable等）
-第一步: 认识Sourcery
-Sourcery is a cod...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
@@ -930,9 +925,29 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 11
+        Total : 13
         </div>
         <!-- search  -->
         
@@ -945,6 +960,16 @@ Sourcery is a cod...
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/网络知识/">网络知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/解析UIKit/">解析UIKit</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1017,9 +1042,9 @@ Sourcery is a cod...
     
         <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
     
-        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
-    
         <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
