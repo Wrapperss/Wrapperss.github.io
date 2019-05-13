@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">4.2k</span>阅读时长: <span class="post-count reading-time">14 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -395,24 +395,46 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h2 id="什么是-TCP-UDP"><a href="#什么是-TCP-UDP" class="headerlink" title="什么是 TCP / UDP"></a>什么是 TCP / UDP</h2><p>TCP：传输控制协议。 UDP：用户数据协议。TCP 是面向连接的，建立连接需要经历三次握手，是可靠的传输层协议。 UDP 是面向无连接的，数据传输是不可靠的，它只管发，不管收不收得到。 简单的说，TCP 注重数据安全，而 UDP 数据传输速度快，但安全性一般。</p>
-<h2 id="通信底层原理（OSI-七层模型）"><a href="#通信底层原理（OSI-七层模型）" class="headerlink" title="通信底层原理（OSI 七层模型）"></a>通信底层原理（OSI 七层模型）</h2><p>OSI 采用了分层的结构化技术，共分七层： 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
-<h3 id="Http-和-Https-的区别？为什么更加安全？"><a href="#Http-和-Https-的区别？为什么更加安全？" class="headerlink" title="Http 和 Https 的区别？为什么更加安全？"></a>Http 和 Https 的区别？为什么更加安全？</h3><ol>
-<li>HTTPS 需要向机构申请证书，大都是付费的，也有免费的，比如 letsencrypt。。，certbot</li>
-<li>HTTP 是明文传输</li>
-<li>HTTPS 基于 SSL 进行加密传输</li>
-<li>HTTPS 是加密传输，有身份验证的环节，更加安全。</li>
-</ol>
-<p>SSL(安全套接层) TLS(传输层安全)<br>以上两者在传输层之上，对网络连接进行加密处理，保障数据的完整性，更加的安全。</p>
-<h3 id="HTTP-特性、请求方式"><a href="#HTTP-特性、请求方式" class="headerlink" title="HTTP 特性、请求方式"></a>HTTP 特性、请求方式</h3><ol>
-<li>GET POST PUT DELETE HEAD OPTIONS TRACE CONNECT</li>
-</ol>
-<p>特性</p>
+        <h1 id="OSI（开放式系统互联）-七层模型"><a href="#OSI（开放式系统互联）-七层模型" class="headerlink" title="OSI（开放式系统互联） 七层模型"></a>OSI（开放式系统互联） 七层模型</h1><p><img src="https://images0.cnblogs.com/i/356746/201408/150945389209909.jpg" alt=""></p>
 <ol>
-<li>无状态</li>
-<li>无连接</li>
+<li><strong>物理层</strong>：主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</li>
+<li><strong>数据链路层</strong>：定义了如何让格式化数据以进行传输，以及如何让控制对物理介质的访问。这一层通常还提供错误检测和纠正，以确保数据的可靠传输。</li>
+<li><strong>网络层</strong>：在位于不同地理位置的网络中的两个主机系统之间提供连接和路径选择。Internet的发展使得从世界各站点访问信息的用户数大大增加，而网络层正是管理这种连接的层。</li>
+<li><strong>传输层</strong>：定义了一些传输数据的协议和端口号(WWW端口80等)，如：TCP(传输控制协议，传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的）。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层数据叫做段。</li>
+<li><strong>会话层</strong>：通过传输层(端口号：传输端口与接收端口)建立数据传输的通路。主要在你的系统之间发起会话或者接受会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</li>
+<li><strong>表示层</strong>：可确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。例如，PC程序与另一台计算机进行通信，其中一台计算机使用扩展二一十进制交换吗(EBCDIC)，而另一台则使用美国信息交换标准码（ASCII）来表示相同的字符。如有必要，表示层会通过使用一种通格式来实现多种数据格式之间的转换。</li>
+<li><strong>应用层</strong>：是最靠近用户的OSI层。这一层为用户的应用程序(例如电子邮件、文件传输和终端仿真)提供网络服务。</li>
 </ol>
-<h3 id="HTTP-报文结构"><a href="#HTTP-报文结构" class="headerlink" title="HTTP 报文结构"></a>HTTP 报文结构</h3><p>请求：</p>
+<h1 id="TCP-IP-网络模型"><a href="#TCP-IP-网络模型" class="headerlink" title="TCP/IP 网络模型"></a>TCP/IP 网络模型</h1><p>TCP/IP 是互联网相关的各类协议族的总称，比如：TCP，UDP，IP，FTP，HTTP，ICMP，SMTP 等都属于 TCP/IP 族内的协议。<br>应用层 -&gt; 传输层 -&gt; 网络层 -&gt; 数据链路层 -&gt; 物理层</p>
+<h2 id="UDP-用户数据报协议"><a href="#UDP-用户数据报协议" class="headerlink" title="UDP 用户数据报协议"></a>UDP 用户数据报协议</h2><p><strong>面向无连接</strong><br>在发送端，应用层将数据传递给传输层的 UDP 协议，UDP 只会给数据增加一个 UDP 头标识下是 UDP 协议，然后就传递给网络层了<br>在接收端，网络层将数据传递给传输层，UDP 只去除 IP 报文头就传递给应用层，不会任何拼接操作<br><strong>有单播，多播，广播的功能</strong><br>UDP 不止支持一对一的传输方式，同样支持一对多，多对多，多对一的方式<br><strong>面向报文</strong><br>发送方的UDP对应用程序交下来的报文，在添加首部后就向下交付IP层。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。因此，应用程序必须选择合适大小的报文<br><strong>不可靠性</strong><br>首先不可靠性体现在无连接上，通信都不需要建立连接，想发就发，这样的情况肯定不可靠。<br>并且收到什么数据就传递什么数据，并且也不会备份数据，发送数据也不会关心对方是否已经正确接收到数据了。<br>再者网络环境时好时坏，但是 UDP 因为没有拥塞控制，一直会以恒定的速度发送数据。即使网络条件不好，也不会对发送速率进行调整。这样实现的弊端就是在网络条件不好的情况下可能会导致丢包，但是优点也很明显，在某些实时性要求高的场景（比如电话会议）就需要使用 UDP 而不是 TCP。<br><strong>头部开销小，传输数据报文时是很高效的</strong><br>因为 UDP 的头部开销小，只有八字节，相比 TCP 的至少二十字节要少得多，在传输数据报文时是很高效的</p>
+<h2 id="TCP-传输控制协议"><a href="#TCP-传输控制协议" class="headerlink" title="TCP 传输控制协议"></a>TCP 传输控制协议</h2><p><strong>面向连接</strong><br>面向连接，是指发送数据之前必须在两端建立连接。建立连接的方法是“三次握手”，这样能建立可靠的连接。建立连接，是为数据的可靠传输打下了基础。<br><strong>仅支持单播传输</strong><br>每条TCP传输连接只能有两个端点，只能进行点对点的数据传输，不支持多播和广播传输方式。<br><strong>面向字节流</strong><br>TCP不像UDP一样那样一个个报文独立地传输，而是在不保留报文边界的情况下以字节流方式进行传输。<br><strong>可靠传输</strong><br>对于可靠传输，判断丢包，误码靠的是TCP的段编号以及确认号。TCP为了保证报文传输的可靠，就给每个包一个序号，同时序号也保证了传送到接收端实体的包的按序接收。然后接收端实体对已成功收到的字节发回一个相应的确认(ACK)；如果发送端实体在合理的往返时延(RTT)内未收到确认，那么对应的数据（假设丢失了）将会被重传。<br><strong>提供拥塞控制</strong><br>当网络出现拥塞的时候，TCP能够减小向网络注入数据的速率和数量，缓解拥塞。<br><strong>提供全双工通信</strong><br>TCP允许通信双方的应用程序在任何时候都能发送数据，因为TCP连接的两端都设有缓存，用来临时存放双向通信的数据。当然，TCP可以立即发送一个数据段，也可以缓存一段时间以便一次发送更多的数据段（最大的数据段大小取决于MSS）。</p>
+<h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><img src="https://user-gold-cdn.xitu.io/2019/2/24/1691fa18ef700560?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<ol>
+<li>客户端向服务端发送连接请求报文段。该报文段中包含自身的数据通讯初始序号。请求发送后，客户端便进入 SYN-SENT 状态。  </li>
+<li>服务端收到连接请求报文段后，如果同意连接，则会发送一个应答，该应答中也会包含自身的数据通讯初始序号，发送完成后便进入 SYN-RECEIVED 状态。  </li>
+<li>当客户端收到连接同意的应答后，还要向服务端发送一个确认报文。客户端发完这个报文段后便进入 ESTABLISHED 状态，服务端收到这个应答后也进入 ESTABLISHED 状态，此时连接建立成功。  </li>
+</ol>
+<p>三次而不是两次是为了防止出现失效的连接请求报文段被服务端接受的情况，从而产生错误。</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p><img src="https://user-gold-cdn.xitu.io/2019/2/24/1691fad9308022c9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""><br>TCP 是全双工的，在断开连接时两端都需要发送 FIN 和 ACK。</p>
+<ol>
+<li>若客户端 A 认为数据发送完成，则它需要向服务端 B 发送连接释放请求。  </li>
+<li>B 收到连接释放请求后，会告诉应用层要释放 TCP 链接。然后会发送 ACK 包，并进入 CLOSE_WAIT 状态，此时是半关闭状态，表示 A 已经没有数据要发送了。但是因为 TCP 连接是双向的，所以 B 仍旧可以发送数据给 A。</li>
+<li>B 如果此时还有没发完的数据会继续发送，完毕后会向 A 发送连接释放请求，然后 B 便进入 LAST-ACK 状态。</li>
+<li>A 收到释放请求后，向 B 发送确认应答，此时 A 进入 TIME-WAIT 状态。该状态会持续 2MSL（最大段生存期，指报文段在网络中生存的时间，超时会被抛弃） 时间，若该时间段内没有 B 的重发请求的话，就进入 CLOSED 状态。当 B 收到确认应答后，也便进入 CLOSED 状态。</li>
+</ol>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="为什么连接的时候是三次握手，关闭的时候却是四次握手？"><a href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？" class="headerlink" title="为什么连接的时候是三次握手，关闭的时候却是四次握手？"></a>为什么连接的时候是三次握手，关闭的时候却是四次握手？</h3><p>因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。</p>
+<h3 id="为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？"><a href="#为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？" class="headerlink" title="为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？"></a>为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</h3><p>虽然按道理，四个报文都发送完毕，我们可以直接进入CLOSE状态了，但是我们必须假象网络是不可靠的，有可以最后一个ACK丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。在Client发送出最后的ACK回复，但该ACK可能丢失。Server如果没有收到ACK，将不断重复发送FIN片段。所以Client不能立即关闭，它必须确认Server接收到了该ACK。Client会在发送出ACK之后进入到TIME_WAIT状态。Client会设置一个计时器，等待2MSL的时间。如果在该时间内再次收到FIN，那么Client会重发ACK并再次等待2MSL。所谓的2MSL是两倍的MSL(Maximum Segment Lifetime)。MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。</p>
+<h3 id="为什么不能用两次握手进行连接？"><a href="#为什么不能用两次握手进行连接？" class="headerlink" title="为什么不能用两次握手进行连接？"></a>为什么不能用两次握手进行连接？</h3><p>3次握手完成两个重要的功能，既要双方做好发送数据的准备工作(双方都知道彼此已准备好)，也要允许双方就初始序列号进行协商，这个序列号在握手过程中被发送和确认。<br> 现在把三次握手改成仅需要两次握手，死锁是可能发生的。作为例子，考虑计算机S和C之间的通信，假定C给S发送一个连接请求分组，S收到了这个分组，并发 送了确认应答分组。按照两次握手的协定，S认为连接已经成功地建立了，可以开始发送数据分组。可是，C在S的应答分组在传输中被丢失的情况下，将不知道S 是否已准备好，不知道S建立什么样的序列号，C甚至怀疑S是否收到自己的连接请求分组。在这种情况下，C认为连接还未建立成功，将忽略S发来的任何数据分 组，只等待连接确认应答分组。而S在发出的分组超时后，重复发送同样的分组。这样就形成了死锁。</p>
+<h3 id="如果已经建立了连接，但是客户端突然出现故障了怎么办？"><a href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？" class="headerlink" title="如果已经建立了连接，但是客户端突然出现故障了怎么办？"></a>如果已经建立了连接，但是客户端突然出现故障了怎么办？</h3><p>TCP还设有一个保活计时器，显然，客户端如果出现故障，服务器不能一直等下去，白白浪费资源。服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔75秒钟发送一次。若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
+<h1 id="Http-和-Https"><a href="#Http-和-Https" class="headerlink" title="Http 和 Https"></a>Http 和 Https</h1><h2 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h2><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>无状态：协议对客户端没有状态存储，对事物处理没有“记忆”能力，比如访问一个网站需要反复进行登录操作</li>
+<li>无连接：HTTP/1.1之前，由于无状态特点，每次请求需要通过TCP三次握手四次挥手，和服务器重新建立连接。比如某个客户机在短时间多次请求同一个资源，服务器并不能区别是否已经响应过用户的请求，所以每次需要重新响应请求，需要耗费不必要的时间和流量。</li>
+<li>基于请求和响应：基本的特性，由客户端发起请求，服务端响应</li>
+<li>简单快速、灵活</li>
+<li>通信使用明文、请求和响应不会对通信方进行确认、无法保护数据的完整性</li>
+</ul>
+<h3 id="报文结构"><a href="#报文结构" class="headerlink" title="报文结构"></a>报文结构</h3><p>请求：</p>
 <ol>
 <li>请求行：请求方式， URL</li>
 <li>Head：键值对，空行结束</li>
@@ -424,13 +446,43 @@ height:50vh;
 <li>Head</li>
 <li>响应体</li>
 </ol>
+<h2 id="Https"><a href="#Https" class="headerlink" title="Https"></a>Https</h2><p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer 或 Hypertext Transfer Protocol Secure，超文本传输安全协议），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>内容加密：采用混合加密技术，中间者无法直接查看明文内容</li>
+<li>验证身份：通过证书认证客户端访问的是自己的服务器</li>
+<li>保护数据完整性：防止传输的内容被中间人冒充或者篡改</li>
+<li>HTTPS 需要向机构申请证书，大都是付费的，也有免费的，比如 letsencrypt。。，certbot</li>
+</ul>
 <h3 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h3><p>客户端：发送数据 -&gt; HTTP（应用层） -&gt; SSL &amp; TLS 加密 -&gt; TCP（传输层） -&gt; IP (网络层) -&gt; 数据链路层 -&gt; 物理层</p>
-<h3 id="TCP-IP-模型"><a href="#TCP-IP-模型" class="headerlink" title="TCP/IP 模型"></a>TCP/IP 模型</h3><p>应用层 -&gt; 传输层 -&gt; 网络层 -&gt; 数据链路层 -&gt; 物理层</p>
-<h3 id="大文件下载"><a href="#大文件下载" class="headerlink" title="大文件下载"></a>大文件下载</h3><ol>
+<h3 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h3><p>SSL(Secure Sockets Layer 安全套接层),及其继任者传输层安全（Transport Layer Security，TLS）是为网络通信提供安全及数据完整性的一种安全协议。TLS与SSL在传输层对网络连接进行加密。</p>
+<ol>
+<li>配备了 身份证书，防止被冒充。</li>
+<li>有 校验机制，一旦被篡改，双方都会知道。</li>
+<li>通过 加密 进行传播。</li>
+</ol>
+<h4 id="连接过程"><a href="#连接过程" class="headerlink" title="连接过程"></a>连接过程</h4><ol>
+<li>客户端向服务端发消息，包括客户端支持的 加密算法 以及 随机数1 、TLS 版本号。</li>
+<li>服务端向客户端返回信息，包括双方已经匹配好的 加密算法 以及 随机数2、Server证书 。</li>
+<li>服务端向客户端返回 验证证书。</li>
+<li>客户端进行证书验证，首先要评估信任证书<ol>
+<li>服务端向客户端返回证书的 数字摘要 与服务端证书返回客户端，解密后的是否一致，防止被篡改。</li>
+<li>验证证书链：逐级验证服务端证书是否在可信任证书列表。</li>
+<li>验证通过后：<ol>
+<li>将 随机数1、随机数2、服务器端返回 证书公钥 加密过后的 预主秘钥 三者组合成 会话密钥。</li>
+<li>服务端拿到 会话秘钥 后，会用服务端证书 私钥进行解密，得到 预主秘钥。</li>
+<li>服务端将 随机数1、随机数2、服务器端证书私钥解密得到的 预主秘钥 三者组合成 会话密钥。此时客户端的 会话秘钥 和 服务端的 会话秘钥 应该是一致的。</li>
+<li>接下来会经行验证： - 1.客户端通过 会话秘钥，加密信息发给服务端，看服务端能否成功接收。 - 2.服务端通过 会话秘钥，加密信息返给客户端，看客户端能否成功解析。  </li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>以上步骤都通过了，此时 SSL 验证连接。</p>
+<h1 id="大文件下载"><a href="#大文件下载" class="headerlink" title="大文件下载"></a>大文件下载</h1><ol>
 <li>写入磁盘，防止占用太多内存</li>
 <li>如果要考虑用户体验的话，还要加上断点下载，可以根据 HTTP HEAD 中的 Range 进行操作</li>
 </ol>
-<h3 id="网络框架"><a href="#网络框架" class="headerlink" title="网络框架"></a>网络框架</h3><ol>
+<h1 id="网络框架"><a href="#网络框架" class="headerlink" title="网络框架"></a>网络框架</h1><ol>
 <li>网络请求缓存</li>
 <li>网络请求之间的依赖</li>
 <li>Mode 之间的转换</li>
@@ -438,43 +490,6 @@ height:50vh;
 <li>大文件的下载与缓存</li>
 <li>网络请求的取消</li>
 </ol>
-<h3 id="SSL-传输协议？说一下-SSL-验证过程？"><a href="#SSL-传输协议？说一下-SSL-验证过程？" class="headerlink" title="SSL 传输协议？说一下 SSL 验证过程？"></a>SSL 传输协议？说一下 SSL 验证过程？</h3><p>1.配备了 身份证书，防止被冒充。<br>2.有 校验机制，一旦被篡改，双方都会知道。<br>3.通过 加密 进行传播。</p>
-<p>连接过程如下：<br>①：客户端向服务端发消息，包括客户端支持的 加密算法 以及 随机数1 、TLS 版本号。<br>②：服务端向客户端返回信息，包括双方已经匹配好的 加密算法 以及 随机数2、Server证书 。<br>③：服务端向客户端返回 验证证书。<br>④：客户端进行证书验证，首先要评估信任证书</p>
-<ol>
-<li>服务端向客户端返回证书的 数字摘要 与服务端证书返回客户端，解密后的是否一致，防止被篡改。</li>
-<li>验证证书链：逐级验证服务端证书是否在可信任证书列表。</li>
-<li>验证通过后：<br>①：将 随机数1、随机数2、服务器端返回 证书公钥 加密过后的 预主秘钥 三者组合成 会话密钥。<br>②：服务端拿到 会话秘钥 后，会用服务端证书 私钥进行解密，得到 预主秘钥。<br>③：服务端将 随机数1、随机数2、服务器端证书私钥解密得到的 预主秘钥 三者组合成 会话密钥。此时客户端的 会话秘钥 和 服务端的 会话秘钥 应该是一致的。<br>④：接下来会经行验证： - 1.客户端通过 会话秘钥，加密信息发给服务端，看服务端能否成功接收。 - 2.服务端通过 会话秘钥，加密信息返给客户端，看客户端能否成功解析。<br>4.以上步骤都通过了，此时 SSL 验证连接。</li>
-</ol>
-<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><ol>
-<li>面向连接<br>数据传输开始之前，需要建立连接，例如 三次握手 和 四次挥手。</li>
-<li>可靠传输<br>无差错<br>不丢失<br>不重复<br>按序到达（滑动窗口协议实现的）<br>停止等待协议</li>
-</ol>
-<p>无差错情况<br>超时重传<br>确认丢失<br>确认迟到</p>
-<ol start="3">
-<li>面向字节流<br>可以对照 UDP 的面向报文，字节由 TCP 控制</li>
-<li>拥塞控制<br>慢开始，拥塞避免<br>快恢复、快重传</li>
-</ol>
-<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><ol>
-<li>无连接，不需要事先建立连接，也不需要释放</li>
-<li>尽最大努力交付，不保证可靠传输</li>
-<li>面向报文</li>
-<li>面向报文，既不合并，也不拆分</li>
-</ol>
-<h3 id="三次握手，四次挥手"><a href="#三次握手，四次挥手" class="headerlink" title="三次握手，四次挥手"></a>三次握手，四次挥手</h3><p>握手：</p>
-<ul>
-<li>客户端向服务端发送 SYN 同步报文</li>
-<li>服务端收到 SYN 报文后，向客户端发送 SYN 同步报文和 ACK 确认报文</li>
-<li>客户端向服务端发送 ACK 确认报文</li>
-</ul>
-<p>[image:B722EF47-8020-4F2F-9B55-E3D648270EDF-15664-0000A633F078A0C4/9E4672DA-1C41-413E-A510-AFD977F876C2.png]</p>
-<p>挥手：</p>
-<ul>
-<li>客户端向服务端发送 FIN 结束报文</li>
-<li>服务端向客户端发送 ACK 确认报文</li>
-<li>服务端向客户端发送 FIN 结束报文和 ACK</li>
-<li>客户端返回 ACK 报文</li>
-</ul>
-<p>[image:5700DB72-CA04-49C0-BC9D-052CB4F89D85-15664-0000A68A1D289B26/D2F88BCE-5E5D-471E-8DC6-E5CB92E4972F.png]</p>
 
     </article>
     <!-- license  -->
@@ -483,7 +498,7 @@ height:50vh;
             <p>原文作者：<a href="http://yoursite.com">Wrappers</a>
             </p><p>原文链接：<a href="http://yoursite.com/2019/05/11/网络知识/">http://yoursite.com/2019/05/11/网络知识/</a>
             </p><p>发表日期：<a href="http://yoursite.com/2019/05/11/网络知识/">May 11th 2019, 2:41:14 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/05/11/网络知识/">May 12th 2019, 3:43:31 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/05/11/网络知识/">May 13th 2019, 3:10:14 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -630,7 +645,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络"><span class="toc-number">1.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是-TCP-UDP"><span class="toc-number">2.</span> <span class="toc-text">什么是 TCP / UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通信底层原理（OSI-七层模型）"><span class="toc-number">3.</span> <span class="toc-text">通信底层原理（OSI 七层模型）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Http-和-Https-的区别？为什么更加安全？"><span class="toc-number">3.1.</span> <span class="toc-text">Http 和 Https 的区别？为什么更加安全？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-特性、请求方式"><span class="toc-number">3.2.</span> <span class="toc-text">HTTP 特性、请求方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-报文结构"><span class="toc-number">3.3.</span> <span class="toc-text">HTTP 报文结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密过程"><span class="toc-number">3.4.</span> <span class="toc-text">加密过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP-模型"><span class="toc-number">3.5.</span> <span class="toc-text">TCP/IP 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大文件下载"><span class="toc-number">3.6.</span> <span class="toc-text">大文件下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络框架"><span class="toc-number">3.7.</span> <span class="toc-text">网络框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL-传输协议？说一下-SSL-验证过程？"><span class="toc-number">3.8.</span> <span class="toc-text">SSL 传输协议？说一下 SSL 验证过程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP"><span class="toc-number">3.9.</span> <span class="toc-text">TCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UDP"><span class="toc-number">3.10.</span> <span class="toc-text">UDP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三次握手，四次挥手"><span class="toc-number">3.11.</span> <span class="toc-text">三次握手，四次挥手</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI（开放式系统互联）-七层模型"><span class="toc-number">1.</span> <span class="toc-text">OSI（开放式系统互联） 七层模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP-IP-网络模型"><span class="toc-number">2.</span> <span class="toc-text">TCP/IP 网络模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP-用户数据报协议"><span class="toc-number">2.1.</span> <span class="toc-text">UDP 用户数据报协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-传输控制协议"><span class="toc-number">2.2.</span> <span class="toc-text">TCP 传输控制协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三次握手"><span class="toc-number">2.3.</span> <span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四次挥手"><span class="toc-number">2.4.</span> <span class="toc-text">四次挥手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-number">2.5.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？"><span class="toc-number">2.5.1.</span> <span class="toc-text">为什么连接的时候是三次握手，关闭的时候却是四次握手？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？"><span class="toc-number">2.5.2.</span> <span class="toc-text">为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么不能用两次握手进行连接？"><span class="toc-number">2.5.3.</span> <span class="toc-text">为什么不能用两次握手进行连接？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？"><span class="toc-number">2.5.4.</span> <span class="toc-text">如果已经建立了连接，但是客户端突然出现故障了怎么办？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Http-和-Https"><span class="toc-number">3.</span> <span class="toc-text">Http 和 Https</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Http"><span class="toc-number">3.1.</span> <span class="toc-text">Http</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">3.1.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#报文结构"><span class="toc-number">3.1.2.</span> <span class="toc-text">报文结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Https"><span class="toc-number">3.2.</span> <span class="toc-text">Https</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特点-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密过程"><span class="toc-number">3.2.2.</span> <span class="toc-text">加密过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL"><span class="toc-number">3.2.3.</span> <span class="toc-text">SSL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#连接过程"><span class="toc-number">3.2.3.1.</span> <span class="toc-text">连接过程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大文件下载"><span class="toc-number">4.</span> <span class="toc-text">大文件下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络框架"><span class="toc-number">5.</span> <span class="toc-text">网络框架</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -643,6 +658,10 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
     
     
     
@@ -834,7 +853,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/21</span><a class="archive-post-title" href="/2019/02/21/算法/">排序算法</a>
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href="/2019/02/21/算法/">算法</a>
         </li>
     
     
