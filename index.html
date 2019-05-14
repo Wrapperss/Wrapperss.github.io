@@ -384,10 +384,23 @@ height:50vh;
     <article class="index-post">
         <a class="abstract-title" href="/2019/05/11/解析UIKit/">
             
-                <span>解析UIKit</span>
+                <span>解析 UIKit</span>
         </a>
         <div class="abstract-content">
-            界面更新当操作 UI 时，比如改变了 frame、更新 UIView/CALayer 的层级、或者手动调用了 setNeedDisplay 时，这个 UIView/CALayer 就会被标记为待处理，放到一个全局容器中，苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv。这个函数里会遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 ...
+            UIViewController生命周期
+initWithCoder:
+awakeFromNib
+loadView
+viewDidLoad
+viewWillAppear:
+viewWillLayoutSubviews
+viewDidLayoutSubviews
+viewDidAppear:
+viewWillDisappear:
+viewDidDisappear:
+dealloc
+
+说一下控制器收到内存警告会如何处理当系统内存告急时，会接收到 didReceiveMemoryWarning。 这是属于 ViewController 的方法，当 ViewController 接收到 didR...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -395,6 +408,12 @@ height:50vh;
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
             </div>
             <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
+    
+</div>
             
         </div>
     </article>
@@ -1032,7 +1051,7 @@ A specification describes a version of Pod library. It includes details about wh
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/解析UIKit/">解析UIKit</a>
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/解析UIKit/">解析 UIKit</a>
         </li>
     
     
@@ -1113,9 +1132,9 @@ A specification describes a version of Pod library. It includes details about wh
     
         <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
-        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
-    
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
         <span class="sidebar-tag-name" data-tags="Swift"><span class="iconfont-archer">&#xe606;</span>Swift</span>
     

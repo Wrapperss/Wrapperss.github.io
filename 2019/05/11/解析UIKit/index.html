@@ -22,7 +22,7 @@
     <meta name="description" content="it's better to burn out than to fade away">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>解析UIKit · Wrappres</title>
+    <title>解析 UIKit · Wrappres</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">Wrappres&#39; Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">解析UIKit</a>
+                <a href="#" class="post-name">解析 UIKit</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            解析UIKit
+            解析 UIKit
             <!-- 404 -->
             
         </h1>
@@ -264,9 +264,15 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">806</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -395,43 +401,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="界面更新"><a href="#界面更新" class="headerlink" title="界面更新"></a>界面更新</h2><p>当操作 UI 时，比如改变了 frame、更新 UIView/CALayer 的层级、或者手动调用了 setNeedDisplay 时，这个 UIView/CALayer 就会被标记为待处理，放到一个全局容器中，苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：<code>_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv</code>。这个函数里会遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 UI 界面。</p>
-<h2 id="异步绘制"><a href="#异步绘制" class="headerlink" title="异步绘制"></a>异步绘制</h2><p>需要通过系统的 <code>[view.delegate displayLayer:]</code>实现异步绘制<br>代理负责生成 bitmap，然后设置 layer 的 contents 属性</p>
-<h2 id="如何高性能的为视图加圆角"><a href="#如何高性能的为视图加圆角" class="headerlink" title="如何高性能的为视图加圆角"></a>如何高性能的为视图加圆角</h2><ul>
-<li>通过设置 CALayer 的 mask 属性来切，这个无法避免离屏渲染，不推荐。</li>
-<li>通过 UIGraphicsBeginImageContextWithOptions()创建一个 Image 的图形上下文，在上面绘制 path 并裁剪，最终生成新的 UIImage，这个可行，但是图片尺寸是有限制的，如果 size 过大，会导致内存暴涨，易奔溃。</li>
-<li>iOS 9 之后，UIImageView 设置 png 格式的图片时，并且没有 backgroundColor 时，设置其 layer 的 cornerRadius 不会触发离屏渲染。</li>
-<li>iOS10 以后，使用 UIGraphicsImageRenderer 类的 UIGraphicsBeginImageContextWithOptions()方法。</li>
-</ul>
-<h3 id="UIView-和-CALayer-是什么关系"><a href="#UIView-和-CALayer-是什么关系" class="headerlink" title="UIView 和 CALayer 是什么关系"></a>UIView 和 CALayer 是什么关系</h3><ol>
-<li>CALayer 负责图像动画的渲染</li>
-<li>UIView 负责用户的交互</li>
-</ol>
-<h3 id="Bounds-amp-Frame"><a href="#Bounds-amp-Frame" class="headerlink" title="Bounds &amp; Frame"></a>Bounds &amp; Frame</h3><p>frame 是在父控件坐标系的位置，是空间的外部尺寸<br>bounds 是相对自身坐标系的，是空间的内部尺寸。</p>
-<h3 id="UIButton-的父类是什么？UILabel-的父类又是什么？"><a href="#UIButton-的父类是什么？UILabel-的父类又是什么？" class="headerlink" title="UIButton 的父类是什么？UILabel 的父类又是什么？"></a>UIButton 的父类是什么？UILabel 的父类又是什么？</h3><ol>
-<li>UIButton -&gt; UIControl -&gt; UIView -&gt; UIResponder</li>
-<li>UILabel -&gt; UIView -&gt; UIResponder</li>
-<li>区别就在于 UIControlState….、UIControlEvent…..</li>
-</ol>
-<h3 id="实现一个控件，可以浮在任意界面的上层并支持拖动？"><a href="#实现一个控件，可以浮在任意界面的上层并支持拖动？" class="headerlink" title="实现一个控件，可以浮在任意界面的上层并支持拖动？"></a>实现一个控件，可以浮在任意界面的上层并支持拖动？</h3><ol>
-<li>可以添加一个 window，然后设置 window 的层级</li>
-<li>把 View 添加到 window 上</li>
-<li>给 window 重写 pointInSide 属性，当范围在 view 上的时候，才返回 true，防止影响主 window 的事件</li>
-<li>重写 view 的 touchDidMove  方法，获取上一次的 point 和当前 touch 的 point，然后调整 view 的坐标</li>
-</ol>
-<h3 id="说一下控制器-View-的生命周期，一旦收到内存警告会如何处理？"><a href="#说一下控制器-View-的生命周期，一旦收到内存警告会如何处理？" class="headerlink" title="说一下控制器 View 的生命周期，一旦收到内存警告会如何处理？"></a>说一下控制器 View 的生命周期，一旦收到内存警告会如何处理？</h3><p>当系统内存告急时，会接收到didReceiveMemoryWarning。 这是属于 ViewController 的方法，当ViewController 接收到didReceiveMemoryWarning，首先会判断当前的 ViewController 是否还显示在 window上，如果不在就会移除当前的 ViewController，销毁ViewController 上面的子控件，并执行 ViewDidUnload 方法。</p>
-<h3 id="UIView-的生命周期"><a href="#UIView-的生命周期" class="headerlink" title="UIView 的生命周期"></a>UIView 的生命周期</h3><ul>
-<li>layoutSubviews</li>
-<li>didAddSubview:</li>
-<li>willRemoveSubview:</li>
-<li>willMoveToSuperview:</li>
-<li>didMoveToSuperview</li>
-<li>willMoveToWindow:</li>
-<li>didMoveToWindow</li>
-<li>removeFromSuperview</li>
-<li>dealloc</li>
-</ul>
-<h3 id="UIViewController-生命周期"><a href="#UIViewController-生命周期" class="headerlink" title="UIViewController 生命周期"></a>UIViewController 生命周期</h3><ul>
+        <h1 id="UIViewController"><a href="#UIViewController" class="headerlink" title="UIViewController"></a>UIViewController</h1><h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
 <li>initWithCoder:</li>
 <li>awakeFromNib</li>
 <li>loadView</li>
@@ -443,15 +413,60 @@ height:50vh;
 <li>viewWillDisappear:</li>
 <li>viewDidDisappear:</li>
 <li>dealloc</li>
-</ul>
-<h3 id="如何以通用的方法找到当前显示的ViewController"><a href="#如何以通用的方法找到当前显示的ViewController" class="headerlink" title="如何以通用的方法找到当前显示的ViewController?"></a>如何以通用的方法找到当前显示的ViewController?</h3><ol>
+</ol>
+<h2 id="说一下控制器收到内存警告会如何处理"><a href="#说一下控制器收到内存警告会如何处理" class="headerlink" title="说一下控制器收到内存警告会如何处理"></a>说一下控制器收到内存警告会如何处理</h2><p>当系统内存告急时，会接收到 didReceiveMemoryWarning。 这是属于 ViewController 的方法，当 ViewController 接收到 didReceiveMemoryWarning，首先会判断当前的 ViewController 是否还显示在 window 上，如果不在就会移除当前的 ViewController，销毁 ViewController 上面的子控件，并执行 ViewDidUnload 方法。</p>
+<h2 id="如何以通用的方法找到当前显示的-ViewController"><a href="#如何以通用的方法找到当前显示的-ViewController" class="headerlink" title="如何以通用的方法找到当前显示的 ViewController"></a>如何以通用的方法找到当前显示的 ViewController</h2><ol>
 <li>判断 rootVC 是否有 presentVC，有的话就是这个 presentedViewController</li>
 <li>判断是否是 UINavigationViewController，是的话从栈顶拿出 VC，然后再根据这个 VC 去找显示的 VC</li>
 <li>在看是否是 TabbarController，是的话，找到当前选中的 VC，然后再根据这个 VC 去找显示的 VC</li>
 <li>如果只是一个普通的 VC，就返回这个 VC 本身</li>
 </ol>
-<h3 id="setNeedsDisplay-和-layoutIfNeeded-两者是什么关系？"><a href="#setNeedsDisplay-和-layoutIfNeeded-两者是什么关系？" class="headerlink" title="setNeedsDisplay 和 layoutIfNeeded 两者是什么关系？"></a>setNeedsDisplay 和 layoutIfNeeded 两者是什么关系？</h3><p>setNeedsDisplay 是给当前的视图做了标记。<br>layoutIfNeeded 查找是否有标记，如果有标记及立刻刷新。<br>只有这二者合起来使用，才会起到立刻刷新的效果。</p>
-<h3 id="什么是响应链"><a href="#什么是响应链" class="headerlink" title="什么是响应链"></a>什么是响应链</h3>
+<h1 id="UIView"><a href="#UIView" class="headerlink" title="UIView"></a>UIView</h1><h2 id="生命周期-1"><a href="#生命周期-1" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
+<li>layoutSubviews</li>
+<li>didAddSubview</li>
+<li>willRemoveSubview</li>
+<li>willMoveToSuperview</li>
+<li>didMoveToSuperview</li>
+<li>willMoveToWindow</li>
+<li>didMoveToWindow</li>
+<li>removeFromSuperview</li>
+<li>dealloc</li>
+</ol>
+<h2 id="UIView-和-CALayer-是什么关系"><a href="#UIView-和-CALayer-是什么关系" class="headerlink" title="UIView 和 CALayer 是什么关系"></a>UIView 和 CALayer 是什么关系</h2><p>CALayer 负责图像动画的渲染<br>UIView 负责用户的交互</p>
+<h2 id="Bounds-amp-Frame"><a href="#Bounds-amp-Frame" class="headerlink" title="Bounds &amp; Frame"></a>Bounds &amp; Frame</h2><p>frame 是在父控件坐标系的位置，是空间的外部尺寸<br>bounds 是相对自身坐标系的，是空间的内部尺寸。</p>
+<h2 id="界面更新"><a href="#界面更新" class="headerlink" title="界面更新"></a>界面更新</h2><p>当操作 UI 时，比如改变了 frame、更新 UIView/CALayer 的层级、或者手动调用了 setNeedDisplay 时，这个 UIView/CALayer 就会被标记为待处理，放到一个全局容器中，苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出 Loop) 事件，回调去执行一个很长的函数：<code>_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv</code>。这个函数里会遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 UI 界面。</p>
+<h2 id="异步绘制"><a href="#异步绘制" class="headerlink" title="异步绘制"></a>异步绘制</h2><p>需要通过系统的 <code>[view.delegate displayLayer:]</code>实现异步绘制<br>代理负责生成 bitmap，然后设置 layer 的 contents 属性</p>
+<h2 id="如何高性能的为视图加圆角"><a href="#如何高性能的为视图加圆角" class="headerlink" title="如何高性能的为视图加圆角"></a>如何高性能的为视图加圆角</h2><ul>
+<li>设置 CALayer 的 cornerRadius<br>ps：iOS9 以后 UIImageView 设置 png 格式图片，不会触发离屏渲染</li>
+<li><p>设置 CALayer 的 mask</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过图片生成遮罩，</span></span><br><span class="line"><span class="built_in">UIImage</span> *maskImage = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"someimg"</span>];</span><br><span class="line"><span class="built_in">CALayer</span> *mask = [<span class="built_in">CALayer</span> new];</span><br><span class="line">mask.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, maskImage.size.width, maskImage.size.height);</span><br><span class="line">mask.contents = (__bridge <span class="keyword">id</span> _Nullable)(maskImage.CGImage);</span><br><span class="line">view.layer.mask = mask;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过贝塞尔曲线生成</span></span><br><span class="line"><span class="built_in">CAShapeLayer</span> *mask = [<span class="built_in">CAShapeLayer</span> new];</span><br><span class="line">mask.path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:view.bounds].CGPath;</span><br><span class="line">view.layer.mask = mask;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 Core Graphics 重新绘制带圆角的视图<br>通过 CPU 重新绘制一份带圆角的视图来实现圆角效果，会大大增加 CPU 的负担，</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UIImage</span> (<span class="title">CircleImage</span>)</span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIImage</span> *)drawCircleImage &#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> side = MIN(<span class="keyword">self</span>.size.width, <span class="keyword">self</span>.size.height);</span><br><span class="line">    <span class="built_in">UIGraphicsBeginImageContextWithOptions</span>(<span class="built_in">CGSizeMake</span>(side, side), <span class="literal">false</span>, [<span class="built_in">UIScreen</span> mainScreen].scale);</span><br><span class="line">    <span class="built_in">CGContextAddPath</span>(<span class="built_in">UIGraphicsGetCurrentContext</span>(),</span><br><span class="line">                    [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, side, side)].CGPath);</span><br><span class="line">    <span class="built_in">CGContextClip</span>(<span class="built_in">UIGraphicsGetCurrentContext</span>());</span><br><span class="line">    <span class="built_in">CGFloat</span> marginX = -(<span class="keyword">self</span>.size.width - side) / <span class="number">2.</span>f;</span><br><span class="line">    <span class="built_in">CGFloat</span> marginY = -(<span class="keyword">self</span>.size.height - side) / <span class="number">2.</span>f;</span><br><span class="line">    [<span class="keyword">self</span> drawInRect:<span class="built_in">CGRectMake</span>(marginX, marginY, <span class="keyword">self</span>.size.width, <span class="keyword">self</span>.size.height)];</span><br><span class="line">    <span class="built_in">CGContextDrawPath</span>(<span class="built_in">UIGraphicsGetCurrentContext</span>(), kCGPathFillStroke);</span><br><span class="line">    <span class="built_in">UIImage</span> *output = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</span><br><span class="line">    <span class="built_in">UIGraphicsEndImageContext</span>();</span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;   </span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在需要圆角时调用如下</span></span><br><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>), ^&#123;</span><br><span class="line">    <span class="built_in">UIImage</span> *img = [[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"image.png"</span>] drawCircleImage];</span><br><span class="line">    <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">        view.image = img;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过混合图层<br>此方法就是在要添加圆角的视图上再叠加一个部分透明的视图，只对圆角部分进行遮挡。图层混合的透明度处理方式与 mask 正好相反。此方法虽然是最优解，没有离屏渲染，没有额外的 CPU 计算，但是应用范围有限。</p>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<ol>
+<li>在可以使用混合图层遮挡的场景下，优先使用第四种方法。</li>
+<li>即使是非 iOS9 以上系统，第一种方法在综合性能上依然强于后两者，iOS9 以上由于没有了离屏渲染更是首选。</li>
+<li>方法二和方法三由于使用了贝塞尔曲线，都可以应对复杂的圆角。只不过前者牺牲帧率，后者需要大量计算和增加部分内存，需要实际情况各自取舍。</li>
+</ol>
+<h2 id="UIButton-的父类是什么？UILabel-的父类又是什么"><a href="#UIButton-的父类是什么？UILabel-的父类又是什么" class="headerlink" title="UIButton 的父类是什么？UILabel 的父类又是什么"></a>UIButton 的父类是什么？UILabel 的父类又是什么</h2><ol>
+<li>UIButton -&gt; UIControl -&gt; UIView -&gt; UIResponder</li>
+<li>UILabel -&gt; UIView -&gt; UIResponder</li>
+<li>区别就在于 UIControlState……、UIControlEvent……</li>
+</ol>
+<h2 id="实现一个控件，可以浮在任意界面的上层并支持拖动"><a href="#实现一个控件，可以浮在任意界面的上层并支持拖动" class="headerlink" title="实现一个控件，可以浮在任意界面的上层并支持拖动"></a>实现一个控件，可以浮在任意界面的上层并支持拖动</h2><ol>
+<li>可以添加一个 window，然后设置 window 的层级</li>
+<li>把 View 添加到 window 上</li>
+<li>给 window 重写 pointInSide 属性，当范围在 view 上的时候，才返回 true，防止影响主 window 的事件</li>
+<li>重写 view 的 touchDidMove  方法，获取上一次的 point 和当前 touch 的 point，然后调整 view 的坐标</li>
+</ol>
+<h2 id="setNeedsDisplay-和-layoutIfNeeded-两者是什么关系"><a href="#setNeedsDisplay-和-layoutIfNeeded-两者是什么关系" class="headerlink" title="setNeedsDisplay 和 layoutIfNeeded 两者是什么关系"></a>setNeedsDisplay 和 layoutIfNeeded 两者是什么关系</h2><p>setNeedsDisplay 是给当前的视图做了标记。<br>layoutIfNeeded 查找是否有标记，如果有标记及立刻刷新。<br>只有这二者合起来使用，才会起到立刻刷新的效果。</p>
+<h2 id="什么是响应链"><a href="#什么是响应链" class="headerlink" title="什么是响应链"></a>什么是响应链</h2><p><img src="https://upload-images.jianshu.io/upload_images/1048365-451694edef9717b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
+
     </article>
     <!-- license  -->
     
@@ -459,7 +474,7 @@ height:50vh;
             <p>原文作者：<a href="http://yoursite.com">Wrappers</a>
             </p><p>原文链接：<a href="http://yoursite.com/2019/05/11/解析UIKit/">http://yoursite.com/2019/05/11/解析UIKit/</a>
             </p><p>发表日期：<a href="http://yoursite.com/2019/05/11/解析UIKit/">May 11th 2019, 2:36:22 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/05/11/解析UIKit/">May 11th 2019, 2:48:40 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/05/11/解析UIKit/">May 14th 2019, 1:08:02 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -611,7 +626,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#界面更新"><span class="toc-number">1.</span> <span class="toc-text">界面更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异步绘制"><span class="toc-number">2.</span> <span class="toc-text">异步绘制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何高性能的为视图加圆角"><span class="toc-number">3.</span> <span class="toc-text">如何高性能的为视图加圆角</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UIView-和-CALayer-是什么关系"><span class="toc-number">3.1.</span> <span class="toc-text">UIView 和 CALayer 是什么关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bounds-amp-Frame"><span class="toc-number">3.2.</span> <span class="toc-text">Bounds &amp; Frame</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIButton-的父类是什么？UILabel-的父类又是什么？"><span class="toc-number">3.3.</span> <span class="toc-text">UIButton 的父类是什么？UILabel 的父类又是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现一个控件，可以浮在任意界面的上层并支持拖动？"><span class="toc-number">3.4.</span> <span class="toc-text">实现一个控件，可以浮在任意界面的上层并支持拖动？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说一下控制器-View-的生命周期，一旦收到内存警告会如何处理？"><span class="toc-number">3.5.</span> <span class="toc-text">说一下控制器 View 的生命周期，一旦收到内存警告会如何处理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIView-的生命周期"><span class="toc-number">3.6.</span> <span class="toc-text">UIView 的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIViewController-生命周期"><span class="toc-number">3.7.</span> <span class="toc-text">UIViewController 生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何以通用的方法找到当前显示的ViewController"><span class="toc-number">3.8.</span> <span class="toc-text">如何以通用的方法找到当前显示的ViewController?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setNeedsDisplay-和-layoutIfNeeded-两者是什么关系？"><span class="toc-number">3.9.</span> <span class="toc-text">setNeedsDisplay 和 layoutIfNeeded 两者是什么关系？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是响应链"><span class="toc-number">3.10.</span> <span class="toc-text">什么是响应链</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIViewController"><span class="toc-number">1.</span> <span class="toc-text">UIViewController</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期"><span class="toc-number">1.1.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说一下控制器收到内存警告会如何处理"><span class="toc-number">1.2.</span> <span class="toc-text">说一下控制器收到内存警告会如何处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何以通用的方法找到当前显示的-ViewController"><span class="toc-number">1.3.</span> <span class="toc-text">如何以通用的方法找到当前显示的 ViewController</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UIView"><span class="toc-number">2.</span> <span class="toc-text">UIView</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期-1"><span class="toc-number">2.1.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UIView-和-CALayer-是什么关系"><span class="toc-number">2.2.</span> <span class="toc-text">UIView 和 CALayer 是什么关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bounds-amp-Frame"><span class="toc-number">2.3.</span> <span class="toc-text">Bounds &amp; Frame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#界面更新"><span class="toc-number">2.4.</span> <span class="toc-text">界面更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异步绘制"><span class="toc-number">2.5.</span> <span class="toc-text">异步绘制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何高性能的为视图加圆角"><span class="toc-number">2.6.</span> <span class="toc-text">如何高性能的为视图加圆角</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UIButton-的父类是什么？UILabel-的父类又是什么"><span class="toc-number">2.7.</span> <span class="toc-text">UIButton 的父类是什么？UILabel 的父类又是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现一个控件，可以浮在任意界面的上层并支持拖动"><span class="toc-number">2.8.</span> <span class="toc-text">实现一个控件，可以浮在任意界面的上层并支持拖动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setNeedsDisplay-和-layoutIfNeeded-两者是什么关系"><span class="toc-number">2.9.</span> <span class="toc-text">setNeedsDisplay 和 layoutIfNeeded 两者是什么关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是响应链"><span class="toc-number">2.10.</span> <span class="toc-text">什么是响应链</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -789,7 +804,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/解析UIKit/">解析UIKit</a>
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/解析UIKit/">解析 UIKit</a>
         </li>
     
     
@@ -870,9 +885,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
-        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
-    
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
         <span class="sidebar-tag-name" data-tags="Swift"><span class="iconfont-archer">&#xe606;</span>Swift</span>
     
