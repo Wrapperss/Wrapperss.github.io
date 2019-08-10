@@ -10,7 +10,7 @@
 
 
 
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="author" content="Wrappers">
@@ -191,8 +191,8 @@
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
     <link rel="preload" href="/scripts/main.js" as="script">
-    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin="">
-    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin="">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
     
     <!-- fancybox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
@@ -210,7 +210,7 @@
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
     
-    <a class="home-link" href="/">Wrappres' Studio.</a>
+    <a class="home-link" href=/>Wrappres' Studio.</a>
 </header>
     <div class="wrapper">
         <div class="site-intro" style="
@@ -346,7 +346,71 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/01/03/2019-Target/">
+        <a class="abstract-title" href = "/2019/02/11/iOS知识补齐-Runtime/" >
+            
+                <span>iOS 知识补齐-Runtime</span>
+        </a>
+        <div class="abstract-content">
+            描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的 Runtime 代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime 是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Runtime 在 NSObject 中定义了一些基础操作。
+数据结构简单解释一下下面这张图：一个普通的 objc_object(实例对象)中有一个 isa 指针，这个指针指向的是该实例对象所对应的...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/25/组件化第一步，创建私有Pod/" >
+            
+                <span>组件化第一步，创建私有 Pod</span>
+        </a>
+        <div class="abstract-content">
+            
+关于组件化，目前比较流行的方案大概有三种：Router, Protocol, Target-Action。不论是选择哪一种方案，都需要通过建立私有 Pod 来管理项目。本文希望通过建立一个组件化中常用的Base库能将这个事情讲清楚。
+
+创建 Pod创建 Base 库的 podspec选择合适的本地路径创建modularization文件夹其中的podspec包含了这个库的信息（包括名称，版本和描述等）.下面是官方定义：
+
+A specification describes a version of Pod library. It includes details about where...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/03/2019-Target/" >
             
                 <span>2019 Target</span>
         </a>
@@ -367,9 +431,9 @@
             </div>
             <!-- tags  -->
             
-            <div class="abstract-tags">
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="target">target</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "target">target</a>
     
 </div>
             
@@ -382,7 +446,7 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/">
+        <a class="abstract-title" href = "/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/" >
             
                 <span>利用 Sourcery，进一步优化 Model 层，减少模板代码</span>
         </a>
@@ -399,9 +463,9 @@ Sourcery is a cod...
             </div>
             <!-- tags  -->
             
-            <div class="abstract-tags">
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
     
 </div>
             
@@ -414,7 +478,7 @@ Sourcery is a cod...
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2018/11/29/iOS面试题/">
+        <a class="abstract-title" href = "/2018/11/29/iOS面试题/" >
             
                 <span>iOS 面试题</span>
         </a>
@@ -432,9 +496,9 @@ Sourcery is a cod...
             </div>
             <!-- tags  -->
             
-            <div class="abstract-tags">
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="iOS">iOS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
     
 </div>
             
@@ -459,21 +523,21 @@ Sourcery is a cod...
     
         
             
-                <a href="mailto:wrappers@qq.com" class="iconfont-archer email" title="email"></a>
+                <a href="mailto:wrappers@qq.com" class="iconfont-archer email" title=email ></a>
             
         
     
         
             
-                <a href="//github.com/Wrapperss" class="iconfont-archer github" target="_blank" title="github"></a>
+                <a href="//github.com/Wrapperss" class="iconfont-archer github" target="_blank" title=github></a>
             
         
     
         
             
-                <span class="iconfont-archer wechat" title="wechat">
+                <span class="iconfont-archer wechat" title=wechat>
                   
-                  <img class="profile-qr" src="/assets/wechat.jpeg">
+                  <img class="profile-qr" src="/assets/wechat.jpeg" />
                 </span>
             
         
@@ -711,9 +775,31 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 13
+        Total : 15
         </div>
         <!-- search  -->
         
@@ -729,57 +815,67 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/网络知识/">网络知识</a>
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2019/08/10/iOS-App启动速度优化/" >App启动速度优化</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href="/2019/05/11/解析UIKit/">解析 UIKit</a>
+            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2019/07/10/算法-1/" >算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/09</span><a class="archive-post-title" href="/2019/05/09/Runloop的理解/">Runloop 的理解</a>
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/09</span><a class="archive-post-title" href="/2019/05/09/iOS中关于Weak的故事/">iOS 中关于 weak 的故事</a>
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/15</span><a class="archive-post-title" href="/2019/04/15/iOS知识补齐-多线程/">iOS 知识补齐-多线程</a>
+            <span class="archive-post-date">05/09</span><a class="archive-post-title" href= "/2019/05/09/Runloop的理解/" >Runloop 的理解</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/28</span><a class="archive-post-title" href="/2019/02/28/My-Mac-App-List/">My Mac App List</a>
+            <span class="archive-post-date">05/09</span><a class="archive-post-title" href= "/2019/05/09/iOS中关于Weak的故事/" >iOS 中关于 weak 的故事</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/21</span><a class="archive-post-title" href="/2019/02/21/算法/">算法</a>
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2019/04/15/iOS知识补齐-多线程/" >iOS 知识补齐-多线程</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/11</span><a class="archive-post-title" href="/2019/02/11/Wrappers-Swift-Style-Guide/">Wrappers' Swift Style Guide</a>
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2019/02/28/My-Mac-App-List/" >My Mac App List</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/11</span><a class="archive-post-title" href="/2019/02/11/iOS知识补齐-Runtime/">iOS 知识补齐-Runtime</a>
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2019/02/21/算法/" >算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/25</span><a class="archive-post-title" href="/2019/01/25/组件化第一步，创建私有Pod/">组件化第一步，创建私有 Pod</a>
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/2019/02/11/Wrappers-Swift-Style-Guide/" >Wrappers' Swift Style Guide</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/03</span><a class="archive-post-title" href="/2019/01/03/2019-Target/">2019 Target</a>
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/2019/02/11/iOS知识补齐-Runtime/" >iOS 知识补齐-Runtime</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2019/01/25/组件化第一步，创建私有Pod/" >组件化第一步，创建私有 Pod</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2019/01/03/2019-Target/" >2019 Target</a>
         </li>
     
     
@@ -793,15 +889,15 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/18</span><a class="archive-post-title" href="/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/">利用 Sourcery，进一步优化 Model 层，减少模板代码</a>
+            <span class="archive-post-date">12/18</span><a class="archive-post-title" href= "/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/" >利用 Sourcery，进一步优化 Model 层，减少模板代码</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/29</span><a class="archive-post-title" href="/2018/11/29/iOS面试题/">iOS 面试题</a>
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2018/11/29/iOS面试题/" >iOS 面试题</a>
         </li>
     
-    </ul></div>
+    </div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
@@ -819,10 +915,10 @@ Sourcery is a cod...
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br>
-    1、请确保node版本大于6.2<br>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
     3、在根目录_config.yml里添加配置：
     <pre style="color: #787878; font-size: 0.6rem;">
 jsonContent:

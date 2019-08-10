@@ -346,27 +346,41 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/21/算法/" >
+        <a class="abstract-title" href = "/2019/08/10/iOS-App启动速度优化/" >
             
-                <span>算法</span>
+                <span>App启动速度优化</span>
         </a>
         <div class="abstract-content">
-            
-本文算法实现的语言为Swift
+            App启动速度优化App 冷启动主要分为三个阶段
 
-Hash 算法散列函数（英语：Hash function）又称散列算法、哈希函数，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（hash values，hash codes，hash sums，或 hashes）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表。好的散列函数在输入域中很少出现散列冲突。在散列表和数据处理中，不抑制冲突来区别数据，会使得数据库记录更难找到。
-不借用第三个变量，如何交换两个变量的值？要求手动写出...
+main() 函数执行前
+
+main() 函数执行后
+
+首屏渲染完成后
+
+
+main() 函数执行前系统主要做以下几件事：
+
+加载可执行文件（App 的.o 文件集合）
+加载动态链接库，进行 rebase 指针调整和 bind 符号绑定
+Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注册，selector 唯一性检查
+初始化，包括了执行 +load() 方法，attribute((constructor)) 修饰的函数的调用，创建 C++ 静态局部变量
+
+响应优化的方向有：
+
+减少动态库加载，每个库本身都...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/21</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/10</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "算法">算法</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
     
 </div>
             
