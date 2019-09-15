@@ -346,18 +346,24 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/11/iOS知识补齐-Runtime/" >
+        <a class="abstract-title" href = "/2019/09/15/Auto-Layout相关/" >
             
-                <span>iOS 知识补齐-Runtime</span>
+                <span>Auto Layout相关</span>
         </a>
         <div class="abstract-content">
-            描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的 Runtime 代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime 是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Runtime 在 NSObject 中定义了一些基础操作。
-数据结构简单解释一下下面这张图：一个普通的 objc_object(实例对象)中有一个 isa 指针，这个指针指向的是该实例对象所对应的...
+            Auto Layout 的来历
+在 1997 年，Auto Layout 用到的 Cassowary 算法被发明出来。
+
+Cassowary 能够有效解析线性等式系统和线性不等式系统，用来表示用户界面中那些相等关系和不等关系。基于此 Cassowary 开发了一种规则系统，通过约束来描述视图间的关系。约束就是规则，这个规则能够表示出一个视图相对于另一个视图的位置。
+
+在 2011 年， Apple 将 Cassowary 算法运用到来自家的布局引擎 Auto Layout 中。
+
+由于 Cassowary 算法让视图位置可以按照一种简单的布局思路来写，这些简单的相对位置描述可以在运行时动...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/11</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/15</span>
             </div>
             <!-- tags  -->
             
@@ -376,64 +382,41 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/25/组件化第一步，创建私有Pod/" >
+        <a class="abstract-title" href = "/2019/09/15/App启动速度优化/" >
             
-                <span>组件化第一步，创建私有 Pod</span>
+                <span>App启动速度优化</span>
         </a>
         <div class="abstract-content">
-            
-关于组件化，目前比较流行的方案大概有三种：Router, Protocol, Target-Action。不论是选择哪一种方案，都需要通过建立私有 Pod 来管理项目。本文希望通过建立一个组件化中常用的Base库能将这个事情讲清楚。
+            App启动速度优化App 冷启动主要分为三个阶段
 
-创建 Pod创建 Base 库的 podspec选择合适的本地路径创建modularization文件夹其中的podspec包含了这个库的信息（包括名称，版本和描述等）.下面是官方定义：
+main() 函数执行前
 
-A specification describes a version of Pod library. It includes details about where...
+main() 函数执行后
+
+首屏渲染完成后
+
+
+main() 函数执行前系统主要做以下几件事：
+
+加载可执行文件（App 的.o 文件集合）
+加载动态链接库，进行 rebase 指针调整和 bind 符号绑定
+Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注册，selector 唯一性检查
+初始化，包括了执行 +load() 方法，attribute((constructor)) 修饰的函数的调用，创建 C++ 静态局部变量
+
+响应优化的方向有：
+
+减少动态库加载，每个库本身都...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/25</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/15</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/03/2019-Target/" >
-            
-                <span>2019 Target</span>
-        </a>
-        <div class="abstract-content">
-            
- xxxxxx
- xxxxxx
- xxxxxx
- xxxx
- xxxxxx
-
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "target">target</a>
     
 </div>
             
@@ -441,10 +424,6 @@ A specification describes a version of Pod library. It includes details about wh
     </article>
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2019/">&#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
     
 </main>
             <!-- profile -->
