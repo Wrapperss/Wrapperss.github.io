@@ -346,6 +346,154 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/26/链接器/" >
+            
+                <span>链接器</span>
+        </a>
+        <div class="abstract-content">
+            链接器最主要的作用就是将符号绑定到地址上  
+编译过程
+LLVM 对代码进行预处理，将宏嵌入到对应的位置
+LLVM 对代码进行词法分析和语法分析，生成AST。AST 是抽象语法树，结构上比代码更精简，遍历起来更快，所以使用 AST 能够更快的进行静态检查，同时还能更快地生成 IR (中间表示)。
+AST 生成 IR，IR 是一种更接近机器码的语言，区别在于和平台无关。通过 IR 可以生成多份适合不同平台的机器码。对于 iOS 系统，IR 生成的可执行文件就是 Mach-O。
+
+Mach-OMach-O 文件里的内容，主要就是代码和数据：代码是函数的定义，数据是全局变量的定义，包括全局变量...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/26/埋点/" >
+            
+                <span>埋点</span>
+        </a>
+        <div class="abstract-content">
+            iOS 埋点主要分为三种：
+
+代码埋点：通过手写代码进行埋点，能够很精确的在需要埋点的代码处加上埋点的代码，具有很强的灵活性。但存在开发工作量大，埋点代码到处都是，后期难以维护但问题。
+可视化埋点：将埋点的增加修改的工作可视化了，提高了增加和维护埋点的体验。
+无埋点：全埋点，埋点代码不会出现在业务代码中，很容易维护和管理。缺点在于，埋点成本高，后期的解析也比较复杂，view_path的不确定性。这种方案不能解决所有的埋点需求，但对于大量通用的埋点需求来说，能够节省大量的开发和维护成本。
+
+利用运行时替换方法进行埋点先写一个替换方法的类：12345678910111213141516171...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/26/静态分析/" >
+            
+                <span>静态分析</span>
+        </a>
+        <div class="abstract-content">
+            静态分析工具SwiftLint，OCLint, Clang, Infer
+ClangClang 是 C，C++，Objective-C 的编译前端。Swift 有自己的编译前端： SL optimizer。  
+Clang 会对代码进行词法分析，将代码切分成 Token用以下命令可以查看：clang -fmodules -E -Xclang -dump-tokens main.m可以把 Token 分为四类：
+
+关键字：语法中的关键字，比如 if，else，while 等
+标识符：变量名
+字面值：值，数字，字符串
+特殊符号：加减乘除等符号
+
+语法分析将输出的 Token 按照语法组合语义...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/26/架构设计/" >
+            
+                <span>架构设计</span>
+        </a>
+        <div class="abstract-content">
+            模块粒度的划分
+单一功能原则：对象功能要单一，不要在一个对象里添加很多功能。
+开闭原则：扩展是开放的，修改是封闭的。
+里氏替换原则：子类对象是可以替代基类对象的。
+接口隔离原则：接口的用途要单一，不要在一个接口上根据不同入参实现多个功能。
+依赖反转原则：方法应该依赖抽象，不要依赖实例。
+
+iOS 组件应该是包含 UI 控件，相关多个功能的合集，是一种粒度适中的模块。
+组件之间的逻辑关系组件解耦并不是说要求每个组件间没有耦合，组件间也需要有上下层依赖关系。组件之间的分层做多不超过三个：
+
+底层可以是与业务无关的基础组件，比如网络和存储等。
+中间层一般是通用的业务组件，比如账号，埋点，支付，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/09/15/Auto-Layout相关/" >
             
                 <span>Auto Layout相关</span>
@@ -562,136 +710,11 @@ pthreadPOSIX 线程（英语：POSIX Threads，常被缩写 为 Pthreads）是 P
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/11/iOS知识补齐-Runtime/" >
-            
-                <span>iOS 知识补齐-Runtime</span>
-        </a>
-        <div class="abstract-content">
-            描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的 Runtime 代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime 是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Runtime 在 NSObject 中定义了一些基础操作。
-数据结构简单解释一下下面这张图：一个普通的 objc_object(实例对象)中有一个 isa 指针，这个指针指向的是该实例对象所对应的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/25/组件化第一步，创建私有Pod/" >
-            
-                <span>组件化第一步，创建私有 Pod</span>
-        </a>
-        <div class="abstract-content">
-            
-关于组件化，目前比较流行的方案大概有三种：Router, Protocol, Target-Action。不论是选择哪一种方案，都需要通过建立私有 Pod 来管理项目。本文希望通过建立一个组件化中常用的Base库能将这个事情讲清楚。
-
-创建 Pod创建 Base 库的 podspec选择合适的本地路径创建modularization文件夹其中的podspec包含了这个库的信息（包括名称，版本和描述等）.下面是官方定义：
-
-A specification describes a version of Pod library. It includes details about where...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/" >
-            
-                <span>利用 Sourcery，进一步优化 Model 层，减少模板代码</span>
-        </a>
-        <div class="abstract-content">
-            先来看看效果优化前
-优化后经过优化，可以发现代码行数减少了一半，而除去的代码其实就是我们为了解析 JSON 的模板代码。对于我来说这些甚至可以说是冗余的代码，我是坚决的瘦 Model 的拥护者。Model 层中除必要的数据结构，我不希望出现有其他冗余的代码，影响阅读。但我们又必须让我们 Model 拥有解析 JSON 的能力。基于上述的需求，我的解决方法是利用Sourcery实现AutoUnbox，在不增加模板代码的基础上，让 Model 实现Unboxable。（本文中以 Unbox 为例，也可替换为Codable等）
-第一步: 认识Sourcery
-Sourcery is a cod...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/29/iOS面试题/" >
-            
-                <span>iOS 面试题</span>
-        </a>
-        <div class="abstract-content">
-            计算机部分设计模式策略模式（Strategy）它定义了算法家族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化，不会影响到使用算法的客户。
-装饰模式（Decorator）动态地给一个对象添加一些额外的职责，就增加功能来说，装饰模式比生成子类更为灵活。例如：Swift 中的协议组装
-代理模式（Proxy）为其他对象提供一种代理以控制对这个对象的访问。常见于 iOS 中 UIKit 中。
-工厂模式（Factory Method）定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。
-原型模式（Prototype）用原型实例指定创建对象的种类，并...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/tags/iOS/page/2/">2</a><a class="extend next" rel="next" href="/tags/iOS/page/2/">NEXT &#62;</a>
+    </nav>
     
 </main>
             <!-- profile -->
@@ -983,9 +1006,73 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 15
+        Total : 19
         </div>
         <!-- search  -->
         
@@ -1001,6 +1088,26 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
@@ -1011,12 +1118,12 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
         </li>
     
     

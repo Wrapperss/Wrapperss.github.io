@@ -22,7 +22,7 @@
     <meta name="description" content="it's better to burn out than to fade away">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Auto Layout相关 · Wrappres</title>
+    <title>静态分析 · Wrappres</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Wrappres&#39; Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Auto Layout相关</a>
+                <a href="#" class="post-name">静态分析</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Auto Layout相关
+            静态分析
             <!-- 404 -->
             
         </h1>
@@ -272,12 +272,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">659</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/09/15</span>
+                    <span class="post-intro-time">2019/10/26</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,25 +401,41 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Auto-Layout-的来历"><a href="#Auto-Layout-的来历" class="headerlink" title="Auto Layout 的来历"></a>Auto Layout 的来历</h2><ul>
-<li>在 1997 年，Auto Layout 用到的 Cassowary 算法被发明出来。</li>
-</ul>
-<p>Cassowary 能够有效解析线性等式系统和线性不等式系统，用来表示用户界面中那些相等关系和不等关系。基于此 Cassowary 开发了一种规则系统，通过约束来描述视图间的关系。约束就是规则，这个规则能够表示出一个视图相对于另一个视图的位置。</p>
+        <h2 id="静态分析工具"><a href="#静态分析工具" class="headerlink" title="静态分析工具"></a>静态分析工具</h2><p>SwiftLint，OCLint, Clang, Infer</p>
+<h2 id="Clang"><a href="#Clang" class="headerlink" title="Clang"></a>Clang</h2><p>Clang 是 C，C++，Objective-C 的编译前端。Swift 有自己的编译前端： SL optimizer。  </p>
+<h3 id="Clang-会对代码进行词法分析，将代码切分成-Token"><a href="#Clang-会对代码进行词法分析，将代码切分成-Token" class="headerlink" title="Clang 会对代码进行词法分析，将代码切分成 Token"></a>Clang 会对代码进行词法分析，将代码切分成 Token</h3><p>用以下命令可以查看：<code>clang -fmodules -E -Xclang -dump-tokens main.m</code><br>可以把 Token 分为四类：</p>
 <ul>
-<li>在 2011 年， Apple 将 Cassowary 算法运用到来自家的布局引擎 Auto Layout 中。</li>
+<li>关键字：语法中的关键字，比如 if，else，while 等</li>
+<li>标识符：变量名</li>
+<li>字面值：值，数字，字符串</li>
+<li>特殊符号：加减乘除等符号</li>
 </ul>
-<p>由于 Cassowary 算法让视图位置可以按照一种简单的布局思路来写，这些简单的相对位置描述可以在运行时动态地计算出视图具体的位置。视图位置的写法简化了，界面相关代码也就更易于维护。</p>
-<h2 id="Auto-Layout-的生命周期"><a href="#Auto-Layout-的生命周期" class="headerlink" title="Auto Layout 的生命周期"></a>Auto Layout 的生命周期</h2><p>Auto Layout 不只有布局算法 Cassowary， 还包含了布局在运行时的生命周期等一整套布局引擎系统，用来统一管理布局的创建，更新和销毁。<br>这一整套布局引擎系统叫做 Layout Engine，是 Auto Layout 的核心，主导着整个界面布局。每个视图在得到自己的布局之前， layout Engine 会将视图，约束，优先级，固定大小通过计算转换成最终的大小和位置。在 Layout Engine 里，每当约束发生变化，就会触发 Deferred Layout Pass，完成后进入监听约束变化的状态。当再次监听到约束变化，即进入下一轮循环中。<br>Layout Engine 在碰到约束变化后会重新计算布局，获取到布局后调用<code>superview.setNeedLayout()</code>，然后进入 Deferred Layout Pass。<br>Deferred Layout Pass 的主要作用是做容错处理，如果这些视图在更新约束时没有确定或缺失布局说明的话，会先在这里做容错处理。<br>接下来， Layout Engine 会从上到下调用<code>layoutSubviews()</code>，通过 Cassowary 算法计算各个子视图的位置，算出来后将子视图的 frame 从 Layout Engine 里拷贝出来。</p>
-<h2 id="Auto-Layout-的性能问题"><a href="#Auto-Layout-的性能问题" class="headerlink" title="Auto Layout 的性能问题"></a>Auto Layout 的性能问题</h2><p>iOS 12 的 Auto Layout 更多地利用里 Cassowary 算法的界面更新策略，使其真正完成了高效的界面线性策略计算。<br>iOS 12 之前的性能问题：很多约束变化时都会重新创建一个计算引擎 NSISEnginer 将约束关系重新加进来，然后重新计算，结果就是，涉及到的约束关系多时，新的计算引擎需要重新计算，最终导致计算呈指数级增加。</p>
+<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><p>将输出的 Token 按照语法组合语义，生成类似 VarDecl 这样的节点。这些节点按照层次关系生成抽象语法树（AST）。<br>用以下命令查看：<code>clang -fmodules -fsyntax-only -Xclang -ast-dump main.m</code><br>类似的输出有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TranslationUnitDecl 0xc75b450 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt;</span><br><span class="line">|-TypedefDecl 0xc75b740 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_va_list ‘char *’</span><br><span class="line">`-FunctionDecl 0xc75b7b0 &lt;test.cpp:1:1, line:7:1&gt; line:1:5 main ‘int (void)’</span><br><span class="line">  `-CompoundStmt 0xc75b978 &lt;line:2:1, line:7:1&gt;</span><br><span class="line">    |-DeclStmt 0xc75b870 &lt;line:3:2, col:7&gt;</span><br><span class="line">    | `-VarDecl 0xc75b840 &lt;col:2, col:6&gt; col:6 used a ‘int’</span><br><span class="line">    |-DeclStmt 0xc75b8d8 &lt;line:4:2, col:12&gt;</span><br><span class="line">    | `-VarDecl 0xc75b890 &lt;col:2, col:10&gt; col:6 used b ‘int’ cinit</span><br><span class="line">    |   `-IntegerLiteral 0xc75b8c0 &lt;col:10&gt; ‘int’ 10</span><br><span class="line"></span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; a = b &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><br><span class="line">    |-BinaryOperator 0xc75b928 &lt;line:5:2, col:6&gt; ‘int’ lvalue ‘=‘</span><br><span class="line">    | |-DeclRefExpr 0xc75b8e8 &lt;col:2&gt; ‘int’ lvalue Var 0xc75b840 ‘a’ ‘int’</span><br><span class="line">    | `-ImplicitCastExpr 0xc75b918 &lt;col:6&gt; ‘int’ &lt;LValueToRValue&gt;</span><br><span class="line">    |   `-DeclRefExpr 0xc75b900 &lt;col:6&gt; ‘int’ lvalue Var 0xc75b890 ‘b’ ‘int’</span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><br><span class="line"></span><br><span class="line">    `-ReturnStmt 0xc75b968 &lt;line:6:2, col:9&gt;</span><br><span class="line">      `-ImplicitCastExpr 0xc75b958 &lt;col:9&gt; ‘int’ &lt;LValueToRValue&gt;</span><br><span class="line">        `-DeclRefExpr 0xc75b940 &lt;col:9&gt; ‘int’ lvalue Var 0xc75b840 ‘a’ ‘int</span><br></pre></td></tr></table></figure></p>
+<p>其中 <code>TranslationUnitDecl</code> 是根节点，表示一个编译单元。<code>Decl</code>表示一个声明，<code>Expr</code>表示的是表达式。<code>Literal</code>表示字面量，是一个特殊的 Expr。<code>Stmt</code>表示陈述。<br>节点主要分为三种：<code>Type</code>类型，<code>Decl</code>声明，<code>Stmt</code>陈述，其他都是有这三种派生的。通过扩展三类节点，能够将无限的代码形态用有限的形式表达出来。</p>
+<h3 id="提供的能力"><a href="#提供的能力" class="headerlink" title="提供的能力"></a>提供的能力</h3><p>Clang 为一些需要分析代码语法，语义信息的工具提供了基础设施。有：LibClang，ClangPlugin 和 LibTooling。</p>
+<h3 id="LibClang"><a href="#LibClang" class="headerlink" title="LibClang"></a>LibClang</h3><p>LibClang 可以访问 Clang 的上层高级抽象能力，例如：获取所有 Token，遍历语法树，代码补全等。但并不能访问到 Clang AST 信息。</p>
+<h3 id="ClangPlugin"><a href="#ClangPlugin" class="headerlink" title="ClangPlugin"></a>ClangPlugin</h3><p>ClangPlugin 可以在 AST 上做些操作，这些操作能够集成到编译中，成为编译的一部分。插件是在运行时由编译器加载的动态库，方便集成构建系统中。</p>
+<h3 id="LibTooling"><a href="#LibTooling" class="headerlink" title="LibTooling"></a>LibTooling</h3><p>LibTooling 是一个 C++ 接口，通过 LibTooling 能够编写独立运行的语法检查和代码重构工具。<br>LibTooling 有以下优势：</p>
+<ul>
+<li>所写工具不依赖构建系统，可以作为一个命令单独使用，比如：clang-check(语法检查工具)，clang-fixit(自动修复编译错误工具)，clang-format(自动代码格式工具)。</li>
+<li>可以完全控制 Clang AST。</li>
+<li>能够和 ClangPlugin 共用一份代码。</li>
+</ul>
+<p>由于 LibTooling 可以完全控制 AST，所以可以做到很多事：</p>
+<ul>
+<li>改变代码：可以改变 Clang 生成代码的方式。基于现有代码可以做大量的修改。还可以进行语言的转换。</li>
+<li>做检查：检查命名规范，增加更强的类型检查，还可以按照自己的定义进行代码的检查分析。</li>
+<li>做分析：对源码做任意类型分析，甚至重写程序。给 Clang 添加以一些自定义分析，创建自己的重构器，还可以基于工程生成相关的图形或文档进行分析。</li>
+</ul>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="http://yoursite.com">Wrappers</a>
-            <p>原文链接：<a href="http://yoursite.com/2019/09/15/Auto-Layout相关/">http://yoursite.com/2019/09/15/Auto-Layout相关/</a>
-            <p>发表日期：<a href="http://yoursite.com/2019/09/15/Auto-Layout相关/">September 15th 2019, 10:37:57 am</a>
-            <p>更新日期：<a href="http://yoursite.com/2019/09/15/Auto-Layout相关/">September 15th 2019, 3:49:46 pm</a>
+            <p>原文链接：<a href="http://yoursite.com/2019/10/26/静态分析/">http://yoursite.com/2019/10/26/静态分析/</a>
+            <p>发表日期：<a href="http://yoursite.com/2019/10/26/静态分析/">October 26th 2019, 5:18:45 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2019/10/26/静态分析/">October 26th 2019, 5:19:01 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -428,16 +444,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/10/26/架构设计/" title= "架构设计">
-                    <div class="nextTitle">架构设计</div>
+                <a href= "/2019/10/26/埋点/" title= "埋点">
+                    <div class="nextTitle">埋点</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/09/15/App启动速度优化/" title= "App启动速度优化">
-                    <div class="prevTitle">App启动速度优化</div>
+                <a href= "/2019/10/26/架构设计/" title= "架构设计">
+                    <div class="prevTitle">架构设计</div>
                 </a>
             
         </li>
@@ -571,7 +587,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Auto-Layout-的来历"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout 的来历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Auto-Layout-的生命周期"><span class="toc-number">2.</span> <span class="toc-text">Auto Layout 的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Auto-Layout-的性能问题"><span class="toc-number">3.</span> <span class="toc-text">Auto Layout 的性能问题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态分析工具"><span class="toc-number">1.</span> <span class="toc-text">静态分析工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clang"><span class="toc-number">2.</span> <span class="toc-text">Clang</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Clang-会对代码进行词法分析，将代码切分成-Token"><span class="toc-number">2.1.</span> <span class="toc-text">Clang 会对代码进行词法分析，将代码切分成 Token</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法分析"><span class="toc-number">2.2.</span> <span class="toc-text">语法分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提供的能力"><span class="toc-number">2.3.</span> <span class="toc-text">提供的能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LibClang"><span class="toc-number">2.4.</span> <span class="toc-text">LibClang</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ClangPlugin"><span class="toc-number">2.5.</span> <span class="toc-text">ClangPlugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LibTooling"><span class="toc-number">2.6.</span> <span class="toc-text">LibTooling</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
