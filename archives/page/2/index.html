@@ -346,6 +346,48 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/11/解析UIKit/" >
+            
+                <span>解析 UIKit</span>
+        </a>
+        <div class="abstract-content">
+            UIViewController生命周期
+initWithCoder:
+awakeFromNib
+loadView
+viewDidLoad
+viewWillAppear:
+viewWillLayoutSubviews
+viewDidLayoutSubviews
+viewDidAppear:
+viewWillDisappear:
+viewDidDisappear:
+dealloc
+
+说一下控制器收到内存警告会如何处理当系统内存告急时，会接收到 didReceiveMemoryWarning。 这是属于 ViewController 的方法，当 ViewController 接收到 didR...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/05/09/Runloop的理解/" >
             
                 <span>Runloop 的理解</span>
@@ -659,38 +701,6 @@ A specification describes a version of Pod library. It includes details about wh
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "target">target</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/" >
-            
-                <span>利用 Sourcery，进一步优化 Model 层，减少模板代码</span>
-        </a>
-        <div class="abstract-content">
-            先来看看效果优化前
-优化后经过优化，可以发现代码行数减少了一半，而除去的代码其实就是我们为了解析 JSON 的模板代码。对于我来说这些甚至可以说是冗余的代码，我是坚决的瘦 Model 的拥护者。Model 层中除必要的数据结构，我不希望出现有其他冗余的代码，影响阅读。但我们又必须让我们 Model 拥有解析 JSON 的能力。基于上述的需求，我的解决方法是利用Sourcery实现AutoUnbox，在不增加模板代码的基础上，让 Model 实现Unboxable。（本文中以 Unbox 为例，也可替换为Codable等）
-第一步: 认识Sourcery
-Sourcery is a cod...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
     
 </div>
             
@@ -1073,9 +1083,24 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 22
         </div>
         <!-- search  -->
         
@@ -1096,17 +1121,12 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/利用-Runloop-监控卡顿/" >利用 Runloop 监控卡顿</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
         </li>
     
     
@@ -1116,17 +1136,27 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     

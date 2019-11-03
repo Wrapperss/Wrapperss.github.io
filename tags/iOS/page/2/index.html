@@ -346,6 +346,39 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/09/Runloop的理解/" >
+            
+                <span>Runloop 的理解</span>
+        </a>
+        <div class="abstract-content">
+            RunloopRunloop 是什么Runloop 实际是一个对象，这个对象一直在循环中来处理 App 运行过程中各种事件（触摸事件，UI 刷新事件，定时器事件，Selector 事件），从而保持程序的持续运行。Runloop 在没有事件需要处理的时候，会使线程进入睡眠模式，从而节省 CPU 资源，提高程序性能。
+Runloop 与线程的关系线程的作用是用来执行一个或多个任务。在默认情况下，线程执行完之后就会退出。如果需要线程能一直不断的处理任务，且并不会退出，这时就需要用到 Runloop。
+
+一个线程对应一个 Runloop 对象，每条线程都有唯一一个对应的 Runloop 对象。
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/05/09/iOS中关于Weak的故事/" >
             
                 <span>iOS 中关于 weak 的故事</span>
@@ -909,9 +942,24 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 22
         </div>
         <!-- search  -->
         
@@ -932,17 +980,12 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/利用-Runloop-监控卡顿/" >利用 Runloop 监控卡顿</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
         </li>
     
     
@@ -952,17 +995,27 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     

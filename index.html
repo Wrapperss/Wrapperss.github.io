@@ -359,6 +359,42 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/03/利用-Runloop-监控卡顿/" >
+            
+                <span>利用 Runloop 监控卡顿</span>
+        </a>
+        <div class="abstract-content">
+            导致卡顿的原因
+复杂 UI 、图文混排的绘制量过大
+在主线程上做网络同步请求
+在主线程做大量的 IO 操作
+运算量过大，CPU 持续高占用
+死锁和主子线程抢锁
+
+原理监控卡顿就是找到主线程都做了哪些事。线程的消息事件是依赖于 NSRunLoop 的。我们通过监听 NSRunLoop 的状态，能够发现调用方法是否执行事件过长，从而判断是否会出现卡顿。RunLoop 会接受到两种输入源，一种是来自另一个线程或者来自不同应用到异步消息，另一种是来自预定时间或者重复间隔到同步事件。RunLoop 的目的是，当有事件要去处理时保持线程忙，当没有事件要处理时让线程进入休眠。Runloop 的六个状态...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/11/03/iOS-Tips/" >
             
                 <span>iOS Tips</span>
@@ -669,48 +705,6 @@ Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
             </div>
             <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/11/解析UIKit/" >
-            
-                <span>解析 UIKit</span>
-        </a>
-        <div class="abstract-content">
-            UIViewController生命周期
-initWithCoder:
-awakeFromNib
-loadView
-viewDidLoad
-viewWillAppear:
-viewWillLayoutSubviews
-viewDidLayoutSubviews
-viewDidAppear:
-viewWillDisappear:
-viewDidDisappear:
-dealloc
-
-说一下控制器收到内存警告会如何处理当系统内存告急时，会接收到 didReceiveMemoryWarning。 这是属于 ViewController 的方法，当 ViewController 接收到 didR...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
             
         </div>
     </article>
@@ -1169,9 +1163,24 @@ dealloc
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 22
         </div>
         <!-- search  -->
         
@@ -1192,17 +1201,12 @@ dealloc
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/利用-Runloop-监控卡顿/" >利用 Runloop 监控卡顿</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
         </li>
     
     
@@ -1212,17 +1216,27 @@ dealloc
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     
