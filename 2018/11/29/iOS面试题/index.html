@@ -430,8 +430,8 @@ height:50vh;
 <h3 id="里氏代换原则（LSP）"><a href="#里氏代换原则（LSP）" class="headerlink" title="里氏代换原则（LSP）"></a>里氏代换原则（LSP）</h3><p>子类型必须能够替换掉它们的父类型。</p>
 <h3 id="迪米特原则（LoD）"><a href="#迪米特原则（LoD）" class="headerlink" title="迪米特原则（LoD）"></a>迪米特原则（LoD）</h3><p>如果两个类不必彼此直接通信，那么这两个类就不应当发生直接的相互作用。如果其中一个类需要调用另一个类的某一个方法的话，可以通过第三者转发这个调用。</p>
 <h3 id="合成-聚合复用原则（CARP）"><a href="#合成-聚合复用原则（CARP）" class="headerlink" title="合成/聚合复用原则（CARP）"></a>合成/聚合复用原则（CARP）</h3><p>尽量使用合成/聚合，尽量不要使用类继承。</p>
-<h2 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h2><p>看<a href="https://wrapperss.github.io/2019/05/11/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="算法相关"><a href="#算法相关" class="headerlink" title="算法相关"></a>算法相关</h2><p>看<a href="https://wrapperss.github.io/2019/02/21/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h2><p>看<a href="https://wrapperss.github.io/2019/05/11/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">这里</a></p>
+<h2 id="算法相关"><a href="#算法相关" class="headerlink" title="算法相关"></a>算法相关</h2><p>看<a href="https://wrapperss.github.io/2019/02/21/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">这里</a></p>
 <h1 id="iOS-部分"><a href="#iOS-部分" class="headerlink" title="iOS 部分"></a>iOS 部分</h1><h2 id="App-启动的完整过程"><a href="#App-启动的完整过程" class="headerlink" title="App 启动的完整过程"></a>App 启动的完整过程</h2><p>解析 info.plist<br>加载相关信息，例如：闪屏<br>沙盒建立，权限检查<br>Mach-O 文件加载<br>如果是二进制文件，找到适合当前 CPU 类别的部分<br>加载所依赖的 Mach-O 文件，递归调用 Mach-o 加载方法<br>定位内部外部指针引用，例如指针、字符串等<br>执行 attribute(constructor) 的 C 函数<br>加载类中的扩展中的方法<br>C++ 静态对象加载，调用 Objc 的 +load 方法</p>
 <h2 id="程序执行"><a href="#程序执行" class="headerlink" title="程序执行"></a>程序执行</h2><p>main 函数<br>执行 UIApplicationMain<br>创建 Application 对象<br>创建 UIAppDelegate 对象并复制<br>读取配置文件 info.plist ，设置程序启动的一些属性<br>创建 Main Runloop<br>调用 AppDelegate 中的 didFinishxxxx<br>如果配置了 Storyboard，加载 Storyboard 文件</p>
 <h2 id="让你开发一个新的-App，你会考虑哪些内容"><a href="#让你开发一个新的-App，你会考虑哪些内容" class="headerlink" title="让你开发一个新的 App，你会考虑哪些内容"></a>让你开发一个新的 App，你会考虑哪些内容</h2><ol>
@@ -501,15 +501,15 @@ height:50vh;
 <li>bt：打印调用堆栈，是 thread backtrace 的简写，加 all 可打印所有 thread 的堆栈</li>
 <li>br l：是 breakpoint list 的简写</li>
 </ul>
-<h2 id="UIKit"><a href="#UIKit" class="headerlink" title="UIKit"></a>UIKit</h2><p>查看<a href="https://wrapperss.github.io/2019/05/11/%E8%A7%A3%E6%9E%90UIKit/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="weak"><a href="#weak" class="headerlink" title="weak"></a>weak</h2><p>查看<a href="https://wrapperss.github.io/2019/05/09/iOS%E4%B8%AD%E5%85%B3%E4%BA%8EWeak%E7%9A%84%E6%95%85%E4%BA%8B/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="UIKit"><a href="#UIKit" class="headerlink" title="UIKit"></a>UIKit</h2><p>查看<a href="https://wrapperss.github.io/2019/05/11/%E8%A7%A3%E6%9E%90UIKit/">这里</a></p>
+<h2 id="weak"><a href="#weak" class="headerlink" title="weak"></a>weak</h2><p>查看<a href="https://wrapperss.github.io/2019/05/09/iOS%E4%B8%AD%E5%85%B3%E4%BA%8EWeak%E7%9A%84%E6%95%85%E4%BA%8B/">这里</a></p>
 <h2 id="weak-和-Unsafe-Unretain"><a href="#weak-和-Unsafe-Unretain" class="headerlink" title="__weak 和 _Unsafe_Unretain"></a>__weak 和 _Unsafe_Unretain</h2><ol>
 <li>前者会自动置 nil，后者不会，容易出现悬垂指针</li>
 <li>后者效率更高</li>
 </ol>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>查看<a href="https://wrapperss.github.io/2019/04/15/iOS%E7%9F%A5%E8%AF%86%E8%A1%A5%E9%BD%90-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h2><p>查看<a href="https://wrapperss.github.io/2019/05/09/Runloop%E7%9A%84%E7%90%86%E8%A7%A3/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><p>看<a href="https://wrapperss.github.io/2019/02/11/iOS%E7%9F%A5%E8%AF%86%E8%A1%A5%E9%BD%90-Runtime/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>查看<a href="https://wrapperss.github.io/2019/04/15/iOS%E7%9F%A5%E8%AF%86%E8%A1%A5%E9%BD%90-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">这里</a></p>
+<h2 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h2><p>查看<a href="https://wrapperss.github.io/2019/05/09/Runloop%E7%9A%84%E7%90%86%E8%A7%A3/">这里</a></p>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><p>看<a href="https://wrapperss.github.io/2019/02/11/iOS%E7%9F%A5%E8%AF%86%E8%A1%A5%E9%BD%90-Runtime/">这里</a></p>
 <h1 id="Objective-C-部分"><a href="#Objective-C-部分" class="headerlink" title="Objective-C 部分"></a>Objective-C 部分</h1><h2 id="SDWebImage-的缓存策略"><a href="#SDWebImage-的缓存策略" class="headerlink" title="SDWebImage 的缓存策略"></a>SDWebImage 的缓存策略</h2><p> sd 加载一张图片的时候，会先在内存里面查找是否有这张图片，如果没有会根据图片的 md5(url)后的名称去沙盒里面去寻找，是否有这张图片，如果没有会开辟线程去下载，下载完毕后加载到 imageview 上面，并 md(url)为名称缓存到沙盒里面。</p>
 <h2 id="AFN-为什么添加一条常驻线程"><a href="#AFN-为什么添加一条常驻线程" class="headerlink" title="AFN 为什么添加一条常驻线程"></a>AFN 为什么添加一条常驻线程</h2><p>AFN 目的：就是开辟线程请求网络数据。如果没有常住线程的话，就会每次请求网络就去开辟线程，完成之后销毁开辟线程，这样就造成资源的浪费，开辟一条常住线程，就可以避免这种浪费，我们可以在每次的网络请求都添加到这条线程。</p>
 <h2 id="block-的实质是什么？有几种-block？分别是怎样产生的"><a href="#block-的实质是什么？有几种-block？分别是怎样产生的" class="headerlink" title="block 的实质是什么？有几种 block？分别是怎样产生的"></a>block 的实质是什么？有几种 block？分别是怎样产生的</h2><p>block：本质就是一个 object-c 对象。block:存储位置，可能分为 3 个地方：代码区，堆区、栈区（ARC 情况下会自动拷贝到堆区，因此 ARC 下只能有两个地方：代码区、堆区）。代码区：不访问栈区的变量（如局部变量），且不访问堆区的变量（alloc 创建的对象），此时 block 存放在代码区。堆区：访问了处于栈区的变量，或者堆区的变量，此时 block 存放在堆区。需要注意实际是放在栈区，在 ARC 情况下会自动拷贝到堆区，如果不是 ARC 则存放在栈区，所在函数执行完毕就回释放，想再外面调用需要用 copy 指向它，这样就拷贝到了堆区，strong 属性不会拷贝、会造成野指针错区。  </p>
@@ -597,10 +597,10 @@ height:50vh;
     <!-- license  -->
     
         <div class="license-wrapper">
-            <p>原文作者：<a href="http://yoursite.com">Wrappers</a>
-            <p>原文链接：<a href="http://yoursite.com/2018/11/29/iOS面试题/">http://yoursite.com/2018/11/29/iOS面试题/</a>
-            <p>发表日期：<a href="http://yoursite.com/2018/11/29/iOS面试题/">November 29th 2018, 11:00:09 am</a>
-            <p>更新日期：<a href="http://yoursite.com/2018/11/29/iOS面试题/">May 22nd 2019, 9:15:30 am</a>
+            <p>原文作者：<a href="https://wrapperss.github.io">Wrappers</a>
+            <p>原文链接：<a href="https://wrapperss.github.io/2018/11/29/iOS面试题/">https://wrapperss.github.io/2018/11/29/iOS面试题/</a>
+            <p>发表日期：<a href="https://wrapperss.github.io/2018/11/29/iOS面试题/">November 29th 2018, 11:00:09 am</a>
+            <p>更新日期：<a href="https://wrapperss.github.io/2018/11/29/iOS面试题/">May 22nd 2019, 9:15:30 am</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -1019,9 +1019,25 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 19
+        Total : 21
         </div>
         <!-- search  -->
         
@@ -1037,6 +1053,16 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/奔溃监控/" >奔溃监控</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
         </li>
     
@@ -1047,12 +1073,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     

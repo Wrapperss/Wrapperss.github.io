@@ -359,6 +359,72 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/09/Runloop的理解/" >
+            
+                <span>Runloop 的理解</span>
+        </a>
+        <div class="abstract-content">
+            RunloopRunloop 是什么Runloop 实际是一个对象，这个对象一直在循环中来处理 App 运行过程中各种事件（触摸事件，UI 刷新事件，定时器事件，Selector 事件），从而保持程序的持续运行。Runloop 在没有事件需要处理的时候，会使线程进入睡眠模式，从而节省 CPU 资源，提高程序性能。
+Runloop 与线程的关系线程的作用是用来执行一个或多个任务。在默认情况下，线程执行完之后就会退出。如果需要线程能一直不断的处理任务，且并不会退出，这时就需要用到 Runloop。
+
+一个线程对应一个 Runloop 对象，每条线程都有唯一一个对应的 Runloop 对象。
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/09/iOS中关于Weak的故事/" >
+            
+                <span>iOS 中关于 weak 的故事</span>
+        </a>
+        <div class="abstract-content">
+            weak
+iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事讲清楚
+
+作用在所有使用引用计数的语言中，都会面临一个问题，那就是循环引用。两个对象互相引用，或多个对象之间，形成环形引用，造成类似死锁互相等待的情况，导致对象一直无法被释放。引入 weak 旨在解决循环引用的问题。
+原理SideTablesSideTables 是一个全局的 hash 数组，里面存储着 SideTable 数据，且长度为 64。因此可以说，一个对象对应一个 SideTable ，但一个 SideTable 有时也会对应多个对象，因为 SideTables 的长度只有 64，因此很多对象会...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/04/15/iOS知识补齐-多线程/" >
             
                 <span>iOS 知识补齐-多线程</span>
@@ -644,43 +710,10 @@ Sourcery is a cod...
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/29/iOS面试题/" >
-            
-                <span>iOS 面试题</span>
-        </a>
-        <div class="abstract-content">
-            计算机部分设计模式策略模式（Strategy）它定义了算法家族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化，不会影响到使用算法的客户。
-装饰模式（Decorator）动态地给一个对象添加一些额外的职责，就增加功能来说，装饰模式比生成子类更为灵活。例如：Swift 中的协议组装
-代理模式（Proxy）为其他对象提供一种代理以控制对这个对象的访问。常见于 iOS 中 UIKit 中。
-工厂模式（Factory Method）定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。
-原型模式（Prototype）用原型实例指定创建对象的种类，并...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1115,9 +1148,25 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 19
+        Total : 21
         </div>
         <!-- search  -->
         
@@ -1133,6 +1182,16 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/奔溃监控/" >奔溃监控</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
         </li>
     
@@ -1143,12 +1202,12 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     

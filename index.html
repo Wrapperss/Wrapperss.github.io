@@ -359,6 +359,72 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/03/iOS-Tips/" >
+            
+                <span>iOS Tips</span>
+        </a>
+        <div class="abstract-content">
+            利用 Sadari 调试 app 中的 h5，可以打断点
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/03/奔溃监控/" >
+            
+                <span>奔溃监控</span>
+        </a>
+        <div class="abstract-content">
+            造成奔溃的原因
+数组越界
+多线程问题：在子线程更新 UI，多个线程进行读取操作
+主线程无响应：主线程超过系统规定的时间无响应，就会被 Watchdog 杀掉
+野指针：指针指向一个已经删除的对象访问内存区域，会出现也野指针奔溃
+
+信号可捕获的奔溃日志在提交时选上 “Upload your app’s symbols to receive symbolicated reports from Apple”，就可以直接在 Xcode 的 Archive中看到符号化后的崩溃日志。
+信号捕获不到的奔溃 后台奔溃后台保活
+Background Mode：在 app 审核时，会提高要求。通常只有地图，音...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/10/26/链接器/" >
             
                 <span>链接器</span>
@@ -649,76 +715,10 @@ dealloc
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/09/Runloop的理解/" >
-            
-                <span>Runloop 的理解</span>
-        </a>
-        <div class="abstract-content">
-            RunloopRunloop 是什么Runloop 实际是一个对象，这个对象一直在循环中来处理 App 运行过程中各种事件（触摸事件，UI 刷新事件，定时器事件，Selector 事件），从而保持程序的持续运行。Runloop 在没有事件需要处理的时候，会使线程进入睡眠模式，从而节省 CPU 资源，提高程序性能。
-Runloop 与线程的关系线程的作用是用来执行一个或多个任务。在默认情况下，线程执行完之后就会退出。如果需要线程能一直不断的处理任务，且并不会退出，这时就需要用到 Runloop。
-
-一个线程对应一个 Runloop 对象，每条线程都有唯一一个对应的 Runloop 对象。
-...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/09/iOS中关于Weak的故事/" >
-            
-                <span>iOS 中关于 weak 的故事</span>
-        </a>
-        <div class="abstract-content">
-            weak
-iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事讲清楚
-
-作用在所有使用引用计数的语言中，都会面临一个问题，那就是循环引用。两个对象互相引用，或多个对象之间，形成环形引用，造成类似死锁互相等待的情况，导致对象一直无法被释放。引入 weak 旨在解决循环引用的问题。
-原理SideTablesSideTables 是一个全局的 hash 数组，里面存储着 SideTable 数据，且长度为 64。因此可以说，一个对象对应一个 SideTable ，但一个 SideTable 有时也会对应多个对象，因为 SideTables 的长度只有 64，因此很多对象会...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1153,9 +1153,25 @@ iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 19
+        Total : 21
         </div>
         <!-- search  -->
         
@@ -1171,6 +1187,16 @@ iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/奔溃监控/" >奔溃监控</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
         </li>
     
@@ -1181,12 +1207,12 @@ iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     
