@@ -359,20 +359,35 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/" >
+        <a class="abstract-title" href = "/2019/09/15/App启动速度优化/" >
             
-                <span>利用 Sourcery，进一步优化 Model 层，减少模板代码</span>
+                <span>App启动速度优化</span>
         </a>
         <div class="abstract-content">
-            先来看看效果优化前
-优化后经过优化，可以发现代码行数减少了一半，而除去的代码其实就是我们为了解析 JSON 的模板代码。对于我来说这些甚至可以说是冗余的代码，我是坚决的瘦 Model 的拥护者。Model 层中除必要的数据结构，我不希望出现有其他冗余的代码，影响阅读。但我们又必须让我们 Model 拥有解析 JSON 的能力。基于上述的需求，我的解决方法是利用Sourcery实现AutoUnbox，在不增加模板代码的基础上，让 Model 实现Unboxable。（本文中以 Unbox 为例，也可替换为Codable等）
-第一步: 认识Sourcery
-Sourcery is a cod...
+            App启动速度优化App 冷启动主要分为三个阶段
+
+main() 函数执行前
+
+main() 函数执行后
+
+首屏渲染完成后
+
+
+main() 函数执行前系统主要做以下几件事：
+
+加载可执行文件（App 的.o 文件集合）
+加载动态链接库，进行 rebase 指针调整和 bind 符号绑定
+Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注册，selector 唯一性检查
+初始化，包括了执行 +load() 方法，attribute((constructor)) 修饰的函数的调用，创建 C++ 静态局部变量
+
+响应优化的方向有：
+
+减少动态库加载，每个库本身都...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/18</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/15</span>
             </div>
             <!-- tags  -->
             
@@ -391,21 +406,308 @@ Sourcery is a cod...
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/29/iOS面试题/" >
+        <a class="abstract-title" href = "/2019/05/11/网络知识/" >
             
-                <span>iOS 面试题</span>
+                <span>网络知识</span>
         </a>
         <div class="abstract-content">
-            计算机部分设计模式策略模式（Strategy）它定义了算法家族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化，不会影响到使用算法的客户。
-装饰模式（Decorator）动态地给一个对象添加一些额外的职责，就增加功能来说，装饰模式比生成子类更为灵活。例如：Swift 中的协议组装
-代理模式（Proxy）为其他对象提供一种代理以控制对这个对象的访问。常见于 iOS 中 UIKit 中。
-工厂模式（Factory Method）定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。
-原型模式（Prototype）用原型实例指定创建对象的种类，并...
+            OSI（开放式系统互联） 七层模型物理层：主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由 1、0 转化为电流强弱来进行传输，到达目的地后再转化为 1、0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。数据链路层：定义了如何让格式化数据以进行传输，以及如何让控制对物理介质的访问。这一层通常还提供错误检测和纠正，以确保数据的可靠传输。网络层：在位于不同地理位置的网络中的两个主机系统之间提供连接和路径选择。Internet 的发展使得从世界各站点访问信息的用户数大大增加，而网络层正是管理这种连接的层。传输层：定义...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/29</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/11/解析UIKit/" >
+            
+                <span>解析 UIKit</span>
+        </a>
+        <div class="abstract-content">
+            UIViewController生命周期
+initWithCoder:
+awakeFromNib
+loadView
+viewDidLoad
+viewWillAppear:
+viewWillLayoutSubviews
+viewDidLayoutSubviews
+viewDidAppear:
+viewWillDisappear:
+viewDidDisappear:
+dealloc
+
+说一下控制器收到内存警告会如何处理当系统内存告急时，会接收到 didReceiveMemoryWarning。 这是属于 ViewController 的方法，当 ViewController 接收到 didR...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/09/Runloop的理解/" >
+            
+                <span>Runloop 的理解</span>
+        </a>
+        <div class="abstract-content">
+            RunloopRunloop 是什么Runloop 实际是一个对象，这个对象一直在循环中来处理 App 运行过程中各种事件（触摸事件，UI 刷新事件，定时器事件，Selector 事件），从而保持程序的持续运行。Runloop 在没有事件需要处理的时候，会使线程进入睡眠模式，从而节省 CPU 资源，提高程序性能。
+Runloop 与线程的关系线程的作用是用来执行一个或多个任务。在默认情况下，线程执行完之后就会退出。如果需要线程能一直不断的处理任务，且并不会退出，这时就需要用到 Runloop。
+
+一个线程对应一个 Runloop 对象，每条线程都有唯一一个对应的 Runloop 对象。
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/05/09/iOS中关于Weak的故事/" >
+            
+                <span>iOS 中关于 weak 的故事</span>
+        </a>
+        <div class="abstract-content">
+            weak
+iOS 中 weak 是不得不了解的内容希望能通过本文把 weak 这件事讲清楚
+
+作用在所有使用引用计数的语言中，都会面临一个问题，那就是循环引用。两个对象互相引用，或多个对象之间，形成环形引用，造成类似死锁互相等待的情况，导致对象一直无法被释放。引入 weak 旨在解决循环引用的问题。
+原理SideTablesSideTables 是一个全局的 hash 数组，里面存储着 SideTable 数据，且长度为 64。因此可以说，一个对象对应一个 SideTable ，但一个 SideTable 有时也会对应多个对象，因为 SideTables 的长度只有 64，因此很多对象会...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/04/15/iOS知识补齐-多线程/" >
+            
+                <span>iOS 知识补齐-多线程</span>
+        </a>
+        <div class="abstract-content">
+            概念解释线程安全线程安全是编程中的术语，指某个函数、函数库在多线程环境中被调用时，能够正确地处理多个线程之间的共享变量，使程序功能正确完成。  
+线程同步线程同步即当有一个线程在对内存进行操作时，其他线程都不可以对这个内存地址进行操作，直到该线程完成操作， 其他线程才能对该内存地址进行操作，而其他线程又处于等待状态，实现线程同步的方法有很多，临界区对象就是其中一种。
+pthreadPOSIX 线程（英语：POSIX Threads，常被缩写 为 Pthreads）是 POSIX 的线程标准，定义了创建和操纵线程的一套 API。实现 POSIX 线程标准的库常被称作 Pthreads，一般...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/28/My-Mac-App-List/" >
+            
+                <span>My Mac App List</span>
+        </a>
+        <div class="abstract-content">
+            
+受郝海龙的这篇微博启发我决定也列一下我现在正在使用的Mac App同时也推荐一下My Mac App List by Hailong Hao
+
+开发Xcode
+iOS程序员的必备工具
+
+Visual Studio Code
+当下比较优秀的编辑器，而且开源免费，作用域包括但不限于前端开发
+
+Sourcetree
+功能强大的Git客户端
+
+Postman
+用于模拟发送请求，以便调试
+
+iTerm
+MacOS上终端的代替，功能强大，配置自由度高，建议配合ZSH使用
+
+Go2Shell
+可以在finder中快速启动Command Line的小工具，免去的在终端中用繁琐的命令进入到合适的路径
+
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Mac">Mac</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/21/算法/" >
+            
+                <span>算法</span>
+        </a>
+        <div class="abstract-content">
+            
+本文算法实现的语言为Swift
+
+Hash 算法散列函数（英语：Hash function）又称散列算法、哈希函数，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（hash values，hash codes，hash sums，或 hashes）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表。好的散列函数在输入域中很少出现散列冲突。在散列表和数据处理中，不抑制冲突来区别数据，会使得数据库记录更难找到。
+不借用第三个变量，如何交换两个变量的值？要求手动写出...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "算法">算法</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/11/Wrappers-Swift-Style-Guide/" >
+            
+                <span>Wrappers&#39; Swift Style Guide</span>
+        </a>
+        <div class="abstract-content">
+            
+本文参考Airbnb’s Swift Style Guide总结出我个人认为最合适的代码风格感谢Airbnb
+
+Goals(目标)
+让阅读和理解代码更加简单
+使代码更易维护
+减少小的编程错误
+减少代码的认知负担
+更注重代码的逻辑，而不是代码风格
+
+PS：简洁不是我们最主要的追求。只有代码质量得到保证（例如：可读性等），我们才会适当追求简洁。
+Xcode Formatting(Xcode 样式)
+每行中最多包含 100 个单词
+用 4 个空格来进行缩减
+在每一行末尾以及在文件的末尾不要留有无用的空格
+
+Naming(命名)类和协议使用大驼峰式大小写(也叫帕斯卡命名法 PascalCase...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Swift">Swift</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/11/iOS知识补齐-Runtime/" >
+            
+                <span>iOS 知识补齐-Runtime</span>
+        </a>
+        <div class="abstract-content">
+            描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的 Runtime 代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime 是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Runtime 在 NSObject 中定义了一些基础操作。
+数据结构简单解释一下下面这张图：一个普通的 objc_object(实例对象)中有一个 isa 指针，这个指针指向的是该实例对象所对应的...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/11</span>
             </div>
             <!-- tags  -->
             
@@ -421,7 +723,7 @@ Sourcery is a cod...
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -887,9 +1189,221 @@ Sourcery is a cod...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 34
         </div>
         <!-- search  -->
         
@@ -899,6 +1413,75 @@ Sourcery is a cod...
     
     
     
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/响应式框架的变迁/" >响应式框架的变迁</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Runtime-Method-Swizzling/" >Runtime Method Swizzling</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/iOS系统内核XNU/" >iOS系统内核XNU</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/iOS中面向测试开发和面向行为驱动开发/" >iOS中面向测试开发和面向行为驱动开发</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/AB-测试/" >AB 测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Flexbox布局/" >Flexbox布局</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2020/02/01/使用多线程技术带来的问题/" >使用多线程技术带来的问题</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
@@ -910,27 +1493,12 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/利用-Runloop-监控卡顿/" >利用 Runloop 监控卡顿</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/利用-Runloop-监控卡顿/" >利用 Runloop 监控卡顿</a>
         </li>
     
     
@@ -940,12 +1508,27 @@ Sourcery is a cod...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
         </li>
     
     
