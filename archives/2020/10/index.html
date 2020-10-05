@@ -22,7 +22,7 @@
     <meta name="description" content="it's better to burn out than to fade away">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>GUI 框架 · Wrappres</title>
+    <title>Wrappres</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,23 +203,12 @@
 </head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Wrappres&#39; Studio.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">GUI 框架</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Wrappres' Studio.</a>
 </header>
@@ -231,68 +220,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            GUI 框架
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">677</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/02/16</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -393,86 +338,40 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <h1 id="GUI-框架"><a href="#GUI-框架" class="headerlink" title="GUI 框架"></a>GUI 框架</h1><p>基本单元是控件。</p>
-<h2 id="控件"><a href="#控件" class="headerlink" title="控件"></a>控件</h2><p>负责界面元素数据的存储和更新，原始数据都存储在空间的属性上，直接更新控件的属性就能够完成界面元素更新操作，控件的属性设置成不同的 值会让界面元素呈现不同的外观。</p>
-<h2 id="渲染树"><a href="#渲染树" class="headerlink" title="渲染树"></a>渲染树</h2><p>记录控件之间的关系。关注界面的布局，控件在界面中的位置和大小</p>
-<h2 id="渲染层树"><a href="#渲染层树" class="headerlink" title="渲染层树"></a>渲染层树</h2><p>由渲染层对象组成，根据GUI框架的优化条件来确定创建哪些渲染层对象，每次新创建一个渲染层对象就会去设置它的父对象和兄弟对象。渲染层对象创建完毕，接下来就需要将各渲染层对象里的控件按照渲染树布局生成Bitmap。</p>
-<p><img src="https://static001.geekbang.org/resource/image/f4/74/f424e846b4de4f338350a00fbe749074.png" alt="img"></p>
-<h1 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h1><p>一般会经过布局，渲染，合成三个阶段。 </p>
-<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>布局阶段依据渲染树计算出控件的大小和位置。</p>
-<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><p>渲染阶段利用图形函数计算出界面的内容。一般，2D平面的渲染使用CPU计算，对3D空间的渲染使用GPU计算。</p>
-<h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><p>合成阶段主要是合并图层。主要是为了节省显示内存，只显示一屏需要的像素，也只进行这些像素数据的计算，再对所有数据进行光栅化处理，最后交给GPU渲染你可以看到的Bitmap。</p>
-<h1 id="各框架"><a href="#各框架" class="headerlink" title="各框架"></a>各框架</h1><h2 id="WebKit"><a href="#WebKit" class="headerlink" title="WebKit"></a>WebKit</h2><p>WevKit 框架包括了 WebCore 和 JavaScriptCore，使用 HTML CSS 进行布局，使用 JavaScript 编写程序。</p>
-<h3 id="WebCore"><a href="#WebCore" class="headerlink" title="WebCore"></a>WebCore</h3><p><img src="https://ming1016.github.io/uploads/deeply-analyse-webkit/74.png" alt="74"></p>
-<p>解析HTML后会产生 DOM Tree，解析CSS会产生CSS Rule Tree，JavaScript会通过DOM API 和 CSS Object Model API 来操作 DOM Tree 和 CSS Rule Tree</p>
-<p><img src="https://ming1016.github.io/uploads/deeply-analyse-webkit/47.png" alt="47"></p>
-<h2 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h2><p>Google公司于2017年推出的一个移动应用开发的GUI框架，使用Dart语言编写程序，一套代码可以同时运行在 iOS 和 Android 平台。</p>
-<h2 id="Texture"><a href="#Texture" class="headerlink" title="Texture"></a>Texture</h2><p>框架的基本单元是基于 UIView 抽象的节点 ASDisplayNode。和 UIView不同的是，ASDIsplayNode 是线程安全的，可以在后台线程上并行是实例化和配置整个层级结构。</p>
-<h2 id="Texture-的优势"><a href="#Texture-的优势" class="headerlink" title="Texture 的优势"></a>Texture 的优势</h2><h3 id="Node的异步渲染"><a href="#Node的异步渲染" class="headerlink" title="Node的异步渲染"></a>Node的异步渲染</h3><p>Texture 最大的优势就是开发了线程安全的ASDdisplayNode，而且还能够很好的和UIView共生。可以在原来使用UIView开发的程序基础上使用Texture，不用完全重构所有界面。  </p>
-<p>在 Cocoa Touch 框架里，当CALayer内容更新是会去找CALayer的delegate，也就是dispalyLayer:方法。UIView会实现displayLayer:这个delegate方法。UIView里实现drawReact:这个delegate方法能够自定义CALayer。</p>
-<p>在 Texture 中，ASDisplayNode 替代了这个delegate，解耦了UIView和CALayer，并将UIView包装成ASDisplayView，将CALayer包装成ASDisplayLayer供外部使用。</p>
-
-    </article>
-    <!-- license  -->
+            <main class="main index-page">
     
-        <div class="license-wrapper">
-            <p>原文作者：<a href="https://wrapperss.github.io">Wrappers</a>
-            <p>原文链接：<a href="https://wrapperss.github.io/2020/02/16/GUI-框架/">https://wrapperss.github.io/2020/02/16/GUI-框架/</a>
-            <p>发表日期：<a href="https://wrapperss.github.io/2020/02/16/GUI-框架/">February 16th 2020, 1:08:25 pm</a>
-            <p>更新日期：<a href="https://wrapperss.github.io/2020/02/16/GUI-框架/">February 16th 2020, 1:08:44 pm</a>
-            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/Flutter-原理/" >
+            
+                <span>Flutter 原理</span>
+        </a>
+        <div class="abstract-content">
+            Flutter原理UI 系统无论是 Android SDK 还是 iOS 的 UIKit 的职责都是相同的，它们只是语言载体和底层的系统不同而已。Flutter 提供了一套 Dart API，然后在底层通过 OpenGL 这种跨平台的绘制库（内部会调用操作系统 API）实现了一套代码跨多端。由于 Dart API 也是调用操作系统 API，所以它的性能接近原生。
+Element 与 BuildContext组件最终的 Layout、渲染都是通过 RenderObject 来完成的，从创建到渲染的大体流程是：根据 Widget 生成 Element，然后创建相应的 RenderObject...
         </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Flutter">Flutter</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/16/构建底层的发布和订阅事件总线/" title= "构建底层的发布和订阅事件总线">
-                    <div class="nextTitle">构建底层的发布和订阅事件总线</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/16/AB-测试/" title= "AB 测试">
-                    <div class="prevTitle">AB 测试</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-    <div id="lv-container" data-id="city" data-uid= MTAyMC80MTM1My8xNzkwMA==>
-        <script type="text/javascript">
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
-                if (typeof LivereTower === 'function') { return; }
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
-
-<!-- City版安装代码已完成 -->
     
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -557,24 +456,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GUI-框架"><span class="toc-number">1.</span> <span class="toc-text">GUI 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#控件"><span class="toc-number">1.1.</span> <span class="toc-text">控件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染树"><span class="toc-number">1.2.</span> <span class="toc-text">渲染树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染层树"><span class="toc-number">1.3.</span> <span class="toc-text">渲染层树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#渲染流程"><span class="toc-number">2.</span> <span class="toc-text">渲染流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#布局"><span class="toc-number">2.1.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染"><span class="toc-number">2.2.</span> <span class="toc-text">渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合成"><span class="toc-number">2.3.</span> <span class="toc-text">合成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#各框架"><span class="toc-number">3.</span> <span class="toc-text">各框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WebKit"><span class="toc-number">3.1.</span> <span class="toc-text">WebKit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebCore"><span class="toc-number">3.1.1.</span> <span class="toc-text">WebCore</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flutter"><span class="toc-number">3.2.</span> <span class="toc-text">Flutter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Texture"><span class="toc-number">3.3.</span> <span class="toc-text">Texture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Texture-的优势"><span class="toc-number">3.4.</span> <span class="toc-text">Texture 的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node的异步渲染"><span class="toc-number">3.4.1.</span> <span class="toc-text">Node的异步渲染</span></a></li></ol></li></ol></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1350,8 +1231,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

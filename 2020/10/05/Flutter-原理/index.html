@@ -22,7 +22,7 @@
     <meta name="description" content="it's better to burn out than to fade away">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CocoaPods · Wrappres</title>
+    <title>Flutter 原理 · Wrappres</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Wrappres&#39; Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">CocoaPods</a>
+                <a href="#" class="post-name">Flutter 原理</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            CocoaPods
+            Flutter 原理
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Flutter">Flutter</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.3k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/06/12</span>
+                    <span class="post-intro-time">2020/10/05</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,70 +401,41 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>摘自<a href="https://mp.weixin.qq.com/s/s2yJEb2P0_Kk-rIpYBi_9A" target="_blank" rel="noopener">这里</a></p>
-<h2 id="Version-Control-System-VCS"><a href="#Version-Control-System-VCS" class="headerlink" title="Version Control System (VCS)"></a>Version Control System (VCS)</h2><blockquote>
-<p>Version control systems are a category of software tools that help a software team manage changes to source code over time. Version control software keeps track of every modification to the code in a special kind of database.</p>
-</blockquote>
-<p>软件工程中，版本控制系统是敏捷开发的重要一环，为后续的持续集成提供了保障。<code>Source Code Manager</code> (SCM) 源码管理就属于 VCS 的范围之中，熟知的工具有如 <code>Git</code> 。而 <code>CocoaPods</code> 这种针对各种语言所提供的 <code>Package Manger (PM)</code>也可以看作是 SCM 的一种。</p>
-<p>而像 <code>Git</code> 或 <code>SVN</code> 是针对项目的单个文件的进行版本控制，而 PM 则是以每个独立的 Package 作为最小的管理单元。包管理工具都是结合 <code>SCM</code> 来完成管理工作，对于被 PM 接管的依赖库的文件，通常会在 <code>Git</code> 的 <code>.ignore</code> 文件中选择忽略它们。</p>
-<h3 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git Submodule"></a>Git Submodule</h3><blockquote>
-<p>Git submodules allow you to keep a git repository as a subdirectory of another git repository. Git submodules are simply a reference to another repository at a particular snapshot in time. Git submodules enable a Git repository to incorporate and track version history of external code.</p>
-</blockquote>
-<p><strong><code>Git Submodules</code> 可以算是 PM 的“青春版”，它将单独的 git 仓库以子目录的形式嵌入在工作目录中</strong>。它不具备 PM 工具所特有的<strong>语义化版本</strong>管理、无法处理依赖共享与冲突等。只能保存每个依赖仓库的文件状态。</p>
-<p><code>Git</code> 在提交更新时，会对所有文件制作一个快照并将其存在数据库中。Git 管理的文件存在 3 种状态：</p>
+        <h1 id="Flutter原理"><a href="#Flutter原理" class="headerlink" title="Flutter原理"></a>Flutter原理</h1><h2 id="UI-系统"><a href="#UI-系统" class="headerlink" title="UI 系统"></a>UI 系统</h2><p>无论是 Android SDK 还是 iOS 的 UIKit 的职责都是相同的，它们只是语言载体和底层的系统不同而已。Flutter 提供了一套 Dart API，然后在底层通过 OpenGL 这种跨平台的绘制库（内部会调用操作系统 API）实现了一套代码跨多端。由于 Dart API 也是调用操作系统 API，所以它的性能接近原生。</p>
+<h2 id="Element-与-BuildContext"><a href="#Element-与-BuildContext" class="headerlink" title="Element 与 BuildContext"></a>Element 与 BuildContext</h2><p>组件最终的 Layout、渲染都是通过 RenderObject 来完成的，从创建到渲染的大体流程是：根据 Widget 生成 Element，然后创建相应的 RenderObject 并关联到 Element.renderObject 属性上，最后再通过 RenderObject 来完成布局排列和绘制。</p>
+<h3 id="Element-生命周期"><a href="#Element-生命周期" class="headerlink" title="Element 生命周期"></a>Element 生命周期</h3><ol>
+<li><p>Framework 调用 Widget.createElement 创建一个 Element 实例，记为 element</p>
+</li>
+<li><p>Framework 调用 element.mount(parentElement,newSlot) ，mount 方法中首先调用 element 所对应 Widget 的 createRenderObject 方法创建与 element 相关联的 RenderObject 对象，然后调用 element.attachRenderObject 方法将 element.renderObject 添加到渲染树中插槽指定的位置（这一步不是必须的，一般发生在 Element 树结构发生变化时才需要重新 attach）。插入到渲染树后的 element 就处于“active”状态，处于“active”状态后就可以显示在屏幕上了（可以隐藏）。</p>
+</li>
+<li><p>当有父 Widget 的配置数据改变时，同时其 State.build 返回的 Widget 结构与之前不同，此时就需要重新构建对应的 Element 树。为了进行 Element 复用，在 Element 重新构建前会先尝试是否可以复用旧树上相同位置的 element，element 节点在更新前都会调用其对应 Widget 的 canUpdate 方法，如果返回 true，则复用旧 Element，旧的 Element 会使用新 Widget 配置数据更新，反之则会创建一个新的 Element。Widget.canUpdate 主要是判断 newWidget 与 oldWidget 的 runtimeType 和 key 是否同时相等，如果同时相等就返回 true，否则就会返回 false。根据这个原理，当我们需要强制更新一个 Widget 时，可以通过指定不同的 Key 来避免复用。</p>
+</li>
+<li><p>当有祖先 Element 决定要移除 element 时（如 Widget 树结构发生了变化，导致 element 对应的 Widget 被移除），这时该祖先 Element 就会调用 deactivateChild 方法来移除它，移除后 element.renderObject 也会被从渲染树中移除，然后 Framework 会调用 element.deactivate 方法，这时 element 状态变为“inactive”状态。</p>
+</li>
+<li><p>“inactive”态的 element 将不会再显示到屏幕。为了避免在一次动画执行过程中反复创建、移除某个特定 element，“inactive”态的 element 在当前动画最后一帧结束前都会保留，如果在动画执行结束后它还未能重新变成“active”状态，Framework 就会调用其 unmount 方法将其彻底移除，这时 element 的状态为 defunct,它将永远不会再被插入到树中。</p>
+</li>
+<li><p>如果 element 要重新插入到 Element 树的其它位置，如 element 或 element 的祖先拥有一个 GlobalKey（用于全局复用元素），那么 Framework 会先将 element 从现有位置移除，然后再调用其 activate 方法，并将其 renderObject 重新 attach 到渲染树。</p>
+</li>
+</ol>
+<h3 id="BuildContext"><a href="#BuildContext" class="headerlink" title="BuildContext"></a>BuildContext</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Widget build(BuildContext context) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>BuildContext 就是 widget 对应的 Element，所以我们可以通过 context 在 StatelessWidget 和 StatefulWidget 的 build 方法中直接访问 Element 对象。我们获取主题数据的代码 Theme.of(context)内部正是调用了 Element 的 dependOnInheritedWidgetOfExactType()方法。</p>
 <ul>
-<li><strong>working director：</strong> 工作目录，即我们肉眼可见的文件</li>
-<li><strong>stage area：</strong> 暂存区 (或称 <code>index area</code> )，存在 <code>.git/index</code> 目录下，保存的是执行 <code>git add</code> 相关命令后从工作目录添加的文件。</li>
-<li><strong>commit history：</strong> 提交历史，存在 <code>.git/</code> 目录下，到这个状态的文件改动算是入库成功，基本不会丢失了。</li>
+<li>如果没有 widget 层，单靠<code>Element</code>层是否可以搭建起一个可用的 UI 框架？如果可以应该是什么样子？  </li>
 </ul>
-<p>Git submodule 是依赖 .gitmodules 文件来记录子模块的。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[submodule <span class="string">"ReactNative"</span>]</span><br><span class="line"> path = ReactNative</span><br><span class="line"> url = <span class="symbol">https:</span>/<span class="regexp">/github.com/facebook</span><span class="regexp">/ReactNative.git</span></span><br></pre></td></tr></table></figure></p>
-<p>.gitmodules 仅记录了 path 和 url 以及模块名称的基本信息， 但是我们还需要记录每个 Submodule Repo 的 commit 信息，而这 commit 信息是记录在 .git/modules 目录下。同时被添加到 .gitmodules 中的 path 也会被 git 直接 ignore 掉。</p>
-<h3 id="Package-Manger"><a href="#Package-Manger" class="headerlink" title="Package Manger"></a>Package Manger</h3><p>作为 Git Submodule 的强化版，PM 基本都具备了语义化的版本检查能力，依赖递归查找，依赖冲突解决，以及针对具体依赖的构建能力和二进制包等。简单对比如下：<br>Key File | Git submodule | CocoaPods | SPM | npm<br>:-: | :-: | :-: | :-: | :-:<br>描述文件 | .gitmodules | Podfile | Package.swift | Package.json<br>锁存文件 | .git/modules | Podfile.lock | Package.resolved | package-lock.json</p>
-<p>从 👆 可见，PM 工具基本围绕这个两个文件来现实包管理：</p>
-<p>描述文件：声明了项目中存在哪些依赖，版本限制；<br>锁存文件（Lock 文件）：记录了依赖包最后一次更新时的全版本列表。<br>除了这两个文件之外，中心化的 PM 一般会提供依赖包的托管服务，比如 npm 提供的 npmjs.com可以集中查找和下载 npm 包。如果是去中心化的 PM 比如 iOS 的 Carthage 和 SPM 就只能通过 Git 仓库的地址了。</p>
-<h3 id="CocoaPods"><a href="#CocoaPods" class="headerlink" title="CocoaPods"></a>CocoaPods</h3><h4 id="Podfile"><a href="#Podfile" class="headerlink" title="Podfile"></a>Podfile</h4><p>Podfile 是一个文件，以 DSL（其实直接用了 Ruby 的语法）来描述依赖关系，用于定义项目所需要使用的第三方库。该文件支持高度定制，你可以根据个人喜好对其做出定制。</p>
-<h4 id="Podfile-lock"><a href="#Podfile-lock" class="headerlink" title="Podfile.lock"></a>Podfile.lock</h4><p>这是 CocoaPods 创建的最重要的文件之一。它记录了需要被安装的 Pod 的每个已安装的版本。如果你想知道已安装的 Pod 是哪个版本，可以查看这个文件。推荐将 Podfile.lock 文件加入到版本控制中，这有助于整个团队的一致性。</p>
-<h4 id="Manifest-lock"><a href="#Manifest-lock" class="headerlink" title="Manifest.lock"></a>Manifest.lock</h4><p>这是每次运行 pod install 命令时创建的 Podfile.lock 文件的副本。如果你遇见过这样的错误 沙盒文件与 Podfile.lock 文件不同步 (The sandbox is not in sync with the Podfile.lock)，这是因为 Manifest.lock 文件和 Podfile.lock 文件不一致所引起。由于 Pods 所在的目录并不总在版本控制之下，这样可以保证开发者运行 App 之前都能更新他们的 Pods，否则 App 可能会 crash，或者在一些不太明显的地方编译失败。</p>
-<h4 id="Master-Specs-Repo"><a href="#Master-Specs-Repo" class="headerlink" title="Master Specs Repo"></a>Master Specs Repo</h4><blockquote>
-<p>Ultimately, the goal is to improve discoverability of, and engagement in, third party open-source libraries, by creating a more centralized ecosystem.</p>
-</blockquote>
-<p>作为包管理工具，CocoaPods 的目标是为我们提供一个更加集中的生态系统，来提高依赖库的可发现性和参与度。本质上是为了提供更好的检索和查询功能，可惜成为了它的问题之一。因为 CocoaPods 通过官方的 Spec 仓库来管理这些注册的依赖库。随着不断新增的依赖库导致 Spec 的更新和维护成为了使用者的包袱。</p>
-<p>好在这个问题在 1.7.2 版本中已经解决了，CocoaPods 提供了 Mater Repo CDN ，可以直接 CDN 到对应的 Pod 地址而无需在通过本地的 Spec 仓库了。同时在 1.8 版本中，官方默认的 Spec 仓库已替换为 CDN，其地址为  <a href="https://cdn.cocoapods.org。" target="_blank" rel="noopener">https://cdn.cocoapods.org。</a></p>
-<h3 id="Ruby-生态及工具链"><a href="#Ruby-生态及工具链" class="headerlink" title="Ruby 生态及工具链"></a>Ruby 生态及工具链</h3><h4 id="RVM-amp-rbenv"><a href="#RVM-amp-rbenv" class="headerlink" title="RVM &amp; rbenv"></a>RVM &amp; rbenv</h4><p><code>RVM</code> 和 <code>rbenv</code>都是管理多个 Ruby 环境的工具，它们都能提供不同版本的 Ruby 环境管理和切换。</p>
-<blockquote>
-<p>The RubyGems software allows you to easily download, install, and use ruby software packages on your system. The software package is called a “gem” which contains a packaged Ruby application or library.</p>
-</blockquote>
-<p><strong>RubyGems[14] 是 Ruby 的一个包管理工具，这里面管理着用 Ruby 编写的工具或依赖我们称之为 Gem。</strong></p>
-<p>并且 RubyGems 还提供了 Ruby 组件的托管服务，可以集中式的查找和安装 library 和 apps。当我们使用 <code>gem install xxx</code> 时，会通过 <code>rubygems.org</code> 来查询对应的 Gem Package。而 iOS 日常中的很多工具都是 Gem 提供的，例：<code>Bundler</code>，<code>fastlane</code>，<code>jazzy</code>，<code>CocoaPods</code> 等。</p>
-<p>在默认情况下 Gems 总是下载 library 的最新版本，这无法确保所安装的 library 版本符合我们预期。因此我们还缺一个工具。</p>
-<h4 id="Bundler"><a href="#Bundler" class="headerlink" title="Bundler"></a>Bundler</h4><p><strong>Bundler[15] 是管理 Gem 依赖的工具，可以隔离不同项目中 Gem 的版本和依赖环境的差异，也是一个 Gem。</strong></p>
-<p>Bundler 通过读取项目中的依赖描述文件 <code>Gemfile</code> ，来确定各个 Gems 的版本号或者范围，来提供了稳定的应用环境。当我们使用 <code>bundle install</code> 它会生成 <code>Gemfile.lock</code> 将当前 librarys 使用的具体版本号写入其中。之后，他人再通过 <code>bundle install</code> 来安装 libaray 时则会读取 <code>Gemfile.lock</code> 中的 librarys、版本信息等。</p>
-<h5 id="Gemfile"><a href="#Gemfile" class="headerlink" title="Gemfile"></a>Gemfile</h5><p><strong>可以说 <code>CocoaPods</code> 其实是 iOS 版的 RubyGems + Bundler 组合。Bundler 依据项目中的 <code>Gemfile</code> 文件来管理 Gem，而 <code>CocoaPods</code> 通过 Podfile 来管理 Pod。</strong></p>
-<h2 id="安装一套可管控的-Ruby-工具链"><a href="#安装一套可管控的-Ruby-工具链" class="headerlink" title="安装一套可管控的 Ruby 工具链"></a>安装一套可管控的 Ruby 工具链</h2><p><strong><code>homebrew</code> + <code>rbenv</code> + <code>RubyGems</code> + <code>Bundler</code></strong></p>
-<h3 id="使用-homebrew-安装-rbenv"><a href="#使用-homebrew-安装-rbenv" class="headerlink" title="使用 homebrew 安装 rbenv"></a>使用 homebrew 安装 rbenv</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install rbenv</span><br></pre></td></tr></table></figure>
-<h3 id="使用-rbenv-管理-Ruby-版本"><a href="#使用-rbenv-管理-Ruby-版本" class="headerlink" title="使用 rbenv 管理 Ruby 版本"></a>使用 rbenv 管理 Ruby 版本</h3><p>安装ruby版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rbenv install 2.7.0</span><br></pre></td></tr></table></figure></p>
-<p>让其在本地环境中生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rbenv shell 2.7.0</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>输入上述命令后，可能会有报错。rbenv  提示我们在 .zshrc  中增加一行 eval “$(rbenv init -)”  语句来对 rbenv  环境进行初始化。如果报错，我们增加并重启终端即可。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ruby --version</span><br><span class="line">ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-darwin19]</span><br><span class="line">$ which ruby</span><br><span class="line">/Users/gua/.rbenv/shims/ruby</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ which gem</span><br><span class="line">/Users/bytedance/.rbenv/shims/gem</span><br></pre></td></tr></table></figure>
-<h3 id="查询系统级-Gem-依赖"><a href="#查询系统级-Gem-依赖" class="headerlink" title="查询系统级 Gem 依赖"></a>查询系统级 Gem 依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ gem list</span><br><span class="line"></span><br><span class="line">*** LOCAL GEMS ***</span><br><span class="line"></span><br><span class="line">activesupport (4.2.11.3)</span><br><span class="line">...</span><br><span class="line">claide (1.0.3)</span><br><span class="line">cocoapods (1.9.3)</span><br><span class="line">cocoapods-core (1.9.3)</span><br><span class="line">cocoapods-deintegrate (1.0.4)</span><br><span class="line">cocoapods-downloader (1.3.0)</span><br><span class="line">cocoapods-plugins (1.0.0)</span><br><span class="line">cocoapods-search (1.0.0)</span><br><span class="line">cocoapods-stats (1.1.0)</span><br><span class="line">cocoapods-trunk (1.5.0)</span><br><span class="line">cocoapods-try (1.2.0)</span><br></pre></td></tr></table></figure>
-<h3 id="如何使用-Bundler-管理工程中的-Gem-环境"><a href="#如何使用-Bundler-管理工程中的-Gem-环境" class="headerlink" title="如何使用 Bundler 管理工程中的 Gem 环境"></a>如何使用 Bundler 管理工程中的 Gem 环境</h3><h4 id="在-iOS-工程中初始化-Bundler-环境"><a href="#在-iOS-工程中初始化-Bundler-环境" class="headerlink" title="在 iOS 工程中初始化 Bundler 环境"></a>在 iOS 工程中初始化 Bundler 环境</h4><p>先来初始化一个 Bundler  环境（其实就是自动创建一个 Gemfile  文件）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bundle init</span><br><span class="line"></span><br><span class="line">Writing new Gemfile to /Users/Gua/GuaDemo/Gemfile</span><br></pre></td></tr></table></figure></p>
-<h4 id="在-Gemfile-中声明使用的-CocoaPods-版本并安装"><a href="#在-Gemfile-中声明使用的-CocoaPods-版本并安装" class="headerlink" title="在 Gemfile  中声明使用的 CocoaPods 版本并安装"></a>在 Gemfile  中声明使用的 CocoaPods 版本并安装</h4><p>之后我们编辑一下这个 Gemfile 文件，加入我们当前环境中需要使用 CocoaPods 1.5.3 这个版本，则使用 Gemfile  的 DSL 编写以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># frozen_string_literal: true</span><br><span class="line"></span><br><span class="line">source &quot;https://rubygems.org&quot;</span><br><span class="line"></span><br><span class="line">git_source(:github) &#123;|repo_name| &quot;https://github.com/#&#123;repo_name&#125;&quot; &#125;</span><br><span class="line"></span><br><span class="line"># gem &quot;rails&quot;</span><br><span class="line">gem &quot;cocoapods&quot;, &quot;1.5.3&quot;</span><br></pre></td></tr></table></figure></p>
-<p>编写之后执行一下 <code>bundle install</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ bundle install</span><br><span class="line">Fetching gem metadata from https://gems.ruby-china.com/............</span><br><span class="line">Resolving dependencies...</span><br><span class="line">...</span><br><span class="line">Fetching cocoapods 1.5.3</span><br><span class="line">Installing cocoapods 1.5.3</span><br><span class="line">Bundle complete! 1 Gemfile dependency, 30 gems now installed.</span><br></pre></td></tr></table></figure></p>
-<h4 id="使用当前环境下的-CocoaPods-版本操作-iOS-工程"><a href="#使用当前环境下的-CocoaPods-版本操作-iOS-工程" class="headerlink" title="使用当前环境下的 CocoaPods 版本操作 iOS 工程"></a>使用当前环境下的 CocoaPods 版本操作 iOS 工程</h4><p>检查一下当前 Bundler 环境下的 Gem  列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ bundle exec gem list</span><br><span class="line"></span><br><span class="line">*** LOCAL GEMS ***</span><br><span class="line"></span><br><span class="line">activesupport (4.2.11.3)</span><br><span class="line">atomos (0.1.3)</span><br><span class="line">bundler (2.1.4)</span><br><span class="line">CFPropertyList (3.0.2)</span><br><span class="line">claide (1.0.3)</span><br><span class="line">cocoapods (1.5.3)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>此时我们使用 bundle exec pod install  来执行 Install 这个操作，就可以使用 CocoaPods 1.5.3  版本来执行 Pod  操作了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ bundle exec pod install</span><br><span class="line">Analyzing dependencies</span><br><span class="line">Downloading dependencies</span><br><span class="line">Installing SnapKit (5.0.1)</span><br><span class="line">Integrating client project</span><br><span class="line">[!] Please close any current Xcode sessions and use `GuaDemo.xcworkspace` for this project from now on.</span><br><span class="line">Sending stats</span><br><span class="line">Pod installation complete! There is 1 dependency from the Podfile and 1 total pod installed.</span><br></pre></td></tr></table></figure></p>
-<p>Podfile.lock<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cat Podfile.lock</span><br><span class="line">PODS:</span><br><span class="line">  - SnapKit (5.0.1)</span><br><span class="line"></span><br><span class="line">DEPENDENCIES:</span><br><span class="line">  - SnapKit (~&gt; 5.0.0)</span><br><span class="line"></span><br><span class="line">SPEC REPOS:</span><br><span class="line">  https://github.com/cocoapods/specs.git:</span><br><span class="line">    - SnapKit</span><br><span class="line"></span><br><span class="line">SPEC CHECKSUMS:</span><br><span class="line">  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb</span><br><span class="line"></span><br><span class="line">PODFILE CHECKSUM: 1a4b05aaf43554bc31c90f8dac5c2dc0490203e8</span><br><span class="line"></span><br><span class="line">COCOAPODS: 1.5.3</span><br></pre></td></tr></table></figure></p>
+<p>答案当然是肯定的，因为我们之前说过 widget 树只是<code>Element</code>树的映射，我们完全可以直接通过 Element 来搭建一个 UI 框架。</p>
+<ul>
+<li>Flutter UI 框架能不做成响应式吗？  </li>
+</ul>
+<p>答案当然也是肯定的，Flutter engine 提供的 dart API 是原始且独立的，这个与操作系统提供的 API 类似，上层 UI 框架设计成什么样完全取决于设计者，完全可以将 UI 框架设计成 Android 风格或 iOS 风格，但这些事 Google 不会再去做，我们也没必要再去搞这一套，这是因为响应式的思想本身是很棒的。</p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://wrapperss.github.io">Wrappers</a>
-            <p>原文链接：<a href="https://wrapperss.github.io/2020/06/12/CocoaPods/">https://wrapperss.github.io/2020/06/12/CocoaPods/</a>
-            <p>发表日期：<a href="https://wrapperss.github.io/2020/06/12/CocoaPods/">June 12th 2020, 7:17:42 am</a>
-            <p>更新日期：<a href="https://wrapperss.github.io/2020/06/12/CocoaPods/">June 12th 2020, 7:20:50 am</a>
+            <p>原文链接：<a href="https://wrapperss.github.io/2020/10/05/Flutter-原理/">https://wrapperss.github.io/2020/10/05/Flutter-原理/</a>
+            <p>发表日期：<a href="https://wrapperss.github.io/2020/10/05/Flutter-原理/">October 5th 2020, 3:31:20 pm</a>
+            <p>更新日期：<a href="https://wrapperss.github.io/2020/10/05/Flutter-原理/">October 5th 2020, 4:00:14 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -472,17 +443,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/10/05/Flutter-原理/" title= "Flutter 原理">
-                    <div class="nextTitle">Flutter 原理</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/16/构建底层的发布和订阅事件总线/" title= "构建底层的发布和订阅事件总线">
-                    <div class="prevTitle">构建底层的发布和订阅事件总线</div>
+                <a href= "/2020/06/12/CocoaPods/" title= "CocoaPods">
+                    <div class="prevTitle">CocoaPods</div>
                 </a>
             
         </li>
@@ -616,7 +582,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Version-Control-System-VCS"><span class="toc-number">1.</span> <span class="toc-text">Version Control System (VCS)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-Submodule"><span class="toc-number">1.1.</span> <span class="toc-text">Git Submodule</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Package-Manger"><span class="toc-number">1.2.</span> <span class="toc-text">Package Manger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CocoaPods"><span class="toc-number">1.3.</span> <span class="toc-text">CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Podfile"><span class="toc-number">1.3.1.</span> <span class="toc-text">Podfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Podfile-lock"><span class="toc-number">1.3.2.</span> <span class="toc-text">Podfile.lock</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Manifest-lock"><span class="toc-number">1.3.3.</span> <span class="toc-text">Manifest.lock</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Master-Specs-Repo"><span class="toc-number">1.3.4.</span> <span class="toc-text">Master Specs Repo</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby-生态及工具链"><span class="toc-number">1.4.</span> <span class="toc-text">Ruby 生态及工具链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RVM-amp-rbenv"><span class="toc-number">1.4.1.</span> <span class="toc-text">RVM &amp; rbenv</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bundler"><span class="toc-number">1.4.2.</span> <span class="toc-text">Bundler</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Gemfile"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">Gemfile</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装一套可管控的-Ruby-工具链"><span class="toc-number">2.</span> <span class="toc-text">安装一套可管控的 Ruby 工具链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-homebrew-安装-rbenv"><span class="toc-number">2.1.</span> <span class="toc-text">使用 homebrew 安装 rbenv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-rbenv-管理-Ruby-版本"><span class="toc-number">2.2.</span> <span class="toc-text">使用 rbenv 管理 Ruby 版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询系统级-Gem-依赖"><span class="toc-number">2.3.</span> <span class="toc-text">查询系统级 Gem 依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何使用-Bundler-管理工程中的-Gem-环境"><span class="toc-number">2.4.</span> <span class="toc-text">如何使用 Bundler 管理工程中的 Gem 环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在-iOS-工程中初始化-Bundler-环境"><span class="toc-number">2.4.1.</span> <span class="toc-text">在 iOS 工程中初始化 Bundler 环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在-Gemfile-中声明使用的-CocoaPods-版本并安装"><span class="toc-number">2.4.2.</span> <span class="toc-text">在 Gemfile  中声明使用的 CocoaPods 版本并安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用当前环境下的-CocoaPods-版本操作-iOS-工程"><span class="toc-number">2.4.3.</span> <span class="toc-text">使用当前环境下的 CocoaPods 版本操作 iOS 工程</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flutter原理"><span class="toc-number">1.</span> <span class="toc-text">Flutter原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UI-系统"><span class="toc-number">1.1.</span> <span class="toc-text">UI 系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Element-与-BuildContext"><span class="toc-number">1.2.</span> <span class="toc-text">Element 与 BuildContext</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Element-生命周期"><span class="toc-number">1.2.1.</span> <span class="toc-text">Element 生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BuildContext"><span class="toc-number">1.2.2.</span> <span class="toc-text">BuildContext</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
