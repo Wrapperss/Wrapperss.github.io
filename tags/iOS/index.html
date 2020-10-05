@@ -346,6 +346,146 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/iOS面试题-2/" >
+            
+                <span>iOS 面试题(2)</span>
+        </a>
+        <div class="abstract-content">
+            Q：Category 能否添加成员变量？如果可以，如何给 Category 添加成员变量因为分类底层结构的限制，不能直接给 Category 添加成员变量，但是可以通过关联对象间接实现 Category 有成员变量的效果。 传送门：OC - Association 关联对象
+Q：为什么分类中属性不会自动生成 setter、getter 方法的实现，不会生成成员变量，也不能添加成员变量因为类的内存布局在编译的时候会确定，但是分类是在运行时才加载，在运行时Runtime会将分类的数据，合并到宿主类中。
+Q：为什么将以前的方法列表挪动到新的位置用 memmove 呢为了保证挪动数据的完整性。而...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/组件化之URL-Route/" >
+            
+                <span>组件化之 URL Route</span>
+        </a>
+        <div class="abstract-content">
+            组件化之 URL RouteiOS 中主要有三种组件化方式，URL Route、target-action、protocol 匹配。这里主要讲第一种：URL Route。这类方式大致的思想是通过注册，根据不同 url 结构存入不同的 block。等待调用时，通过存储的 block 中返回对象或执行操作。没有利用 Runtime，相对来说实现比较简单。
+优缺点优点实现简单。
+缺点
+依赖于命名规定，无法在编译时发现问题
+通过硬编码的字符串来做解耦，某种意义上来说也是一种伪解耦，并没有做到真正的解耦。   
+
+代码实例12345// 注册某个URL[URLRouter registerURL:...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/组件化之Target-Action/" >
+            
+                <span>组件化之 Target-Action</span>
+        </a>
+        <div class="abstract-content">
+            组件化之 Target-ActioniOS 中主要有三种组件化方式，URL Route、Target-Action、Protocol 匹配。这里主要讲第一种：Target-Action。这类方式的大致思想是利用语言的特性 runtim，根据传入 target 和 action，动态的创建类去调用相应的方法。同时利用分类规范了传入的参数。
+优缺点优点
+利用 category 可以明确声明接口，进行编译检查
+实现方式轻量，避免了注册操作
+
+缺点
+过度依赖 runtime，无法应用在纯 Swift 项目中
+无法保证所使用的模块一定存在，target 模块在修改后，使用者只有在运行时才能发现错误...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/组件化之Protocol匹配/" >
+            
+                <span>组件化之 Protocol 匹配</span>
+        </a>
+        <div class="abstract-content">
+            组件化之 Protocol 匹配iOS 中主要有三种组件化方式，URL Route、Target-Action、Protocol 匹配。这里主要讲第一种：Protocol 匹配。  
+这类方式的大致思想是通过 Protocol 来获取 class，再动态创建实例。
+优缺点优点
+利用接口调用，实现了参数传递时的类型安全
+直接使用模块的 protocol 接口，无需再重复封装
+缺点
+用 OC runtime 创建对象，不支持 Swift
+
+由框架来创建所有对象，创建方式有限，例如不支持外部传入参数，再调用自定义初始化方法
+无法保证所使用的 protocol 一定存在对应的模块，也无法直接判断...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/06/12/CocoaPods/" >
             
                 <span>CocoaPods</span>
@@ -545,171 +685,10 @@ Mach-OMach-O 文件里的内容，主要就是代码和数据：代码是函数�
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/26/静态分析/" >
-            
-                <span>静态分析</span>
-        </a>
-        <div class="abstract-content">
-            静态分析工具SwiftLint，OCLint, Clang, Infer
-ClangClang 是 C，C++，Objective-C 的编译前端。Swift 有自己的编译前端： SL optimizer。  
-Clang 会对代码进行词法分析，将代码切分成 Token用以下命令可以查看：clang -fmodules -E -Xclang -dump-tokens main.m可以把 Token 分为四类：
-
-关键字：语法中的关键字，比如 if，else，while 等
-标识符：变量名
-字面值：值，数字，字符串
-特殊符号：加减乘除等符号
-
-语法分析将输出的 Token 按照语法组合语义...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/26/架构设计/" >
-            
-                <span>架构设计</span>
-        </a>
-        <div class="abstract-content">
-            模块粒度的划分
-单一功能原则：对象功能要单一，不要在一个对象里添加很多功能。
-开闭原则：扩展是开放的，修改是封闭的。
-里氏替换原则：子类对象是可以替代基类对象的。
-接口隔离原则：接口的用途要单一，不要在一个接口上根据不同入参实现多个功能。
-依赖反转原则：方法应该依赖抽象，不要依赖实例。
-
-iOS 组件应该是包含 UI 控件，相关多个功能的合集，是一种粒度适中的模块。
-组件之间的逻辑关系组件解耦并不是说要求每个组件间没有耦合，组件间也需要有上下层依赖关系。组件之间的分层做多不超过三个：
-
-底层可以是与业务无关的基础组件，比如网络和存储等。
-中间层一般是通用的业务组件，比如账号，埋点，支付，...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/15/Auto-Layout相关/" >
-            
-                <span>Auto Layout相关</span>
-        </a>
-        <div class="abstract-content">
-            Auto Layout 的来历
-在 1997 年，Auto Layout 用到的 Cassowary 算法被发明出来。
-
-Cassowary 能够有效解析线性等式系统和线性不等式系统，用来表示用户界面中那些相等关系和不等关系。基于此 Cassowary 开发了一种规则系统，通过约束来描述视图间的关系。约束就是规则，这个规则能够表示出一个视图相对于另一个视图的位置。
-
-在 2011 年， Apple 将 Cassowary 算法运用到来自家的布局引擎 Auto Layout 中。
-
-由于 Cassowary 算法让视图位置可以按照一种简单的布局思路来写，这些简单的相对位置描述可以在运行时动...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/15/App启动速度优化/" >
-            
-                <span>App启动速度优化</span>
-        </a>
-        <div class="abstract-content">
-            App启动速度优化App 冷启动主要分为三个阶段
-
-main() 函数执行前
-
-main() 函数执行后
-
-首屏渲染完成后
-
-
-main() 函数执行前系统主要做以下几件事：
-
-加载可执行文件（App 的.o 文件集合）
-加载动态链接库，进行 rebase 指针调整和 bind 符号绑定
-Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注册，selector 唯一性检查
-初始化，包括了执行 +load() 方法，attribute((constructor)) 修饰的函数的调用，创建 C++ 静态局部变量
-
-响应优化的方向有：
-
-减少动态库加载，每个库本身都...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/tags/iOS/page/2/">2</a><a class="extend next" rel="next" href="/tags/iOS/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/tags/iOS/page/2/">2</a><a class="page-number" href="/tags/iOS/page/3/">3</a><a class="extend next" rel="next" href="/tags/iOS/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1275,9 +1254,86 @@ Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 36
+        Total : 41
         </div>
         <!-- search  -->
         
@@ -1290,6 +1346,31 @@ Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/Flutter-面试题/" >Flutter 面试题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之URL-Route/" >组件化之 URL Route</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/iOS面试题-2/" >iOS 面试题(2)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1308,12 +1389,12 @@ Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
@@ -1494,6 +1575,8 @@ Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
+    
         <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
         <span class="sidebar-tag-name" data-tags="Flutter"><span class="iconfont-archer">&#xe606;</span>Flutter</span>
@@ -1501,8 +1584,6 @@ Objc 运行时的初始化处理，包括 Objc 相关累的注册，category 注
         <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
         <span class="sidebar-tag-name" data-tags="Swift"><span class="iconfont-archer">&#xe606;</span>Swift</span>
-    
-        <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     

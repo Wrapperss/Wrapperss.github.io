@@ -346,13 +346,185 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/iOS面试题-2/" >
+            
+                <span>iOS 面试题(2)</span>
+        </a>
+        <div class="abstract-content">
+            Q：Category 能否添加成员变量？如果可以，如何给 Category 添加成员变量因为分类底层结构的限制，不能直接给 Category 添加成员变量，但是可以通过关联对象间接实现 Category 有成员变量的效果。 传送门：OC - Association 关联对象
+Q：为什么分类中属性不会自动生成 setter、getter 方法的实现，不会生成成员变量，也不能添加成员变量因为类的内存布局在编译的时候会确定，但是分类是在运行时才加载，在运行时Runtime会将分类的数据，合并到宿主类中。
+Q：为什么将以前的方法列表挪动到新的位置用 memmove 呢为了保证挪动数据的完整性。而...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/组件化之URL-Route/" >
+            
+                <span>组件化之 URL Route</span>
+        </a>
+        <div class="abstract-content">
+            组件化之 URL RouteiOS 中主要有三种组件化方式，URL Route、target-action、protocol 匹配。这里主要讲第一种：URL Route。这类方式大致的思想是通过注册，根据不同 url 结构存入不同的 block。等待调用时，通过存储的 block 中返回对象或执行操作。没有利用 Runtime，相对来说实现比较简单。
+优缺点优点实现简单。
+缺点
+依赖于命名规定，无法在编译时发现问题
+通过硬编码的字符串来做解耦，某种意义上来说也是一种伪解耦，并没有做到真正的解耦。   
+
+代码实例12345// 注册某个URL[URLRouter registerURL:...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/组件化之Target-Action/" >
+            
+                <span>组件化之 Target-Action</span>
+        </a>
+        <div class="abstract-content">
+            组件化之 Target-ActioniOS 中主要有三种组件化方式，URL Route、Target-Action、Protocol 匹配。这里主要讲第一种：Target-Action。这类方式的大致思想是利用语言的特性 runtim，根据传入 target 和 action，动态的创建类去调用相应的方法。同时利用分类规范了传入的参数。
+优缺点优点
+利用 category 可以明确声明接口，进行编译检查
+实现方式轻量，避免了注册操作
+
+缺点
+过度依赖 runtime，无法应用在纯 Swift 项目中
+无法保证所使用的模块一定存在，target 模块在修改后，使用者只有在运行时才能发现错误...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/组件化之Protocol匹配/" >
+            
+                <span>组件化之 Protocol 匹配</span>
+        </a>
+        <div class="abstract-content">
+            组件化之 Protocol 匹配iOS 中主要有三种组件化方式，URL Route、Target-Action、Protocol 匹配。这里主要讲第一种：Protocol 匹配。  
+这类方式的大致思想是通过 Protocol 来获取 class，再动态创建实例。
+优缺点优点
+利用接口调用，实现了参数传递时的类型安全
+直接使用模块的 protocol 接口，无需再重复封装
+缺点
+用 OC runtime 创建对象，不支持 Swift
+
+由框架来创建所有对象，创建方式有限，例如不支持外部传入参数，再调用自定义初始化方法
+无法保证所使用的 protocol 一定存在对应的模块，也无法直接判断...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/05/Flutter-面试题/" >
+            
+                <span>Flutter 面试题</span>
+        </a>
+        <div class="abstract-content">
+            为什么要将build方法放在State中，而不是放在StatefulWidget中？
+状态访问不便。
+
+试想一下，如果我们的StatefulWidget有很多状态，而每次状态改变都要调用build方法，由于状态是保存在State中的，如果build方法在StatefulWidget中，那么build方法和状态分别在两个类中，那么构建时读取状态将会很不方便！试想一下，如果真的将build方法放在StatefulWidget中的话，由于构建用户界面过程需要依赖State，所以build方法将必须加一个State参数，大概是下面这样：1234Widget build(BuildContext ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Flutter">Flutter</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/10/05/Flutter-原理/" >
             
                 <span>Flutter 原理</span>
         </a>
         <div class="abstract-content">
-            Flutter原理UI 系统无论是 Android SDK 还是 iOS 的 UIKit 的职责都是相同的，它们只是语言载体和底层的系统不同而已。Flutter 提供了一套 Dart API，然后在底层通过 OpenGL 这种跨平台的绘制库（内部会调用操作系统 API）实现了一套代码跨多端。由于 Dart API 也是调用操作系统 API，所以它的性能接近原生。
-Element 与 BuildContext组件最终的 Layout、渲染都是通过 RenderObject 来完成的，从创建到渲染的大体流程是：根据 Widget 生成 Element，然后创建相应的 RenderObject...
+            Flutter 原理UI 系统无论是 Android SDK 还是 iOS 的 UIKit 的职责都是相同的，它们只是语言载体和底层的系统不同而已。Flutter 提供了一套 Dart API，然后在底层通过 OpenGL 这种跨平台的绘制库（内部会调用操作系统 API）实现了一套代码跨多端。由于 Dart API 也是调用操作系统 API，所以它的性能接近原生。
+Element 与 BuildContext组件最终的 Layout、渲染都是通过 RenderObject 来完成的，从创建到渲染的大体流程是：根据 Widget 生成 Element，然后创建相应的 RenderObjec...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -494,150 +666,10 @@ A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落�
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/JSON相关/" >
-            
-                <span>JSON相关</span>
-        </a>
-        <div class="abstract-content">
-            JSON相关JSON，是JavaScript Object Notation的缩写。
-JSON基于两种结构：
-
-名字/值对集合：这种结构在其他编程语言里被实现为对象，字典，Hash表，结构体或关联数组
-有序值列表：这种结构在其他编程语言里被实现为数组，向量，列表或序列
-
-解析JSON123let jsonData = jsonString.data(using: .utf8)!let decoder = JSONDecoder()let jsonModel = try! decoder.decode(H5Editor.self, from: jsonData)
-1234567891011...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/响应式框架的变迁/" >
-            
-                <span>响应式框架的变迁</span>
-        </a>
-        <div class="abstract-content">
-            响应式框架的变迁MonadReactiveCocoas是采用号称纯函数式编程语言里的Monad设计模式搭建起来的，核心类RACStream。
-12345678910111213141516171819typedef RACStream * (^RACStreamBindBlock)(id value, BOOL *stop);/// An abstract class representing any stream of values.////// This class represents a monad, upon which many stream-based operations...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/Lottie/" >
-            
-                <span>Lottie</span>
-        </a>
-        <div class="abstract-content">
-            Lottie基本使用12345LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Lottie"];[self.view addSubview:animation];[animation playWithCompletion:^(BOOL animationFinished) &#123;  // 动画完成后需要处理的事情&#125;];
-动画与手势同步123CGPoint translation = [gesture getTranslationInView:self.view];CGFloat progre...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/iOS中面向测试开发和面向行为驱动开发/" >
-            
-                <span>iOS中面向测试开发和面向行为驱动开发</span>
-        </a>
-        <div class="abstract-content">
-            iOS中面向测试开发和面向行为驱动开发从测试范围划分
-软件测试可以分为单元测试，集成测试，系统测试。开发者负责单元测试，测试团队负责集成测试以及系统测试。
-单元测试也叫模块测试，是对单一的功能代码进行测试，会使用Mock方法模拟外部使用，通过编写各种测试用例来检验代码的功能是否正常。
-从开发模式划分
-开发方式可以分为TDD（Test-driven development，面向测试驱动开发）和BDD（Behavior-Driven development，面向行为驱动开发）。
-
-TDD：先编写测试用例，在不考虑代码优化的情况下快速编写功能实现代码，等功能开发完成后，在测试用例的保障下，在进...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/iOS系统内核XNU/" >
-            
-                <span>iOS系统内核XNU</span>
-        </a>
-        <div class="abstract-content">
-            iOS系统内核XNUiOS系统架构基于ARM架构
-
-用户体验层：主要提供用户界面。这一层包含了SpringBoard，Spotlight，Accessibility。
-应用架构层：开发者会用到，包含了Cocoa Touch。
-核心架构层：系统核心功能的框架层。包含了各种图形和媒体核心框架，Metal等。
-Darwin层：操作系统的核心，属于操作系统的内核态。包含了系统内核XNU，驱动等
-
-
-XNUXNU内部由Mach，BSD，驱动API IOKit组成，这些都依赖于libkern，libsa，Platform Expert。
-
-MachMach作为UNIX内核的替代，主要解决UNIX一切...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1203,9 +1235,86 @@ MachMach作为UNIX内核的替代，主要解决UNIX一切...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 36
+        Total : 41
         </div>
         <!-- search  -->
         
@@ -1218,6 +1327,31 @@ MachMach作为UNIX内核的替代，主要解决UNIX一切...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/Flutter-面试题/" >Flutter 面试题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之URL-Route/" >组件化之 URL Route</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/iOS面试题-2/" >iOS 面试题(2)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1236,12 +1370,12 @@ MachMach作为UNIX内核的替代，主要解决UNIX一切...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
@@ -1422,6 +1556,8 @@ MachMach作为UNIX内核的替代，主要解决UNIX一切...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
+    
         <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
     
         <span class="sidebar-tag-name" data-tags="Flutter"><span class="iconfont-archer">&#xe606;</span>Flutter</span>
@@ -1429,8 +1565,6 @@ MachMach作为UNIX内核的替代，主要解决UNIX一切...
         <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
         <span class="sidebar-tag-name" data-tags="Swift"><span class="iconfont-archer">&#xe606;</span>Swift</span>
-    
-        <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
