@@ -429,14 +429,14 @@ Q：为什么将以前的方法列表挪动到新的位置用 memmove 呢为了�
                 <span>组件化之 Target-Action</span>
         </a>
         <div class="abstract-content">
-            组件化之 Target-ActioniOS 中主要有三种组件化方式，URL Route、Target-Action、Protocol 匹配。这里主要讲第一种：Target-Action。这类方式的大致思想是利用语言的特性 runtim，根据传入 target 和 action，动态的创建类去调用相应的方法。同时利用分类规范了传入的参数。
+            组件化之 Target-ActioniOS 中主要有三种组件化方式，URL Route、Target-Action、Protocol 匹配。这里主要讲第一种：Target-Action。这类方式的大致思想是利用语言的特性 runtime，根据传入 target 和 action，动态的创建类去调用相应的方法。同时利用分类规范了传入的参数。
 优缺点优点
-利用 category 可以明确声明接口，进行编译检查
+利用 Category 可以明确声明接口，进行编译检查
 实现方式轻量，避免了注册操作
 
 缺点
 过度依赖 runtime，无法应用在纯 Swift 项目中
-无法保证所使用的模块一定存在，target 模块在修改后，使用者只有在运行时才能发现错误...
+无法保证所使用的模块一定存在，target 模块在修改后，使用者只有在运行时才能发现错...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1326,8 +1326,6 @@ A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落�
     
     
     
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 41
@@ -1356,12 +1354,12 @@ A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之URL-Route/" >组件化之 URL Route</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之URL-Route/" >组件化之 URL Route</a>
         </li>
     
     
@@ -1386,17 +1384,17 @@ A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
         </li>
     
     
@@ -1416,7 +1414,7 @@ A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/响应式框架的变迁/" >响应式框架的变迁</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
         </li>
     
     
@@ -1426,7 +1424,7 @@ A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/响应式框架的变迁/" >响应式框架的变迁</a>
         </li>
     
     
@@ -1485,22 +1483,22 @@ A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
         </li>
     
     
