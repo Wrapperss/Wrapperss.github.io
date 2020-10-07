@@ -20,8 +20,23 @@
     <meta name="keywords" content="Wrappres,hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="it's better to burn out than to fade away">
+    <meta name="description" content="描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的 Runtime 代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime 是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Ru">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 知识补齐-Runtime">
+<meta property="og:url" content="https://wrapperss.github.io/2019/02/11/iOS知识补齐-Runtime/index.html">
+<meta property="og:site_name" content="Wrappers&#39; Studio">
+<meta property="og:description" content="描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的 Runtime 代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime 是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Ru">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wrapperss.github.io/2019/02/11/iOS知识补齐-Runtime/数据结构.jpg">
+<meta property="og:updated_time" content="2019-05-17T06:43:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 知识补齐-Runtime">
+<meta name="twitter:description" content="描述OC 语言是一门动态语言，会将程序的一些决定工作从编译期推迟到运行期。所以 OC 不止需要依赖编译器，还需要依赖运行时环境。OC 语言在编译期都会被编译为 C 语言的 Runtime 代码。二进制执行过程中执行的都是 C 语言代码。OC 的类本质上都是结构体。在编译时都会以结构体的形式被编译到二进制中。Runtime 是一套由 C，C++，汇编实现的 API，所有的方法调用都叫做发送消息。Ru">
+<meta name="twitter:image" content="https://wrapperss.github.io/2019/02/11/iOS知识补齐-Runtime/数据结构.jpg">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
     <title>iOS 知识补齐-Runtime · Wrappres</title>
     <style type="text/css">
     @font-face {
@@ -514,6 +529,10 @@ height:50vh;
 <!-- City版安装代码已完成 -->
     
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
     <!-- partial('_partial/comment/changyan') -->
     <!--PC版-->
 
@@ -1180,6 +1199,10 @@ top:50vh;
     
     
     
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 41
@@ -1203,7 +1226,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
         </li>
     
     
@@ -1213,7 +1236,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
         </li>
     
     
@@ -1238,17 +1261,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
         </li>
     
     
@@ -1273,12 +1296,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
         </li>
     
     
@@ -1337,22 +1360,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
         </li>
     
     

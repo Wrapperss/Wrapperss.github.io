@@ -20,8 +20,21 @@
     <meta name="keywords" content="Wrappres,hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="it's better to burn out than to fade away">
+    <meta name="description" content="模块粒度的划分 单一功能原则：对象功能要单一，不要在一个对象里添加很多功能。 开闭原则：扩展是开放的，修改是封闭的。 里氏替换原则：子类对象是可以替代基类对象的。 接口隔离原则：接口的用途要单一，不要在一个接口上根据不同入参实现多个功能。 依赖反转原则：方法应该依赖抽象，不要依赖实例。  iOS 组件应该是包含 UI 控件，相关多个功能的合集，是一种粒度适中的模块。 组件之间的逻辑关系组件解耦并不">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="架构设计">
+<meta property="og:url" content="https://wrapperss.github.io/2019/10/26/架构设计/index.html">
+<meta property="og:site_name" content="Wrappers&#39; Studio">
+<meta property="og:description" content="模块粒度的划分 单一功能原则：对象功能要单一，不要在一个对象里添加很多功能。 开闭原则：扩展是开放的，修改是封闭的。 里氏替换原则：子类对象是可以替代基类对象的。 接口隔离原则：接口的用途要单一，不要在一个接口上根据不同入参实现多个功能。 依赖反转原则：方法应该依赖抽象，不要依赖实例。  iOS 组件应该是包含 UI 控件，相关多个功能的合集，是一种粒度适中的模块。 组件之间的逻辑关系组件解耦并不">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-26T09:18:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="架构设计">
+<meta name="twitter:description" content="模块粒度的划分 单一功能原则：对象功能要单一，不要在一个对象里添加很多功能。 开闭原则：扩展是开放的，修改是封闭的。 里氏替换原则：子类对象是可以替代基类对象的。 接口隔离原则：接口的用途要单一，不要在一个接口上根据不同入参实现多个功能。 依赖反转原则：方法应该依赖抽象，不要依赖实例。  iOS 组件应该是包含 UI 控件，相关多个功能的合集，是一种粒度适中的模块。 组件之间的逻辑关系组件解耦并不">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
     <title>架构设计 · Wrappres</title>
     <style type="text/css">
     @font-face {
@@ -478,6 +491,10 @@ height:50vh;
 <!-- City版安装代码已完成 -->
     
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
     <!-- partial('_partial/comment/changyan') -->
     <!--PC版-->
 
@@ -1144,6 +1161,10 @@ top:50vh;
     
     
     
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 41
@@ -1167,7 +1188,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
         </li>
     
     
@@ -1177,7 +1198,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
         </li>
     
     
@@ -1202,17 +1223,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
         </li>
     
     
@@ -1237,12 +1258,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
         </li>
     
     
@@ -1301,22 +1322,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
         </li>
     
     

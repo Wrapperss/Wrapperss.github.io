@@ -20,8 +20,25 @@
     <meta name="keywords" content="Wrappres,hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="it's better to burn out than to fade away">
+    <meta name="description" content="GUI 框架基本单元是控件。 控件负责界面元素数据的存储和更新，原始数据都存储在空间的属性上，直接更新控件的属性就能够完成界面元素更新操作，控件的属性设置成不同的 值会让界面元素呈现不同的外观。 渲染树记录控件之间的关系。关注界面的布局，控件在界面中的位置和大小 渲染层树由渲染层对象组成，根据GUI框架的优化条件来确定创建哪些渲染层对象，每次新创建一个渲染层对象就会去设置它的父对象和兄弟对象。渲染">
+<meta name="keywords" content="Wrappers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GUI 框架">
+<meta property="og:url" content="https://wrapperss.github.io/2020/02/16/GUI-框架/index.html">
+<meta property="og:site_name" content="Wrappers&#39; Studio">
+<meta property="og:description" content="GUI 框架基本单元是控件。 控件负责界面元素数据的存储和更新，原始数据都存储在空间的属性上，直接更新控件的属性就能够完成界面元素更新操作，控件的属性设置成不同的 值会让界面元素呈现不同的外观。 渲染树记录控件之间的关系。关注界面的布局，控件在界面中的位置和大小 渲染层树由渲染层对象组成，根据GUI框架的优化条件来确定创建哪些渲染层对象，每次新创建一个渲染层对象就会去设置它的父对象和兄弟对象。渲染">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/f4/74/f424e846b4de4f338350a00fbe749074.png">
+<meta property="og:image" content="https://ming1016.github.io/uploads/deeply-analyse-webkit/74.png">
+<meta property="og:image" content="https://ming1016.github.io/uploads/deeply-analyse-webkit/47.png">
+<meta property="og:updated_time" content="2020-02-16T05:08:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GUI 框架">
+<meta name="twitter:description" content="GUI 框架基本单元是控件。 控件负责界面元素数据的存储和更新，原始数据都存储在空间的属性上，直接更新控件的属性就能够完成界面元素更新操作，控件的属性设置成不同的 值会让界面元素呈现不同的外观。 渲染树记录控件之间的关系。关注界面的布局，控件在界面中的位置和大小 渲染层树由渲染层对象组成，根据GUI框架的优化条件来确定创建哪些渲染层对象，每次新创建一个渲染层对象就会去设置它的父对象和兄弟对象。渲染">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/f4/74/f424e846b4de4f338350a00fbe749074.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
     <title>GUI 框架 · Wrappres</title>
     <style type="text/css">
     @font-face {
@@ -465,6 +482,10 @@ height:50vh;
 <!-- City版安装代码已完成 -->
     
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
     <!-- partial('_partial/comment/changyan') -->
     <!--PC版-->
 
@@ -1131,6 +1152,10 @@ top:50vh;
     
     
     
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 41
@@ -1154,7 +1179,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
         </li>
     
     
@@ -1164,7 +1189,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
         </li>
     
     
@@ -1189,17 +1214,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
         </li>
     
     
@@ -1224,12 +1249,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
         </li>
     
     
@@ -1288,22 +1313,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
         </li>
     
     

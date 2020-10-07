@@ -20,8 +20,21 @@
     <meta name="keywords" content="Wrappres,hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="it's better to burn out than to fade away">
+    <meta name="description" content="组件化之 URL RouteiOS 中主要有三种组件化方式，URL Route、target-action、protocol 匹配。这里主要讲第一种：URL Route。这类方式大致的思想是通过注册，根据不同 url 结构存入不同的 block。等待调用时，通过存储的 block 中返回对象或执行操作。没有利用 Runtime，相对来说实现比较简单。 优缺点优点实现简单。 缺点 依赖于命名规定，无">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组件化之 URL Route">
+<meta property="og:url" content="https://wrapperss.github.io/2020/10/05/组件化之URL-Route/index.html">
+<meta property="og:site_name" content="Wrappers&#39; Studio">
+<meta property="og:description" content="组件化之 URL RouteiOS 中主要有三种组件化方式，URL Route、target-action、protocol 匹配。这里主要讲第一种：URL Route。这类方式大致的思想是通过注册，根据不同 url 结构存入不同的 block。等待调用时，通过存储的 block 中返回对象或执行操作。没有利用 Runtime，相对来说实现比较简单。 优缺点优点实现简单。 缺点 依赖于命名规定，无">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-10-05T09:54:59.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组件化之 URL Route">
+<meta name="twitter:description" content="组件化之 URL RouteiOS 中主要有三种组件化方式，URL Route、target-action、protocol 匹配。这里主要讲第一种：URL Route。这类方式大致的思想是通过注册，根据不同 url 结构存入不同的 block。等待调用时，通过存储的 block 中返回对象或执行操作。没有利用 Runtime，相对来说实现比较简单。 优缺点优点实现简单。 缺点 依赖于命名规定，无">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
     <title>组件化之 URL Route · Wrappres</title>
     <style type="text/css">
     @font-face {
@@ -479,6 +492,10 @@ height:50vh;
 <!-- City版安装代码已完成 -->
     
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
     <!-- partial('_partial/comment/changyan') -->
     <!--PC版-->
 
@@ -1145,6 +1162,10 @@ top:50vh;
     
     
     
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 41
@@ -1168,7 +1189,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
         </li>
     
     
@@ -1178,7 +1199,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
         </li>
     
     
@@ -1203,17 +1224,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
         </li>
     
     
@@ -1238,12 +1259,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
         </li>
     
     
@@ -1302,22 +1323,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
         </li>
     
     
