@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Wrappers">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Wrappers">
+    
+    <meta name="keywords" content="Wrappres,hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="it's better to burn out than to fade away">
+    <meta name="description" content="分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？分类 通常用于将一个功能强大臃肿的类，分布在几个不同的文件。 只能增加方法，不能增加成员（实例）变量。 123456789Category 是表示一个指向分类的结构体的指针，其定义如下：typedef struct objc_category *Category;struct objc_category &amp;#1">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Interview Questions">
+<meta property="og:url" content="https://wrapperss.github.io/2021/06/09/Interview-Questions/index.html">
+<meta property="og:site_name" content="Wrappers&#39; Studio">
+<meta property="og:description" content="分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？分类 通常用于将一个功能强大臃肿的类，分布在几个不同的文件。 只能增加方法，不能增加成员（实例）变量。 123456789Category 是表示一个指向分类的结构体的指针，其定义如下：typedef struct objc_category *Category;struct objc_category &amp;#1">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-06-09T14:44:09.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Questions">
+<meta name="twitter:description" content="分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？分类 通常用于将一个功能强大臃肿的类，分布在几个不同的文件。 只能增加方法，不能增加成员（实例）变量。 123456789Category 是表示一个指向分类的结构体的指针，其定义如下：typedef struct objc_category *Category;struct objc_category &amp;#1">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Interview Questions · Wrappres</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/Wrappers.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Wrappres&#39; Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Interview Questions</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Wrappres' Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Interview Questions
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">9.4k</span>阅读时长: <span class="post-count reading-time">34 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/06/09</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？"><a href="#分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？" class="headerlink" title="分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？"></a>分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？</h3><p><strong>分类</strong></p>
+<p>通常用于将一个功能强大臃肿的类，分布在几个不同的文件。</p>
+<p>只能增加方法，不能增加成员（实例）变量。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Category 是表示一个指向分类的结构体的指针，其定义如下：</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_category *Category;</span><br><span class="line"><span class="keyword">struct</span> objc_category &#123;</span><br><span class="line">  <span class="keyword">char</span> *category_name                          OBJC2_UNAVAILABLE; <span class="comment">// 分类名</span></span><br><span class="line">  <span class="keyword">char</span> *class_name                             OBJC2_UNAVAILABLE; <span class="comment">// 分类所属的类名</span></span><br><span class="line">  <span class="keyword">struct</span> objc_method_list *instance_methods    OBJC2_UNAVAILABLE; <span class="comment">// 实例方法列表</span></span><br><span class="line">  <span class="keyword">struct</span> objc_method_list *class_methods       OBJC2_UNAVAILABLE; <span class="comment">// 类方法列表</span></span><br><span class="line">  <span class="keyword">struct</span> objc_protocol_list *protocols         OBJC2_UNAVAILABLE; <span class="comment">// 分类所实现的协议列表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以通过<code>runtime</code>实现增加属性<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"People+Work.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *skillKey = <span class="string">@"skillKey"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">People</span> (<span class="title">Work</span>)</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setSkill:(<span class="built_in">NSString</span> *)skill &#123;</span><br><span class="line">    objc_setAssociatedObject(<span class="keyword">self</span>, &amp;skillKey, skill, OBJC_ASSOCIATION_COPY);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)skill &#123;</span><br><span class="line">    <span class="keyword">return</span> objc_getAssociatedObject(<span class="keyword">self</span>, &amp;skillKey);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>以上方法仅仅增加了get set方法 成员变量<code>_skill</code>并没有增加直接调用会报错</p>
+</blockquote>
+<p><strong>扩展</strong></p>
+<p>匿名的分类，不仅可以增加方法，也能增加私有属性。</p>
+<p>没有独立的<code>implementation</code>部分。</p>
+<p>定义在 .m 文件中的类扩展方法为私有的，定义在 .h 文件（头文件）中的类扩展方法为公有的。类扩展是在 .m 文件中声明私有方法的非常好的方式。</p>
+<h3 id="讲一下atomic的实现机制；为什么不能保证绝对的线程安全（最好可以结合场景来说）？"><a href="#讲一下atomic的实现机制；为什么不能保证绝对的线程安全（最好可以结合场景来说）？" class="headerlink" title="讲一下atomic的实现机制；为什么不能保证绝对的线程安全（最好可以结合场景来说）？"></a>讲一下atomic的实现机制；为什么不能保证绝对的线程安全（最好可以结合场景来说）？</h3><p>atomic 的作用是在set get方法中添加spinlock_t（自旋锁）来保证数据仅被一个线程占用。</p>
+<p>线程安全是指在多线程环境不出现意想不到的情况，仅靠atomic是无法实现的。</p>
+<p><strong>例如</strong>：</p>
+<ol>
+<li>A线程对属性加1，本想立马读取属性，但B线程先对属性减1，导致A线程后来读取到的值错误。</li>
+<li>属性如果是集合类型，addObject等方法并不是线程安全的，属性是类的话也同理。</li>
+</ol>
+<p>本质上是atomic是保证了属性的地址值的线程安全，并不是对象层面的线程安全。</p>
+<h3 id="被weak修饰的对象在被释放的时候会发生什么？是如何实现的？知道sideTable么？里面的结构可以画出来么？"><a href="#被weak修饰的对象在被释放的时候会发生什么？是如何实现的？知道sideTable么？里面的结构可以画出来么？" class="headerlink" title="被weak修饰的对象在被释放的时候会发生什么？是如何实现的？知道sideTable么？里面的结构可以画出来么？"></a>被weak修饰的对象在被释放的时候会发生什么？是如何实现的？知道sideTable么？里面的结构可以画出来么？</h3><p><strong>weak</strong></p>
+<p>作用是弱引用，所引用对象的计数器不会加1，并在引用对象被释放的时候自动被设置为 nil。</p>
+<p>通过调用<code>storeWeak</code>来添加弱引用。</p>
+<p>内部主要如果weak指针之前指向了一个弱引用，则用<code>weak_unregister_no_lock</code>将旧的weak指针地址移除。</p>
+<p>接着用<code>weak_register_no_lock</code>把新的weak指针地址添加到弱引用表中。</p>
+<blockquote>
+<p>如果对象没有再析构且可以被weak引用，则调用<code>weak_entry_for_referent</code>方法根据弱引用对象的地址从弱引用表中找到对应的weak_entry，如果能够找到则调用<code>append_referrer</code>方法向其中插入weak指针地址。否则新建一个weak_entry。</p>
+</blockquote>
+<p>对象释放时，调用<code>rootDealloc</code>进行释放。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line">objc_object::rootDealloc()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (isTaggedPointer()) <span class="keyword">return</span>;  <span class="comment">// fixme necessary?</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fastpath(isa.nonpointer  &amp;&amp;  </span><br><span class="line">                 !isa.weakly_referenced  &amp;&amp;  </span><br><span class="line">                 !isa.has_assoc  &amp;&amp;  </span><br><span class="line">                 !isa.has_cxx_dtor  &amp;&amp;  </span><br><span class="line">                 !isa.has_sidetable_rc))</span><br><span class="line">    &#123;</span><br><span class="line">        assert(!sidetable_present());</span><br><span class="line">        free(<span class="keyword">this</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        object_dispose((<span class="keyword">id</span>)<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果对象是采用了优化的isa计数方式，且同时满足对象没有被weak引用<code>!isa.weakly_referenced</code>、没有关联对象<code>!isa.has_assoc</code>、没有自定义的C++析构方法<code>!isa.has_cxx_dtor</code>、没有用到SideTable来引用计数<code>!isa.has_sidetable_rc</code>则直接快速释放。</p>
+<p>否则调用<code>object_dispose</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> *objc_destructInstance(<span class="keyword">id</span> obj) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (obj) &#123;</span><br><span class="line">        <span class="comment">// Read all of the flags at once for performance.</span></span><br><span class="line">        <span class="keyword">bool</span> cxx = obj-&gt;hasCxxDtor();</span><br><span class="line">        <span class="keyword">bool</span> assoc = obj-&gt;hasAssociatedObjects();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// This order is important.</span></span><br><span class="line">        <span class="keyword">if</span> (cxx) object_cxxDestruct(obj);</span><br><span class="line">        <span class="keyword">if</span> (assoc) _object_remove_assocations(obj);</span><br><span class="line">        obj-&gt;clearDeallocating();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用<code>clearDeallocating</code>函数根据对象地址获取weak指针地址的数组，遍历这个数组把其中的数据设为nil，最后把这个<code>entry</code>从weak表中删除，最后清除这个对象数据。</p>
+<p><strong>SideTable</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> SideTable &#123;</span><br><span class="line">    spinlock_t slock;</span><br><span class="line">    RefcountMap refcnts;</span><br><span class="line">    weak_table_t weak_table;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>内部主要有三部分：自旋锁，引用计数表，weak表。</p>
+<p><strong>weak_table_t</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> weak_table_t &#123;</span><br><span class="line">    weak_entry_t *weak_entries;</span><br><span class="line">    size_t    num_entries;</span><br><span class="line">    uintptr_t mask;</span><br><span class="line">    uintptr_t max_hash_displacement;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>内部主要包括：</p>
+<ul>
+<li><p>weak_entries：hash数组，存储着弱引用对象的相关信息weak_entry_t</p>
+</li>
+<li><p>num_entries：hash数组中的元素个数</p>
+</li>
+</ul>
+<p><strong>weak_entry_t</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#define WEAK_INLINE_COUNT 4</span></span><br><span class="line"><span class="meta">#define REFERRERS_OUT_OF_LINE 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> weak_entry_t &#123;</span><br><span class="line">    DisguisedPtr&lt;objc_object&gt; referent; <span class="comment">// 被弱引用的对象</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 引用该对象的对象列表，联合。 引用个数小于4，用inline_referrers数组。 用个数大于4，用动态数组weak_referrer_t *referrers</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="keyword">struct</span> &#123;</span><br><span class="line">            weak_referrer_t *referrers;                      <span class="comment">// 弱引用该对象的对象指针地址的hash数组</span></span><br><span class="line">            uintptr_t        out_of_line_ness : <span class="number">2</span>;           <span class="comment">// 是否使用动态hash数组标记位</span></span><br><span class="line">            uintptr_t        num_refs : PTR_MINUS_2;         <span class="comment">// hash数组中的元素个数</span></span><br><span class="line">            uintptr_t        mask;                           <span class="comment">// hash数组长度-1，会参与hash计算。（注意，这里是hash数组的长度，而不是元素个数。比如，数组长度可能是64，而元素个数仅存了2个）素个数）。</span></span><br><span class="line">            uintptr_t        max_hash_displacement;          <span class="comment">// 可能会发生的hash冲突的最大次数，用于判断是否出现了逻辑错误（hash表中的冲突次数绝不会超过改值）</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">struct</span> &#123;</span><br><span class="line">            <span class="comment">// out_of_line_ness field is low bits of inline_referrers[1]</span></span><br><span class="line">            weak_referrer_t  inline_referrers[WEAK_INLINE_COUNT];</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> out_of_line() &#123;</span><br><span class="line">        <span class="keyword">return</span> (out_of_line_ness == REFERRERS_OUT_OF_LINE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    weak_entry_t&amp; operator=(<span class="keyword">const</span> weak_entry_t&amp; other) &#123;</span><br><span class="line">        memcpy(<span class="keyword">this</span>, &amp;other, <span class="keyword">sizeof</span>(other));</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    weak_entry_t(objc_object *newReferent, objc_object **newReferrer)</span><br><span class="line">        : referent(newReferent) <span class="comment">// 构造方法，里面初始化了静态数组</span></span><br><span class="line">    &#123;</span><br><span class="line">        inline_referrers[<span class="number">0</span>] = newReferrer;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; WEAK_INLINE_COUNT; i++) &#123;</span><br><span class="line">            inline_referrers[i] = <span class="literal">nil</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>内部有定长数组<code>inline_referrers[WEAK_INLINE_COUNT]</code>和动态数组<code>weak_referrer_t *referrers</code>来存储弱引用对象的地址。通过<code>out_of_line()</code>这样的函数来判断该用哪种存储方式。</p>
+<h3 id="关联对象有什么应用，系统如何管理关联对象？其被释放的时候需要手动将所有的关联对象的指针置空么？"><a href="#关联对象有什么应用，系统如何管理关联对象？其被释放的时候需要手动将所有的关联对象的指针置空么？" class="headerlink" title="关联对象有什么应用，系统如何管理关联对象？其被释放的时候需要手动将所有的关联对象的指针置空么？"></a>关联对象有什么应用，系统如何管理关联对象？其被释放的时候需要手动将所有的关联对象的指针置空么？</h3><p><strong>应用</strong></p>
+<ol>
+<li>添加公共属性，为分类动态的添加set get方法</li>
+<li>为系统类添加方法，例如为UIView添加点击事件</li>
+<li>使用KVO时关联对象作为观察者，避免自身观察自身</li>
+</ol>
+<p>系统通过<code>AssociationsManager</code> 管理一个全局哈希表<code>AssociationsHashMap</code>，通过对象指针地址和传递的固定参数地址来获取关联对象。根据<code>setter</code>传入的参数协议，来管理对象的生命周期。</p>
+<p><strong>释放</strong></p>
+<p>对象释放时，会调用<code>_object_remove_assocations</code>方法自动释放我们的关联对象。</p>
+<h3 id="KVO的底层实现？如何取消系统默认的KVO并手动触发（给KVO的触发设定条件：改变的值符合某个条件时再触发KVO）？"><a href="#KVO的底层实现？如何取消系统默认的KVO并手动触发（给KVO的触发设定条件：改变的值符合某个条件时再触发KVO）？" class="headerlink" title="KVO的底层实现？如何取消系统默认的KVO并手动触发（给KVO的触发设定条件：改变的值符合某个条件时再触发KVO）？"></a>KVO的底层实现？如何取消系统默认的KVO并手动触发（给KVO的触发设定条件：改变的值符合某个条件时再触发KVO）？</h3><p><strong>底层实现</strong></p>
+<p>执行<code>addObserver</code>后runtime会创建一个这个类的子类，并将指针指向这个子类，这个子类的set方法会调用Fundation框架中的C语言函数_NSsetIntValueAndNotify（根据类型不同调用不同函数）。其中这个C语言函数就相当于调用<code>willChangeValueForKey</code>，接着调用父类的set方法，最后调用<code>didChangeValueForKey</code>。其实<code>didChangeValueForKey</code>中会调用<code>observeValueForKeyPath</code>。</p>
+<p><strong>取消默认KVO增加判断条件</strong></p>
+<p>仅需要在对象中重写<code>didChangeValueForKye</code>方法，增加判断，当满足条件才调用<code>[super didChangeValueForKey:key];</code></p>
+<h3 id="AutoreleasePool所使用的数据结构是什么？AutoreleasePoolPage结构体了解么？"><a href="#AutoreleasePool所使用的数据结构是什么？AutoreleasePoolPage结构体了解么？" class="headerlink" title="AutoreleasePool所使用的数据结构是什么？AutoreleasePoolPage结构体了解么？"></a><code>AutoreleasePool</code>所使用的数据结构是什么？<code>AutoreleasePoolPage</code>结构体了解么？</h3><p><code>AutoreleasePool</code>所使用的数据结构__AtAutoreleasePool，是由若干个<code>AutoreleasePoolPage</code>以双向链表的形式存在的。</p>
+<p><strong>AutoreleasePoolPage</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> AutoreleasePoolPage </span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#   define EMPTY_POOL_PLACEHOLDER ((id*)1)  // EMPTY_POOL_PLACEHOLDER：表示一个空自动释放池的占位符</span></span><br><span class="line"><span class="meta">#   define POOL_BOUNDARY nil                // POOL_BOUNDARY：哨兵对象</span></span><br><span class="line">    <span class="keyword">static</span> pthread_key_t <span class="keyword">const</span> key = AUTORELEASE_POOL_KEY;</span><br><span class="line">    <span class="keyword">static</span> uint8_t <span class="keyword">const</span> SCRIBBLE = <span class="number">0xA3</span>;   <span class="comment">// 用来标记已释放的对象</span></span><br><span class="line">    <span class="keyword">static</span> size_t <span class="keyword">const</span> SIZE =              <span class="comment">// 每个 Page 对象占用 4096 个字节内存</span></span><br><span class="line"><span class="meta">#if PROTECT_AUTORELEASEPOOL                 // PAGE_MAX_SIZE = 4096</span></span><br><span class="line">        PAGE_MAX_SIZE;  <span class="comment">// must be muliple of vm page size</span></span><br><span class="line"><span class="meta">#else</span></span><br><span class="line">        PAGE_MAX_SIZE;  <span class="comment">// size and alignment, power of 2</span></span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">    <span class="keyword">static</span> size_t <span class="keyword">const</span> COUNT = SIZE / <span class="keyword">sizeof</span>(<span class="keyword">id</span>);  <span class="comment">// Page 的个数</span></span><br><span class="line"></span><br><span class="line">    magic_t <span class="keyword">const</span> magic;                <span class="comment">// 用来校验 Page 的结构是否完整</span></span><br><span class="line">    <span class="keyword">id</span> *next;                           <span class="comment">// 指向下一个可存放 autorelease 对象地址的位置，初始化指向 begin()</span></span><br><span class="line">    pthread_t <span class="keyword">const</span> thread;             <span class="comment">// 指向当前线程</span></span><br><span class="line">    AutoreleasePoolPage * <span class="keyword">const</span> parent; <span class="comment">// 指向父结点，首结点的 parent 为 nil</span></span><br><span class="line">    AutoreleasePoolPage *child;         <span class="comment">// 指向子结点，尾结点的 child  为 nil</span></span><br><span class="line">    uint32_t <span class="keyword">const</span> depth;               <span class="comment">// Page 的深度，从 0 开始递增</span></span><br><span class="line">    uint32_t hiwat;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每个AutoreleasePoolPage对象占有4096字节内存，其中56个字节用来存储它内部的成员变量，其余的用于存储autorelease对象的地址。</p>
+<ol>
+<li>每当创建一个自动释放池时，会调用push()方法，将一个<code>POOL_BOUNDARY</code>入栈，并返回其存放的内存地址。</li>
+<li>当往自动释放池添加autorelease对象时，将autorelease对象的内存地址入栈，它们前面至少有一个<code>POOL_BOUNDARY</code>。</li>
+<li>当销毁一个自动释放池时，会调用pop()方法，并传入一个<code>POOL_BOUNDARY</code>，会从自动释放池中最后一个对象开始释放，直到遇到这个<code>POOL_BOUNDARY</code>。</li>
+</ol>
+<h3 id="讲一下对象，类对象，元类，跟元类结构体的组成以及他们是如何相关联的？为什么对象方法没有保存的对象结构体里，而是保存在类对象的结构体里？"><a href="#讲一下对象，类对象，元类，跟元类结构体的组成以及他们是如何相关联的？为什么对象方法没有保存的对象结构体里，而是保存在类对象的结构体里？" class="headerlink" title="讲一下对象，类对象，元类，跟元类结构体的组成以及他们是如何相关联的？为什么对象方法没有保存的对象结构体里，而是保存在类对象的结构体里？"></a>讲一下对象，类对象，元类，跟元类结构体的组成以及他们是如何相关联的？为什么对象方法没有保存的对象结构体里，而是保存在类对象的结构体里？</h3><p>对象的结构是<code>objc_object</code>，类对象和元类的结构是<code>objc_class</code>。</p>
+<p>对象的isa指针指向对应的类对象，类对象的isa指针指向元类。元类的isa指针都指向根元类, 其中根元类的isa指针指向自己。</p>
+<p>类对象的superClass指针指向其父类，其中NSObject的superClass指针为nil，根元类的superClass指针指向NSObject类对象。</p>
+<p>同个类的对象方法都是一样的，如果在每个对象中存放一份，则会产生浪费，而保存在类对象中，就能做到同个类的对象方法只存放一份。同样类方法则存放在元类中。</p>
+<h3 id="class-ro-t-和-class-rw-t-的区别？"><a href="#class-ro-t-和-class-rw-t-的区别？" class="headerlink" title="class_ro_t 和  class_rw_t 的区别？"></a><code>class_ro_t</code> 和  <code>class_rw_t</code> 的区别？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct class_ro_t &#123;</span><br><span class="line">    uint32_t flags;</span><br><span class="line">    uint32_t instanceStart;</span><br><span class="line">    uint32_t instanceSize;</span><br><span class="line">    uint32_t reserved;</span><br><span class="line"></span><br><span class="line">    const uint8_t * ivarLayout;</span><br><span class="line"></span><br><span class="line">    const char * name;</span><br><span class="line">    method_list_t * baseMethodList;</span><br><span class="line">    protocol_list_t * baseProtocols;</span><br><span class="line">    const ivar_list_t * ivars;</span><br><span class="line"></span><br><span class="line">    const uint8_t * weakIvarLayout;</span><br><span class="line">    property_list_t *baseProperties;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> class_rw_t &#123;</span><br><span class="line">    uint32_t flags;</span><br><span class="line">    uint32_t version;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> class_ro_t *ro;</span><br><span class="line"></span><br><span class="line">    method_array_t methods;</span><br><span class="line">    property_array_t properties;</span><br><span class="line">    protocol_array_t protocols;</span><br><span class="line"></span><br><span class="line">    Class firstSubclass;</span><br><span class="line">    Class nextSiblingClass;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>每个类都对应一个class_ro_t和class_rw_t。在编译期间，确定class_ro_t的内容。在runtime的realizeClass方法运行时，生成class_rw_t，class_rw_t包括class_ro_t，并更新data部分。实际访问类的内容时，是访问class_rw_t中的内容。</p>
+<h3 id="iOS-中内省的几个方法？class方法和objc-getClass方法有什么区别"><a href="#iOS-中内省的几个方法？class方法和objc-getClass方法有什么区别" class="headerlink" title="iOS 中内省的几个方法？class方法和objc_getClass方法有什么区别?"></a>iOS 中内省的几个方法？<code>class</code>方法和<code>objc_getClass</code>方法有什么区别?</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="built_in">BOOL</span>) isKindOfClass:            		判断是否是这个类或者这个类的子类的实例</span><br><span class="line">-(<span class="built_in">BOOL</span>) isMemberOfClass:     		 			判断是否是这个类的实例</span><br><span class="line">-(<span class="built_in">BOOL</span>) respondsToSelector:           判读实例是否有这样方法</span><br><span class="line">+(<span class="built_in">BOOL</span>) instancesRespondToSelector:   判断类是否有这个方法</span><br></pre></td></tr></table></figure>
+<p><code>objc_getClass(obj)</code>方法返回的是isa指针。</p>
+<p><code>[objc class]</code>要两类情况</p>
+<p>当objc为实例对象时，class是实例方法，返回的是objc对象的isa指针，也就是类对象。</p>
+<p>当objc为类对象（包括元类，根类，以及根元类）时，class是类方法，返回的是它本身。</p>
+<h3 id="在运行时创建类的方法objc-allocateClassPair的方法名尾部为什么是pair（成对的意思）？"><a href="#在运行时创建类的方法objc-allocateClassPair的方法名尾部为什么是pair（成对的意思）？" class="headerlink" title="在运行时创建类的方法objc_allocateClassPair的方法名尾部为什么是pair（成对的意思）？"></a>在运行时创建类的方法<code>objc_allocateClassPair</code>的方法名尾部为什么是pair（成对的意思）？</h3><p>因为要创建类和元类，所以是成对的。</p>
+<h3 id="一个int变量被-block修饰与否的区别？"><a href="#一个int变量被-block修饰与否的区别？" class="headerlink" title="一个int变量被__block修饰与否的区别？"></a>一个int变量被<code>__block</code>修饰与否的区别？</h3><p>默认为值捕获，加__block后生成结构体，复制int的引用地址。</p>
+<h3 id="为什么在block外部使用-weak修饰的同时需要在内部使用-strong修饰？"><a href="#为什么在block外部使用-weak修饰的同时需要在内部使用-strong修饰？" class="headerlink" title="为什么在block外部使用__weak修饰的同时需要在内部使用__strong修饰？"></a>为什么在block外部使用<code>__weak</code>修饰的同时需要在内部使用<code>__strong</code>修饰？</h3><p>首先weak是用于解决循环引用的问题的。同时因为weak的存在，可能会发生self在block执行的过程中被置为nil，这时就需要strong来将self保持住，避免发生意想不到的事。</p>
+<h3 id="RunLoop的作用是什么？它的内部工作机制了解么？（最好结合线程和内存管理来说）"><a href="#RunLoop的作用是什么？它的内部工作机制了解么？（最好结合线程和内存管理来说）" class="headerlink" title="RunLoop的作用是什么？它的内部工作机制了解么？（最好结合线程和内存管理来说）"></a>RunLoop的作用是什么？它的内部工作机制了解么？（最好结合线程和内存管理来说）</h3><p>一般来说线程在执行完任务后，就会退出。如果需要线程能够一直响应，则需要在内部添加类似循环的概念，类似EvenLoop，在没有处理消息的时候线程进行休眠，等消息来了立刻唤醒响应消息。</p>
+<p>在iOS中这个循环就是RunLoop。主要的作用是：</p>
+<ul>
+<li>保持app的持续运行，在main方法中会给主线程创建一个RunLoop，保证线程不被销毁</li>
+<li><strong>AutoreleasePool</strong>，系统在主线程的RunLoop中注册了两个Observer。第一个Observer监听即将进入RunLoop，调用<code>_objc_autoreleasePoolPush</code>创建自动释放池。第二个Observer监听了两个事件，进入休眠之前会先释放自动释放池，然后创建一个自动释放池，在即将退出时，会释放自动释放池。</li>
+<li>检测卡顿，通过监听主线程的RunLoop的状态来判断是否会出现卡顿</li>
+</ul>
+<h3 id="哪些场景可以触发离屏渲染？（知道多少说多少）"><a href="#哪些场景可以触发离屏渲染？（知道多少说多少）" class="headerlink" title="哪些场景可以触发离屏渲染？（知道多少说多少）"></a>哪些场景可以触发离屏渲染？（知道多少说多少）</h3><p><strong>离屏渲染</strong>：因为一些限制，无法直接将渲染结果写入帧缓冲区，而需要新开辟一个缓冲区来进行渲染。</p>
+<ul>
+<li>为contents设置了内容，无论是图片，绘制内容，有图像信息的子视图等，再加上圆角+裁剪</li>
+<li>采用了光栅化的 layer (layer.shouldRasterize)</li>
+<li>使用了 mask 的 layer (layer.mask)</li>
+<li>需要进行裁剪的 layer (layer.masksToBounds /view.clipsToBounds)</li>
+<li>设置了组透明度为 YES，并且透明度不为 1 的layer (layer.allowsGroupOpacity/ layer.opacity)</li>
+<li>使用了高斯模糊</li>
+<li>添加了投影的 layer (layer.shadow*)</li>
+<li>绘制了文字的 layer (UILabel, CATextLayer, Core Text 等)</li>
+</ul>
+<h3 id="了解编译的过程么？分为哪几个步骤？"><a href="#了解编译的过程么？分为哪几个步骤？" class="headerlink" title="了解编译的过程么？分为哪几个步骤？"></a>了解编译的过程么？分为哪几个步骤？</h3><ol>
+<li>预处理阶段</li>
+<li>词法分析 输出Token流</li>
+<li>语法分析 输出抽象树AST</li>
+<li>codegen生成IR中间码</li>
+<li>Optimize - 优化IR</li>
+<li>LLVM Bitcode - 生成字节码</li>
+<li>生成汇编</li>
+<li>Link生成目标文件并执行</li>
+</ol>
+<p><strong>Xcode编译的过程</strong></p>
+<ol>
+<li>优化编译Cocoapods里面的所有依赖文件</li>
+<li>编译信息写入辅助信息，创建编译后的文件架构</li>
+<li>处理打包信息，例如development环境下处理xxxx.entitlements的打包信息</li>
+<li>执行cocopods编译前脚本 checkPods Manifest.lock</li>
+<li>编译包内所有m文件 （使用Compilec和Clang的几个主要命令）</li>
+<li>链接需要的framework，例如AFNetworking.framework，Masonry.framework等信息</li>
+<li>编译xib文件</li>
+<li>copy Xib文件，图片等资源文件放到结果目录</li>
+<li>编译imageAsserts</li>
+<li>处理infoplis</li>
+<li>执行Cocoapods脚本</li>
+<li>copy标准库</li>
+<li>创建.app文件和签名</li>
+</ol>
+<h3 id="App启动的过程"><a href="#App启动的过程" class="headerlink" title="App启动的过程"></a>App启动的过程</h3><ol>
+<li>解析info.plist文件</li>
+<li>创建沙盒</li>
+<li>根据info.plist检查各权限状态</li>
+<li>加载Mach-O文件读取dyld路径并运行dyld动态连接器（内核加载主程序，dyld只负责动态库的加载）</li>
+<li>dyld寻找合适的CPU运行环境</li>
+<li>加载程序所需要的依赖库和我们的.h .m文件编译成的.o可执行文件，并对这些库进行链接</li>
+<li>加载所有方法（runtime完成初始化）</li>
+<li>加载C函数</li>
+<li>加载category扩展（runtime对类结构进行初始化）</li>
+<li>加载C++静态函数 加载OC的+load方法</li>
+<li>dyld返回main函数地址 执行main函数</li>
+</ol>
+<h3 id="静态链接了解么？静态库和动态库的区别？"><a href="#静态链接了解么？静态库和动态库的区别？" class="headerlink" title="静态链接了解么？静态库和动态库的区别？"></a>静态链接了解么？静态库和动态库的区别？</h3><p>静态链接和动态链接都是把程序分割成一个个独立的模块，但是静态链接是运行前就用ld链接器链接成一个完整的程序；动态链接是程序主模块被加载时候，对应的Mach-O文件里有dyld加载命令，通过这个dyld然后去找依赖的dylib（Mach-O有动态链接库加载命令），把dylib加载到内存（如果对应的dylib不在内存），然后将程序中所有未决议的符号绑定到相应的 dylib中，并进行重定位工作。</p>
+<p>静态库：完整复制进可执行的二进制文件中</p>
+<p>动态库：在程序冷启动时才会被链接到手机内存或App内存中</p>
+<h3 id="内存的几大区域，各自的职能分别是什么？"><a href="#内存的几大区域，各自的职能分别是什么？" class="headerlink" title="内存的几大区域，各自的职能分别是什么？"></a>内存的几大区域，各自的职能分别是什么？</h3><p>内存主要分为栈区、堆区、全局区、文字常量区、代码区等五大区域。</p>
+<ol>
+<li><p>栈区(stack)由编译器自动分配并释放，存放的是函数的参数值，局部变量等，方法调用的实参也是保存在栈区的。栈是系统数据结构，对应线程/进程是唯一的。主要存放一些基本类型的变量和对象引用类型。</p>
+</li>
+<li><p>堆区(heap)由程序员分配和释放，如果程序员不释放，可能会出现内存泄露，程序结束的时候，可能会由操作系统回收。堆空间的分配总是动态的，不同堆分配的内存无法互相操作。虽然程序结束的时候所有的数据空间都会被释放回系统，但是精确的申请内存，释放内存匹配是良好程序的基本要素。主要存放用new构造的对象和数组。</p>
+</li>
+<li><p>全局区(静态区) (static) 全局变量和静态变量的存储是放在一起的，初始化的全局变量和静态变量存放在一块区域，未初始化的全局变量和静态变量在相邻的另一块区域，程序结束后有系统释放。</p>
+</li>
+<li><p>文字常量区 存放常量字符串，程序结束后由系统释放；</p>
+</li>
+<li><p>代码区 存放函数的二进制代码</p>
+</li>
+</ol>
+<h3 id="static和const有什么区别？"><a href="#static和const有什么区别？" class="headerlink" title="static和const有什么区别？"></a>static和const有什么区别？</h3><p><strong>const</strong></p>
+<ul>
+<li>被const关键字修饰的实例变量,在初始化之后,其值就不能改变了</li>
+<li>队指针来说,可以指定指针本身为const,也可以指定指针所指的数据为const,或者二者同时指定为const;</li>
+<li>对于类的成员函数,若指定其为const类型, 则表明他是一个函数,不能修改类的成员变量</li>
+</ul>
+<p><strong>static</strong></p>
+<ul>
+<li>在函数体内定义的static他的作用域为该函数体,该变量在内存中只被分配一次,因此,其值在下次调用时仍维持上次的值不变</li>
+<li>在模块内的static全局变量可以被模块内所用函数访问,但是不能被模块外的其他函数访问</li>
+<li>.在模块内的staic全局变量可以被这一模块内的其他函数调用,这个函数的使用范围被限制在这个模块内;</li>
+<li>在类中的static成员变量属于整个类所拥有,对类的所有对象只有一份拷贝,也就是说只要是该类的对象,那么该对象的中被static修饰的实例变量都指向同一块地址</li>
+</ul>
+<h3 id="了解内联函数么？"><a href="#了解内联函数么？" class="headerlink" title="了解内联函数么？"></a>了解内联函数么？</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="built_in">CGFloat</span> <span class="built_in">CGFloatFromPixel</span>(<span class="built_in">CGFloat</span> value) &#123;</span><br><span class="line">    <span class="keyword">return</span> value / YYScreenScale();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用于取代宏，避免了普通函数汇编时必须调用call的缺点，取消了函数的参数压栈，避免了宏的缺点，需要预编译。</p>
+<h3 id="什么时候会出现死锁？如何避免？"><a href="#什么时候会出现死锁？如何避免？" class="headerlink" title="什么时候会出现死锁？如何避免？"></a>什么时候会出现死锁？如何避免？</h3><p>发生死锁的四个必要条件：</p>
+<ul>
+<li>互斥条件：一个资源每次只能被一个线程使用。</li>
+<li>请求与保持条件：一个线程因请求资源而阻塞时，对已获得的资源保持不放。</li>
+<li>不剥夺条件：线程已获得的资源，在未使用完之前，不能强行剥夺。</li>
+<li>循环等待条件：若干线程之间形成一种头尾相接的循环等待资源关系。</li>
+</ul>
+<h3 id="说一说你对线程安全的理解？"><a href="#说一说你对线程安全的理解？" class="headerlink" title="说一说你对线程安全的理解？"></a>说一说你对线程安全的理解？</h3><p>多线程操作共享数据不会出现想不到的结果就是线程安全的。</p>
+<h3 id="列举你知道的线程同步策略？"><a href="#列举你知道的线程同步策略？" class="headerlink" title="列举你知道的线程同步策略？"></a>列举你知道的线程同步策略？</h3><p>线程同步的策略有：原子操作，信号量，GCD串行队列，锁。</p>
+<h3 id="有哪几种锁？各自的原理？它们之间的区别是什么？最好可以结合使用场景来说"><a href="#有哪几种锁？各自的原理？它们之间的区别是什么？最好可以结合使用场景来说" class="headerlink" title="有哪几种锁？各自的原理？它们之间的区别是什么？最好可以结合使用场景来说"></a>有哪几种锁？各自的原理？它们之间的区别是什么？最好可以结合使用场景来说</h3><p><strong>OSSpinLock - 自旋锁</strong></p>
+<ul>
+<li><p>自旋锁是一种特殊互斥锁，当一个线程需要获取自旋锁时，如果该锁已经被其他线程占用，那么会一直去请求锁，进入 <code>忙等（busy-waiting）</code> 状态，所以会一直占用 CPU</p>
+</li>
+<li><p>由于自旋锁在等待锁的时候线程一直处于忙等状态，而不用进入睡眠，所以不用进行上下文切换，自旋锁的效率远高于互斥锁</p>
+</li>
+</ul>
+<p>自旋锁适用于</p>
+<ul>
+<li>预计线程等待锁的时间很短</li>
+<li>临界区经常访问，但竞争情况很少发生</li>
+</ul>
+<ul>
+<li>自旋锁不安全，会出现优先级反转问题：如果一个低优先级的线程获得锁并访问共享资源，这时一个高优先级的线程也尝试获得这个锁，它会处于 <code>忙等</code> 状态从而占用大量 CPU 时间片。此时低优先级线程无法与高优先级线程争夺 CPU 时间片，从而导致完成任务而无法释放锁</li>
+<li>在 iOS 10 及以上被废弃</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;libkern/OSAtomic.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">OSSpinLock lock = OS_SPINLOCK_INIT;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加锁</span></span><br><span class="line">OSSpinLockLock(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 临界区...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解锁</span></span><br><span class="line">OSSpinLockUnlock(&amp;lock);</span><br></pre></td></tr></table></figure>
+<p><strong>os_unfair_lock</strong></p>
+<ul>
+<li><code>os_unfair_lock</code> 用于取代不安全的 <code>OSSpinLock</code> ，iOS 10 开始支持，当一条线程等待锁的时候会进入睡眠，不再消耗 CPU 时间，当其他线程解锁以后，操作系统会激活线程</li>
+<li><code>os_unfair_lock</code> 有单一的拥有者</li>
+<li>这是一种不公平锁。在公平锁中，多个线程同时竞争这个锁的时候， 会考虑公平性尽可能的让不同的线程获得锁，这样会频繁进行上下文切换，牺牲性能。而在不公平锁中，系统为了减少上下文切换，当前拥有锁的线程有可能会再次获得锁，但这样做可能会让其他线程等待更长时间，造成饥饿。</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;os/lock.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">os_unfair_lock lock = OS_UNFAIR_LOCK_INIT;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 加锁</span></span><br><span class="line">os_unfair_lock_lock(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 临界区...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解锁</span></span><br><span class="line">os_unfair_lock_unlock(&amp;lock);</span><br></pre></td></tr></table></figure>
+<h4 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h4><ul>
+<li>互斥锁是可以看作是一种特殊的信号量，当一条线程等待锁的时候会进入睡眠状态</li>
+<li>互斥锁阻塞的过程分两个阶段，第一阶段是会先空转，可以理解成跑一个 while 循环，不断地去申请加锁，在空转一定时间之后，线程会进入睡眠状态，让出时间片，此时线程就不占用 CPU 时间片，等锁可用的时候，这个线程会立即被唤醒</li>
+</ul>
+<p><strong>pthread_mutex</strong></p>
+<p><code>pthread</code> 表示 <code>POSIX thread</code>，是 POSIX 标准的 unix 多线程库，定义了一组跨平台的线程相关的API。<code>pthread_mutex</code> 是一种用 C 语言实现的互斥锁，有单一的拥有者。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 静态初始化</span></span><br><span class="line">pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态初始化</span></span><br><span class="line"><span class="comment">// 初始化属性</span></span><br><span class="line">pthread_mutexattr_t attr;</span><br><span class="line">pthread_mutexattr_init(&amp;attr);</span><br><span class="line">pthread_mutexattr_settype(&amp;attr, PTHREAD_MUTEX_DEFAULT);</span><br><span class="line"><span class="comment">// 初始化锁</span></span><br><span class="line">pthread_mutex_t mutex;</span><br><span class="line">pthread_mutex_init(mutex, &amp;attr);</span><br><span class="line"><span class="comment">// 销毁属性</span></span><br><span class="line">pthread_mutexattr_destroy(&amp;attr);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 加锁</span></span><br><span class="line">pthread_mutex_lock(&amp;mutex);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 临界区...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解锁</span></span><br><span class="line">pthread_mutex_unlock(&amp;mutex);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 销毁锁</span></span><br><span class="line">pthread_mutex_destroy(&amp;_mutex);</span><br></pre></td></tr></table></figure>
+<p><strong>NSLock</strong></p>
+<ul>
+<li><code>NSLock</code> 是以 Objective-C 对象的形式对 <code>pthread_mutex</code> 的封装，属性为 <code>PTHREAD_MUTEX_ERRORCHECK</code>，它会损失一定性能换来错误提示</li>
+<li><code>NSLock</code> 比 <code>pthread_mutex</code> 略慢的原因在于它需要经过方法调用，同时由于缓存的存在，多次方法调用不会对性能产生太大的影响</li>
+<li><code>NSLock</code> 有单一的拥有者</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSLock</span> *lock = [[<span class="built_in">NSLock</span> alloc] init];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加锁</span></span><br><span class="line">[lock lock];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 临界区...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解锁</span></span><br><span class="line">[lock unlock];</span><br></pre></td></tr></table></figure>
+<h4 id="递归锁"><a href="#递归锁" class="headerlink" title="递归锁"></a>递归锁</h4><p>递归锁是一种特殊互斥锁。递归锁允许单个线程在释放之前多次获取锁，其他线程保持睡眠状态，直到锁的所有者释放锁的次数与获取它的次数相同。递归锁主要在递归迭代中使用，但也可能在多个方法需要单独获取锁的情况下使用。</p>
+<p><strong>pthread_mutex(Recursive)</strong></p>
+<p><code>pthread_mutex</code> 支持递归锁，只要把 attr 的类型改成 <code>PTHREAD_MUTEX_RECURSIVE</code> 即可，它有单一的拥有者。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化属性</span></span><br><span class="line">pthread_mutexattr_t attr;</span><br><span class="line">pthread_mutexattr_init(&amp;attr);</span><br><span class="line">pthread_mutexattr_settype(&amp;attr, PTHREAD_MUTEX_RECURSIVE);</span><br><span class="line"><span class="comment">// 初始化锁</span></span><br><span class="line">pthread_mutex_t mutex;</span><br><span class="line">pthread_mutex_init(mutex, &amp;attr);</span><br><span class="line"><span class="comment">// 销毁属性</span></span><br><span class="line">pthread_mutexattr_destroy(&amp;attr);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 加锁</span></span><br><span class="line">pthread_mutex_lock(&amp;_mutex);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 临界区...</span></span><br><span class="line"><span class="comment">// 在同一个线程中可以多次获取锁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解锁</span></span><br><span class="line">pthread_mutex_unlock(&amp;_mutex);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 销毁锁</span></span><br><span class="line">pthread_mutex_destroy(&amp;_mutex);</span><br></pre></td></tr></table></figure>
+<p><strong>NSRecursiveLock</strong></p>
+<p><code>NSRecursiveLock</code> 是以 Objective-C 对象的形式对 <code>pthread_mutex(Recursive)</code> 的封装，它有单一的拥有者。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSRecursiveLock</span> *lock = [[<span class="built_in">NSRecursiveLock</span> alloc] init];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加锁</span></span><br><span class="line">[lock lock];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 临界区...</span></span><br><span class="line"><span class="comment">// 在同一个线程中可以多次获取锁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解锁</span></span><br><span class="line">[lock unlock];</span><br></pre></td></tr></table></figure>
+<p><strong>@synchronized</strong></p>
+<ul>
+<li><code>@synchronized</code> 是对 <code>pthread_mutex(Recursive)</code> 的封装，所以它支持递归加锁</li>
+<li>需要传入一个 Objective-C 对象，可以理解为把这个对象当做锁来使用</li>
+<li>实际上它是用 <code>objc_sync_enter(id obj)</code> 和 <code>objc_sync_exit(id obj)</code> 来进行加锁和解锁</li>
+<li>底层实现：在底层存在一个全局用来存放锁的哈希表（可以理解为锁池），对传入的对象地址的哈希值作为key，去查找对应的递归锁</li>
+<li><code>@synchronized</code> 额外还会设置异常处理机制，性能消耗较大</li>
+<li><code>@synchronized</code> 有单一的拥有者</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@synchronized</span>(lock) &#123;</span><br><span class="line">    <span class="comment">// 临界区...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="条件锁"><a href="#条件锁" class="headerlink" title="条件锁"></a>条件锁</h4><p>条件锁是一种特殊互斥锁，需要条件变量(condition variable) 来配合。条件变量有点像信号量，提供了线程阻塞与信号机制，因此可以用来阻塞某个线程，并等待某个数据就绪，随后唤醒线程。条件锁是为了解决 <code>生产者-消费者模型</code>。</p>
+<p><strong>pthread_mutex – 条件锁</strong></p>
+<p><code>pthread_mutex</code> 配合 <code>pthread_cond_t</code>，可以实现条件锁，其中 <code>pthread_cond_t</code> 没有拥有者。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化锁</span></span><br><span class="line">pthread_mutex_t mutex;</span><br><span class="line">pthread_mutex_init(&amp;mutex, &amp;<span class="literal">NULL</span>);</span><br><span class="line"><span class="comment">// 销毁属性</span></span><br><span class="line">pthread_mutexattr_destroy(&amp;attr);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化条件变量</span></span><br><span class="line">pthread_cond_t cond;</span><br><span class="line">pthread_cond_init(&amp;cond, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者</span></span><br><span class="line">- (<span class="keyword">void</span>)remove &#123;</span><br><span class="line">    <span class="comment">// 加锁</span></span><br><span class="line">    pthread_mutex_lock(&amp;mutex);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 先判断某个条件</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.data.count == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果不满足条件，则等待，具体是释放锁，用条件变量来阻塞当前线程</span></span><br><span class="line">        <span class="comment">// 当条件满足的时候，条件变量唤醒线程，再用原来的锁加锁</span></span><br><span class="line">        pthread_cond_wait(&amp;cond, &amp;mutex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="keyword">self</span>.data removeLastObject];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解锁</span></span><br><span class="line">    pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者</span></span><br><span class="line">- (<span class="keyword">void</span>)add</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 加锁</span></span><br><span class="line">    pthread_mutex_lock(&amp;mutex);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    [<span class="keyword">self</span>.data addObject:<span class="string">@"Test"</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 信号</span></span><br><span class="line">    <span class="comment">// 条件变量唤醒阻塞的线程</span></span><br><span class="line">    pthread_cond_signal(&amp;cond);</span><br><span class="line">    <span class="comment">// 广播</span></span><br><span class="line">    <span class="comment">// pthread_cond_broadcast(&amp;cond);</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 解锁</span></span><br><span class="line">    pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 销毁</span></span><br><span class="line">pthread_mutex_destroy(&amp;mutex);</span><br><span class="line">pthread_cond_destroy(&amp;cond);</span><br></pre></td></tr></table></figure>
+<p><strong>NSCondition</strong></p>
+<p><code>NSCondition</code> 是以 Objective-C 对象的形式对 <code>pthread_mutex</code> 和 <code>pthread_cond_t</code> 进行了封装，<code>NSCondition</code> 没有拥有者。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSCondition</span> *condition = [[<span class="built_in">NSCondition</span> alloc] init];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者</span></span><br><span class="line">- (<span class="keyword">void</span>)remove</span><br><span class="line">&#123;</span><br><span class="line">    [condition lock];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.data.count == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果不满足条件，则等待，具体是释放锁，用条件变量来阻塞当前线程</span></span><br><span class="line">        <span class="comment">// 当条件满足的时候，条件变量唤醒线程，再用原来的锁加锁</span></span><br><span class="line">        [condition wait];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.data removeLastObject];</span><br><span class="line">    </span><br><span class="line">    [condition unlock];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者</span></span><br><span class="line">- (<span class="keyword">void</span>)add</span><br><span class="line">&#123;</span><br><span class="line">    [condition lock];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.data addObject:<span class="string">@"Test"</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 信号</span></span><br><span class="line">    <span class="comment">// 条件变量唤醒阻塞的线程</span></span><br><span class="line">    [condition signal];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    [condition unlock];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>NSConditionLock</strong></p>
+<p><code>NSConditionLock</code> 是对 <code>NSCondition</code> 的进一步封装，可以设置条件变量的值。通过改变条件变量的值，可以使任务之间产生依赖关系，达到使任务按照一定的顺序执行，它有单一的拥有者(不确定)。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化设置条件变量的为1，如果不设置则默认为0</span></span><br><span class="line"><span class="built_in">NSConditionLock</span> *lock = [[<span class="built_in">NSConditionLock</span> alloc] initWithCondition:<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者</span></span><br><span class="line">- (<span class="keyword">void</span>)remove</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 当条件变量为2的时候加锁，否则等待</span></span><br><span class="line">    [lock lockWhenCondition:<span class="number">2</span>];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.data removeLastObject];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 直接解锁</span></span><br><span class="line">    [lock unlock];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者</span></span><br><span class="line">- (<span class="keyword">void</span>)add</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 直接加锁</span></span><br><span class="line">    [lock lock];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.data addObject:<span class="string">@"Test"</span>];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 解锁并让条件变量为2</span></span><br><span class="line">    [lock unlockWithCondition:<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h4><p>读写锁是一种特殊互斥锁，提供”多读单写”的功能，多个线程可以同时对共享资源进行读取，但是同一时间只能有一条线程对共享资源进行写入。</p>
+<p><strong>pthread_rwlock</strong></p>
+<p><code>pthread_rwlock</code> 有多个拥有者。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">pthread_rwlock_t lock = PTHREAD_RWLOCK_INITIALIZER;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 读操作</span></span><br><span class="line">- (<span class="keyword">void</span>)read &#123;</span><br><span class="line">    pthread_rwlock_rdlock(&amp;lock);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 临界区...</span></span><br><span class="line">  </span><br><span class="line">    pthread_rwlock_unlock(&amp;lock);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写操作</span></span><br><span class="line">- (<span class="keyword">void</span>)write</span><br><span class="line">&#123;</span><br><span class="line">    pthread_rwlock_wrlock(&amp;lock);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 临界区...</span></span><br><span class="line">    </span><br><span class="line">    pthread_rwlock_unlock(&amp;lock);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 销毁</span></span><br><span class="line">- (<span class="keyword">void</span>)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    pthread_rwlock_destroy(&amp;lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>GCD 的 Barrier函数</strong></p>
+<ul>
+<li><p>GCD 的 Barrier 函数也可以实现”多读单写”的功能</p>
+</li>
+<li><p>Barrier 函数的作用是：等其他任务执行完毕，才会执行任务自己的任务；会执行完毕自己的任务，才会继续执行其他任务</p>
+</li>
+<li><p>这个函数传入的并发队列必须是自己通过 <code>dispatch_queue_cretate</code> 创建的，如果传入的是一个串行或是一个全局的并发队列，那这个函数便等同于 dispatch_async 函数的效果</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(<span class="string">"rw_queue"</span>, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, ^&#123;</span><br><span class="line">    <span class="comment">// 读</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, ^&#123;</span><br><span class="line">    <span class="comment">// 读</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dispatch_barrier_async(queue, ^&#123;</span><br><span class="line">    <span class="comment">// 写</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>(queue, ^&#123;</span><br><span class="line">    <span class="comment">// 读</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>总结：</p>
+<ul>
+<li><code>OSSpinLock</code> 和 <code>os_unfair_lock</code> 性能很高，但是一个是已经废弃，一个是低级锁，苹果不建议使用低级锁</li>
+<li><code>dispatch_semaphore</code> 和 <code>pthread_mutex</code> 也具有不错的性能，<code>NSLock</code> 是 <code>pthread_mutex</code> 的封装，性能上接近</li>
+<li>个人建议在 Objective-C 中直接使用面向对象的 <code>NSLock</code>，而在 Swif t中使用 <code>GCD 串行队列</code></li>
+</ul>
+<h4 id="除了单例，观察者设计模式以外，还知道哪些设计模式？分别介绍一下"><a href="#除了单例，观察者设计模式以外，还知道哪些设计模式？分别介绍一下" class="headerlink" title="除了单例，观察者设计模式以外，还知道哪些设计模式？分别介绍一下"></a>除了单例，观察者设计模式以外，还知道哪些设计模式？分别介绍一下</h4><p>工厂模式：定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到子类。</p>
+<p>装饰器模式：不改变原有对象的前提下，动态地给一个对象增加一些额外的功能。</p>
+<p>代理模式：为某个对象提供一个代理，并由这个代理对象控制对原对象的访问。</p>
+<p>命令模式：将一个请求封装为一个对象，从而让我们可用不同的请求对客户进行参数化，或者说如何将“行为请求者”与“行为实现者”解耦？将一组行为抽象为对象，实现二者之间的松耦合。</p>
+<p>享元模式：主要用于减少同一类对象的大量创建,以减少内存占用,提高项目流畅度。在享元模式中有两个重要的概念，即内部状态和外部状态：</p>
+<ul>
+<li>内部状态：在享元对象内部不随外界环境改变而改变的共享部分</li>
+<li>外部状态：随着环境的改变而改变，不能够共享的状态就是外部状态</li>
+</ul>
+<h3 id="最喜欢哪个设计模式？为什么？"><a href="#最喜欢哪个设计模式？为什么？" class="headerlink" title="最喜欢哪个设计模式？为什么？"></a>最喜欢哪个设计模式？为什么？</h3><p>iOS中最常见用到的设计模式便是代理模式。但要说最喜欢的还是装饰器模式。整个模式非常灵活，它将各种能力抽象出来，当某个对象需要某种能力时，只需要简单集成就可以，非常清晰。</p>
+<h3 id="iOS-SDK-里面有哪些设计模式的实践？"><a href="#iOS-SDK-里面有哪些设计模式的实践？" class="headerlink" title="iOS SDK 里面有哪些设计模式的实践？"></a>iOS SDK 里面有哪些设计模式的实践？</h3><p>代理模式：delegate</p>
+<p>工厂模式：NSNumber</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSNumber</span> *)numberWithInt:(<span class="keyword">int</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span> *)numberWithBool:(<span class="built_in">BOOL</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span> *)numberWithFloat:(<span class="keyword">float</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span> *)numberWithDouble:(<span class="keyword">double</span>)value;</span><br></pre></td></tr></table></figure>
+<p>装饰器模式：Catagory</p>
+<p>观察者模式：KVO</p>
+<p>单例模式：dispatch_once</p>
+<p>享元模式：UITableViewCell 重用</p>
+<h3 id="设计模式是为了解决什么问题的？"><a href="#设计模式是为了解决什么问题的？" class="headerlink" title="设计模式是为了解决什么问题的？"></a>设计模式是为了解决什么问题的？</h3><p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码百设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被度他人理解、保证代码可靠性。<br>设计模式最主要解决的问题是通过封装和隔离变化点来处理软件的各种变化问题。<br>隔离变化的好处在于，将问系统中经常变化的部分和稳定的部分隔离，有助于增加复用性，并降低系统耦合度。很多设计模答式的意图中都明显地版指出了其对问题的解决方案，学习设计模式的要点是发现其解决方案中封装的变化点。</p>
+<h3 id="MVC和MVVM的区别？MVVM和MVP的区别？"><a href="#MVC和MVVM的区别？MVVM和MVP的区别？" class="headerlink" title="MVC和MVVM的区别？MVVM和MVP的区别？"></a>MVC和MVVM的区别？MVVM和MVP的区别？</h3><p><strong>MVC</strong>主要的贡献在于对软件整体进行分层。主要分为三层，Model，View，Controller。View直接通过读取Model进行显示。</p>
+<p><strong>MVP</strong>由MVC演化过来，相通的地方Controller/Presenter负责逻辑的处理，Model提供数据，View负责显示。主要的区别在于View不直接使用Model，它们之间通信是通过Presenter进行的。</p>
+<p><strong>MVVM</strong>将View的状态和行为抽象化，</p>
+<h3 id="面向对象的几个设计原则了解么？最好可以结合场景来说。"><a href="#面向对象的几个设计原则了解么？最好可以结合场景来说。" class="headerlink" title="面向对象的几个设计原则了解么？最好可以结合场景来说。"></a>面向对象的几个设计原则了解么？最好可以结合场景来说。</h3><p><strong>开闭原则（Open Close Principle）</strong>：个软件实体如类、模块和函数应该对扩展开放，对修改关闭。</p>
+<ul>
+<li>用抽象构建框架，用实现扩展细节。</li>
+<li>不以改动原有类的方式来实现新需求，而是应该以实现事先抽象出来的接口（或具体类继承抽象类）的方式来实现。</li>
+</ul>
+<p><strong>单一职责原则（Single Responsibility Principle）</strong>：一个类只允许有一个职责，即只有一个导致该类变更的原因。</p>
+<p><strong>依赖倒置原则（Dependency Inversion Principle）</strong></p>
+<ul>
+<li>依赖抽象，而不是依赖实现。</li>
+<li>抽象不应该依赖细节；细节应该依赖抽象。</li>
+<li>高层模块不能依赖低层模块，二者都应该依赖抽象。</li>
+</ul>
+<p><strong>接口分离原则（Interface Segregation Principle）</strong>：多个特定的客户端接口要好于一个通用性的总接口。</p>
+<ul>
+<li>客户端不应该依赖它不需要实现的接口。</li>
+<li>不建立庞大臃肿的接口，应尽量细化接口，接口中的方法应该尽量少。</li>
+</ul>
+<p><strong>迪米特法则（Law of Demeter）</strong>：一个对象应该对尽可能少的对象有接触，也就是只接触那些真正需要接触的对象。</p>
+<ul>
+<li>一个对象应该对尽可能少的对象有接触，也就是只接触那些真正需要接触的对象。</li>
+</ul>
+<p><strong>里氏替换原则（Liskov Substitution Principle）</strong>：所有引用基类的地方必须能透明地使用其子类的对象，也就是说子类对象可以替换其父类对象，而程序执行效果不变。</p>
+<p>在继承体系中，子类中可以增加自己特有的方法，也可以实现父类的抽象方法，但是不能重写父类的非抽象方法，否则该继承关系就不是一个正确的继承关系。</p>
+<h3 id="可以说几个重构的技巧么？你觉得重构适合什么时候来做？"><a href="#可以说几个重构的技巧么？你觉得重构适合什么时候来做？" class="headerlink" title="可以说几个重构的技巧么？你觉得重构适合什么时候来做？"></a>可以说几个重构的技巧么？你觉得重构适合什么时候来做？</h3><h3 id="你觉得框架和设计模式的区别是什么？"><a href="#你觉得框架和设计模式的区别是什么？" class="headerlink" title="你觉得框架和设计模式的区别是什么？"></a>你觉得框架和设计模式的区别是什么？</h3><h3 id="看过哪些第三方框架的源码，它们是怎么设计的？设计好的地方在哪里，不好的地方在哪里，如何改进？"><a href="#看过哪些第三方框架的源码，它们是怎么设计的？设计好的地方在哪里，不好的地方在哪里，如何改进？" class="headerlink" title="看过哪些第三方框架的源码，它们是怎么设计的？设计好的地方在哪里，不好的地方在哪里，如何改进？"></a>看过哪些第三方框架的源码，它们是怎么设计的？设计好的地方在哪里，不好的地方在哪里，如何改进？</h3><h3 id="链表和数组的区别是什么？插入和查询的时间复杂度分别是多少？"><a href="#链表和数组的区别是什么？插入和查询的时间复杂度分别是多少？" class="headerlink" title="链表和数组的区别是什么？插入和查询的时间复杂度分别是多少？"></a>链表和数组的区别是什么？插入和查询的时间复杂度分别是多少？</h3><p><strong>链表</strong></p>
+<ul>
+<li>可以在内存的任何地方，不要求连续</li>
+<li>每个数据中保存了下一个数据的内存地址</li>
+<li>插入快 O(1)  查询慢O(n) 删除O(1)</li>
+</ul>
+<p><strong>数组</strong></p>
+<ul>
+<li>是一块连续的内存</li>
+<li>需要预留空间，使用前需要申请空间</li>
+<li>插入慢O(n) 查询快O(1) 删除O(1)</li>
+</ul>
+<h3 id="哈希表是如何实现的？如何解决地址冲突？"><a href="#哈希表是如何实现的？如何解决地址冲突？" class="headerlink" title="哈希表是如何实现的？如何解决地址冲突？"></a>哈希表是如何实现的？如何解决地址冲突？</h3><p>哈希表（<code>hash table</code>，也叫散列表），是根据键（<code>key</code>）直接访问访问在内存储存位置的数据结构。 哈希表本质是一个数组，数组中的每一个元素成为一个箱子，箱子中存放的是键值对。根据下标<code>index</code>从数组中取<code>value</code>。关键是如何获取<code>index</code>，这就需要一个固定的函数（哈希函数），将<code>key</code>转换成<code>index</code>。不论哈希函数设计的如何完美，都可能出现不同的<code>key</code>经过<code>hash</code>处理后得到相同的<code>hash</code>值，这时候就需要处理哈希冲突。</p>
+<p><strong>拉链法</strong></p>
+<p>简单来说就是 <strong>数组</strong> + <strong>链表</strong> 。将键通过hash函数映射为大小为M的数组的下标索引，数组的每一个元素指向一个链表，链表中的每一个结点存储着hash出来的索引值为结点下标的键值对。</p>
+<ol>
+<li><p><strong>拉链法</strong>处理冲突简单，且无堆积现象，即非同义词决不会发生冲突，因此平均查找长度较短；</p>
+</li>
+<li><p>由于<strong>拉链法</strong>中各链表上的结点空间是动态申请的，故它更适合于造表前无法确定表长的情况；</p>
+</li>
+<li><p><strong>开放定址线性探测发</strong>为减少冲突，要求装填因子α较小，故当结点规模较大时会浪费很多空间。而<strong>拉链法</strong>中可取α≥1，且结点较大时，<strong>拉链法</strong>中增加的指针域可忽略不计，因此节省空间；</p>
+</li>
+<li><p>在用<strong>拉链法</strong>构造的散列表中，删除结点的操作易于实现。只要简单地删去链表上相应的结点即可。而对<strong>开放定址线性探测发</strong>构造的散列表，删除结点不能简单地将被删结 点的空间置为空，否则将截断在它之后填人散列表的同义词结点的查找路径。这是因为各种<strong>开放定址线性探测发</strong>中，空地址单元(即开放地址)都是查找失败的条件。因此在用<strong>开放定址线性探测发</strong>处理冲突的散列表上执行删除操作，只能在被删结点上做删除标记，而不能真正删除结点。</p>
+</li>
+<li><p>指针需要额外的空间，故当结点规模较小时，<strong>开放定址线性探测发</strong>较为节省空间，而若将节省的指针空间用来扩大散列表的规模，可使装填因子变小，这又减少了<strong>开放定址线性探测发</strong>中的冲突，从而提高平均查找速度。</p>
+</li>
+</ol>
+<p><strong>开放定址线性探测法</strong></p>
+<p>使用两个大小为N的数组（一个存放keys，另一个存放values）。使用数组中的空位解决碰撞，当碰撞发生时（即一个键的hash值对应数组的下标被另外一个键占用）直接将下标索引加一（<code>index += 1</code>）。</p>
+<ol>
+<li><p>容易产生堆积问题；</p>
+</li>
+<li><p>不适于大规模的数据存储；</p>
+</li>
+<li>散列函数的设计对冲突会有很大的影响；</li>
+<li>插入时可能会出现多次冲突的现象，删除的元素是多个冲突元素中的一个，需要对后面的元素作处理，实现较复杂；</li>
+<li>结点规模很大时会浪费很多空间；</li>
+</ol>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://wrapperss.github.io">Wrappers</a>
+            <p>原文链接：<a href="https://wrapperss.github.io/2021/06/09/Interview-Questions/">https://wrapperss.github.io/2021/06/09/Interview-Questions/</a>
+            <p>发表日期：<a href="https://wrapperss.github.io/2021/06/09/Interview-Questions/">June 9th 2021, 10:40:36 pm</a>
+            <p>更新日期：<a href="https://wrapperss.github.io/2021/06/09/Interview-Questions/">June 9th 2021, 10:44:09 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/06/09/CocoaPods相关/" title= "CocoaPods相关">
+                    <div class="prevTitle">CocoaPods相关</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC80MTM1My8xNzkwMA==>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:wrappers@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Wrapperss" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/wechat.jpeg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？"><span class="toc-number">1.</span> <span class="toc-text">分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#讲一下atomic的实现机制；为什么不能保证绝对的线程安全（最好可以结合场景来说）？"><span class="toc-number">2.</span> <span class="toc-text">讲一下atomic的实现机制；为什么不能保证绝对的线程安全（最好可以结合场景来说）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#被weak修饰的对象在被释放的时候会发生什么？是如何实现的？知道sideTable么？里面的结构可以画出来么？"><span class="toc-number">3.</span> <span class="toc-text">被weak修饰的对象在被释放的时候会发生什么？是如何实现的？知道sideTable么？里面的结构可以画出来么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关联对象有什么应用，系统如何管理关联对象？其被释放的时候需要手动将所有的关联对象的指针置空么？"><span class="toc-number">4.</span> <span class="toc-text">关联对象有什么应用，系统如何管理关联对象？其被释放的时候需要手动将所有的关联对象的指针置空么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KVO的底层实现？如何取消系统默认的KVO并手动触发（给KVO的触发设定条件：改变的值符合某个条件时再触发KVO）？"><span class="toc-number">5.</span> <span class="toc-text">KVO的底层实现？如何取消系统默认的KVO并手动触发（给KVO的触发设定条件：改变的值符合某个条件时再触发KVO）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoreleasePool所使用的数据结构是什么？AutoreleasePoolPage结构体了解么？"><span class="toc-number">6.</span> <span class="toc-text">AutoreleasePool所使用的数据结构是什么？AutoreleasePoolPage结构体了解么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#讲一下对象，类对象，元类，跟元类结构体的组成以及他们是如何相关联的？为什么对象方法没有保存的对象结构体里，而是保存在类对象的结构体里？"><span class="toc-number">7.</span> <span class="toc-text">讲一下对象，类对象，元类，跟元类结构体的组成以及他们是如何相关联的？为什么对象方法没有保存的对象结构体里，而是保存在类对象的结构体里？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-ro-t-和-class-rw-t-的区别？"><span class="toc-number">8.</span> <span class="toc-text">class_ro_t 和  class_rw_t 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-中内省的几个方法？class方法和objc-getClass方法有什么区别"><span class="toc-number">9.</span> <span class="toc-text">iOS 中内省的几个方法？class方法和objc_getClass方法有什么区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在运行时创建类的方法objc-allocateClassPair的方法名尾部为什么是pair（成对的意思）？"><span class="toc-number">10.</span> <span class="toc-text">在运行时创建类的方法objc_allocateClassPair的方法名尾部为什么是pair（成对的意思）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个int变量被-block修饰与否的区别？"><span class="toc-number">11.</span> <span class="toc-text">一个int变量被__block修饰与否的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么在block外部使用-weak修饰的同时需要在内部使用-strong修饰？"><span class="toc-number">12.</span> <span class="toc-text">为什么在block外部使用__weak修饰的同时需要在内部使用__strong修饰？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RunLoop的作用是什么？它的内部工作机制了解么？（最好结合线程和内存管理来说）"><span class="toc-number">13.</span> <span class="toc-text">RunLoop的作用是什么？它的内部工作机制了解么？（最好结合线程和内存管理来说）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哪些场景可以触发离屏渲染？（知道多少说多少）"><span class="toc-number">14.</span> <span class="toc-text">哪些场景可以触发离屏渲染？（知道多少说多少）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#了解编译的过程么？分为哪几个步骤？"><span class="toc-number">15.</span> <span class="toc-text">了解编译的过程么？分为哪几个步骤？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#App启动的过程"><span class="toc-number">16.</span> <span class="toc-text">App启动的过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态链接了解么？静态库和动态库的区别？"><span class="toc-number">17.</span> <span class="toc-text">静态链接了解么？静态库和动态库的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存的几大区域，各自的职能分别是什么？"><span class="toc-number">18.</span> <span class="toc-text">内存的几大区域，各自的职能分别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static和const有什么区别？"><span class="toc-number">19.</span> <span class="toc-text">static和const有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#了解内联函数么？"><span class="toc-number">20.</span> <span class="toc-text">了解内联函数么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么时候会出现死锁？如何避免？"><span class="toc-number">21.</span> <span class="toc-text">什么时候会出现死锁？如何避免？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说一说你对线程安全的理解？"><span class="toc-number">22.</span> <span class="toc-text">说一说你对线程安全的理解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列举你知道的线程同步策略？"><span class="toc-number">23.</span> <span class="toc-text">列举你知道的线程同步策略？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有哪几种锁？各自的原理？它们之间的区别是什么？最好可以结合使用场景来说"><span class="toc-number">24.</span> <span class="toc-text">有哪几种锁？各自的原理？它们之间的区别是什么？最好可以结合使用场景来说</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#互斥锁"><span class="toc-number">24.1.</span> <span class="toc-text">互斥锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#递归锁"><span class="toc-number">24.2.</span> <span class="toc-text">递归锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#条件锁"><span class="toc-number">24.3.</span> <span class="toc-text">条件锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#读写锁"><span class="toc-number">24.4.</span> <span class="toc-text">读写锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#除了单例，观察者设计模式以外，还知道哪些设计模式？分别介绍一下"><span class="toc-number">24.5.</span> <span class="toc-text">除了单例，观察者设计模式以外，还知道哪些设计模式？分别介绍一下</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最喜欢哪个设计模式？为什么？"><span class="toc-number">25.</span> <span class="toc-text">最喜欢哪个设计模式？为什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-SDK-里面有哪些设计模式的实践？"><span class="toc-number">26.</span> <span class="toc-text">iOS SDK 里面有哪些设计模式的实践？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计模式是为了解决什么问题的？"><span class="toc-number">27.</span> <span class="toc-text">设计模式是为了解决什么问题的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC和MVVM的区别？MVVM和MVP的区别？"><span class="toc-number">28.</span> <span class="toc-text">MVC和MVVM的区别？MVVM和MVP的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象的几个设计原则了解么？最好可以结合场景来说。"><span class="toc-number">29.</span> <span class="toc-text">面向对象的几个设计原则了解么？最好可以结合场景来说。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以说几个重构的技巧么？你觉得重构适合什么时候来做？"><span class="toc-number">30.</span> <span class="toc-text">可以说几个重构的技巧么？你觉得重构适合什么时候来做？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你觉得框架和设计模式的区别是什么？"><span class="toc-number">31.</span> <span class="toc-text">你觉得框架和设计模式的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#看过哪些第三方框架的源码，它们是怎么设计的？设计好的地方在哪里，不好的地方在哪里，如何改进？"><span class="toc-number">32.</span> <span class="toc-text">看过哪些第三方框架的源码，它们是怎么设计的？设计好的地方在哪里，不好的地方在哪里，如何改进？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链表和数组的区别是什么？插入和查询的时间复杂度分别是多少？"><span class="toc-number">33.</span> <span class="toc-text">链表和数组的区别是什么？插入和查询的时间复杂度分别是多少？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哈希表是如何实现的？如何解决地址冲突？"><span class="toc-number">34.</span> <span class="toc-text">哈希表是如何实现的？如何解决地址冲突？</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 42
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2021/06/09/CocoaPods相关/" >CocoaPods相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2021/06/09/Interview-Questions/" >Interview Questions</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/Flutter-面试题/" >Flutter 面试题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之URL-Route/" >组件化之 URL Route</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/Flutter-原理/" >Flutter 原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href= "/2020/06/12/CocoaPods/" >CocoaPods</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/AB-测试/" >AB 测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/GUI-框架/" >GUI 框架</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Runtime-Method-Swizzling/" >Runtime Method Swizzling</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/iOS中面向测试开发和面向行为驱动开发/" >iOS中面向测试开发和面向行为驱动开发</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/iOS系统内核XNU/" >iOS系统内核XNU</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/响应式框架的变迁/" >响应式框架的变迁</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/应对富文本需求/" >应对富文本需求</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/构建底层的发布和订阅事件总线/" >构建底层的发布和订阅事件总线</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Flexbox布局/" >Flexbox布局</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2020/02/01/使用多线程技术带来的问题/" >使用多线程技术带来的问题</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/iOS-Tips/" >iOS Tips</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/利用-Runloop-监控卡顿/" >利用 Runloop 监控卡顿</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2019/11/03/奔溃监控/" >奔溃监控</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/埋点/" >埋点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/架构设计/" >架构设计</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/网络知识/" >网络知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2019/05/11/解析UIKit/" >解析 UIKit</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/09</span><a class="archive-post-title" href= "/2019/05/09/Runloop的理解/" >Runloop 的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/09</span><a class="archive-post-title" href= "/2019/05/09/iOS中关于Weak的故事/" >iOS 中关于 weak 的故事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2019/04/15/iOS知识补齐-多线程/" >iOS 知识补齐-多线程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2019/02/28/My-Mac-App-List/" >My Mac App List</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2019/02/21/算法/" >算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/2019/02/11/Wrappers-Swift-Style-Guide/" >Wrappers' Swift Style Guide</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/2019/02/11/iOS知识补齐-Runtime/" >iOS 知识补齐-Runtime</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span><a class="archive-post-title" href= "/2019/01/25/组件化第一步，创建私有Pod/" >组件化第一步，创建私有 Pod</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href= "/2019/01/03/2019-Target/" >2019 Target</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/18</span><a class="archive-post-title" href= "/2018/12/18/利用Sourcery，进一步优化Model层，减少模板代码/" >利用 Sourcery，进一步优化 Model 层，减少模板代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2018/11/29/iOS面试题/" >iOS 面试题</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="target"><span class="iconfont-archer">&#xe606;</span>target</span>
+    
+        <span class="sidebar-tag-name" data-tags="iOS"><span class="iconfont-archer">&#xe606;</span>iOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Flutter"><span class="iconfont-archer">&#xe606;</span>Flutter</span>
+    
+        <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
+    
+        <span class="sidebar-tag-name" data-tags="Swift"><span class="iconfont-archer">&#xe606;</span>Swift</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Wrappers"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

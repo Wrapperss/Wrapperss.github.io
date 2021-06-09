@@ -371,6 +371,71 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/06/09/Interview-Questions/" >
+            
+                <span>Interview Questions</span>
+        </a>
+        <div class="abstract-content">
+            分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？分类
+通常用于将一个功能强大臃肿的类，分布在几个不同的文件。
+只能增加方法，不能增加成员（实例）变量。
+123456789Category 是表示一个指向分类的结构体的指针，其定义如下：typedef struct objc_category *Category;struct objc_category &#123;  char *category_name                          OBJC2_UNAVAILABLE; // 分类名  char *class_name    ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/06/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/06/09/CocoaPods相关/" >
+            
+                <span>CocoaPods相关</span>
+        </a>
+        <div class="abstract-content">
+            摘自这里
+Version Control System (VCS)
+Version control systems are a category of software tools that help a software team manage changes to source code over time. Version control software keeps track of every modification to the code in a special kind of database.
+
+软件工程中，版本控制系统是敏捷开发的重要一环，为后续的持续集成提供了保障...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/06/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/10/05/组件化之URL-Route/" >
             
                 <span>组件化之 URL Route</span>
@@ -629,71 +694,10 @@ fulfilled 表示Pro...
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/AB-测试/" >
-            
-                <span>AB 测试</span>
-        </a>
-        <div class="abstract-content">
-            A/B 测试 也叫桶测试或分流测试，指的是针对一个变量的两个版本A和B，来测试用户的不同反应，从而判断出哪个版本更有效，类似统计学领域使用的双样本假设测试。A/B测试是以数据驱动的可回退的灰度方案，客观，安全，风险小，是一种成熟的试错机制。
-全景设计
-策略服务，为策略定制者提供策略
-A/B测试SDK，集成在客户端内，用来处理上层业务去走不同的策略
-日志系统，负责反馈策略结果供分析人员分析不同策略执行的结果
-
-
-A/B测试SDK生效机制分为冷启动生效和热启动生效。热启动落实策略要及时些，但考虑到一个策略可能关联到多个页面或者多个功能，冷启动可以保持策略整体一致性。
-如果一个策略只在一个地方...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/JSON相关/" >
-            
-                <span>JSON相关</span>
-        </a>
-        <div class="abstract-content">
-            JSON相关JSON，是JavaScript Object Notation的缩写。
-JSON基于两种结构：
-
-名字/值对集合：这种结构在其他编程语言里被实现为对象，字典，Hash表，结构体或关联数组
-有序值列表：这种结构在其他编程语言里被实现为数组，向量，列表或序列
-
-解析JSON123let jsonData = jsonString.data(using: .utf8)!let decoder = JSONDecoder()let jsonModel = try! decoder.decode(H5Editor.self, from: jsonData)
-1234567891011...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">NEXT ></a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">NEXT ></a>
     </nav>
     
 </main>
@@ -1399,9 +1403,39 @@ JSON基于两种结构：
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 40
+        Total : 42
         </div>
         <!-- search  -->
         
@@ -1411,6 +1445,25 @@ JSON基于两种结构：
     
     
     
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2021/06/09/CocoaPods相关/" >CocoaPods相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2021/06/09/Interview-Questions/" >Interview Questions</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
@@ -1422,12 +1475,12 @@ JSON基于两种结构：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
         </li>
     
     
@@ -1457,12 +1510,12 @@ JSON基于两种结构：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
@@ -1541,22 +1594,22 @@ JSON基于两种结构：
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     

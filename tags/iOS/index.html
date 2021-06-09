@@ -358,6 +358,71 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/06/09/Interview-Questions/" >
+            
+                <span>Interview Questions</span>
+        </a>
+        <div class="abstract-content">
+            分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？分类
+通常用于将一个功能强大臃肿的类，分布在几个不同的文件。
+只能增加方法，不能增加成员（实例）变量。
+123456789Category 是表示一个指向分类的结构体的指针，其定义如下：typedef struct objc_category *Category;struct objc_category &#123;  char *category_name                          OBJC2_UNAVAILABLE; // 分类名  char *class_name    ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/06/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/06/09/CocoaPods相关/" >
+            
+                <span>CocoaPods相关</span>
+        </a>
+        <div class="abstract-content">
+            摘自这里
+Version Control System (VCS)
+Version control systems are a category of software tools that help a software team manage changes to source code over time. Version control software keeps track of every modification to the code in a special kind of database.
+
+软件工程中，版本控制系统是敏捷开发的重要一环，为后续的持续集成提供了保障...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/06/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/10/05/组件化之URL-Route/" >
             
                 <span>组件化之 URL Route</span>
@@ -614,79 +679,6 @@ LLVM 对代码进行词法分析和语法分析，生成AST。AST 是抽象语�
 AST 生成 IR，IR 是一种更接近机器码的语言，区别在于和平台无关。通过 IR 可以生成多份适合不同平台的机器码。对于 iOS 系统，IR 生成的可执行文件就是 Mach-O。
 
 Mach-OMach-O 文件里的内容，主要就是代码和数据：代码是函数的定义，数据是全局变量的定义，包括全局变量...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/26/埋点/" >
-            
-                <span>埋点</span>
-        </a>
-        <div class="abstract-content">
-            iOS 埋点主要分为三种：
-
-代码埋点：通过手写代码进行埋点，能够很精确的在需要埋点的代码处加上埋点的代码，具有很强的灵活性。但存在开发工作量大，埋点代码到处都是，后期难以维护但问题。
-可视化埋点：将埋点的增加修改的工作可视化了，提高了增加和维护埋点的体验。
-无埋点：全埋点，埋点代码不会出现在业务代码中，很容易维护和管理。缺点在于，埋点成本高，后期的解析也比较复杂，view_path的不确定性。这种方案不能解决所有的埋点需求，但对于大量通用的埋点需求来说，能够节省大量的开发和维护成本。
-
-利用运行时替换方法进行埋点先写一个替换方法的类：12345678910111213141516171...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/26/静态分析/" >
-            
-                <span>静态分析</span>
-        </a>
-        <div class="abstract-content">
-            静态分析工具SwiftLint，OCLint, Clang, Infer
-ClangClang 是 C，C++，Objective-C 的编译前端。Swift 有自己的编译前端： SL optimizer。  
-Clang 会对代码进行词法分析，将代码切分成 Token用以下命令可以查看：clang -fmodules -E -Xclang -dump-tokens main.m可以把 Token 分为四类：
-
-关键字：语法中的关键字，比如 if，else，while 等
-标识符：变量名
-字面值：值，数字，字符串
-特殊符号：加减乘除等符号
-
-语法分析将输出的 Token 按照语法组合语义...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1335,9 +1327,39 @@ Clang 会对代码进行词法分析，将代码切分成 Token用以下命令�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 40
+        Total : 42
         </div>
         <!-- search  -->
         
@@ -1347,6 +1369,25 @@ Clang 会对代码进行词法分析，将代码切分成 Token用以下命令�
     
     
     
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2021/06/09/CocoaPods相关/" >CocoaPods相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2021/06/09/Interview-Questions/" >Interview Questions</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
@@ -1358,12 +1399,12 @@ Clang 会对代码进行词法分析，将代码切分成 Token用以下命令�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Protocol匹配/" >组件化之 Protocol 匹配</a>
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2020/10/05/组件化之Target-Action/" >组件化之 Target-Action</a>
         </li>
     
     
@@ -1393,12 +1434,12 @@ Clang 会对代码进行词法分析，将代码切分成 Token用以下命令�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Lottie/" >Lottie</a>
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/JSON相关/" >JSON相关</a>
         </li>
     
     
@@ -1477,22 +1518,22 @@ Clang 会对代码进行词法分析，将代码切分成 Token用以下命令�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/静态分析/" >静态分析</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2019/10/26/链接器/" >链接器</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/App启动速度优化/" >App启动速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span><a class="archive-post-title" href= "/2019/09/15/Auto-Layout相关/" >Auto Layout相关</a>
         </li>
     
     

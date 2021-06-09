@@ -20,24 +20,21 @@
     <meta name="keywords" content="Wrappres,hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="it's better to burn out than to fade away">
-    <meta name="description" content="构建底层的发布和订阅事件总线事件总线是对发布和订阅设计模式的一种实现，通过发布，订阅可以将组件间一对一和一对多的耦合关系解开。 一对一：delegate和block，两者只适合做一对一数据传递，局限性较大 一对多：KVO和NSNotificationCenter，两者过于灵活而无法管控和维护 Promise一种专门针对异步数据操作编写的一套统一规则的漠视。本质是通过Promise对象保存异步数据操">
+    <meta name="description" content="it&apos;s better to burn out than to fade away">
 <meta name="keywords" content="Wrappers">
-<meta property="og:type" content="article">
-<meta property="og:title" content="构建底层的发布和订阅事件总线">
-<meta property="og:url" content="https://wrapperss.github.io/2020/02/16/构建底层的发布和订阅事件总线/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wrappers&#39; Studio">
+<meta property="og:url" content="https://wrapperss.github.io/archives/2021/index.html">
 <meta property="og:site_name" content="Wrappers&#39; Studio">
-<meta property="og:description" content="构建底层的发布和订阅事件总线事件总线是对发布和订阅设计模式的一种实现，通过发布，订阅可以将组件间一对一和一对多的耦合关系解开。 一对一：delegate和block，两者只适合做一对一数据传递，局限性较大 一对多：KVO和NSNotificationCenter，两者过于灵活而无法管控和维护 Promise一种专门针对异步数据操作编写的一套统一规则的漠视。本质是通过Promise对象保存异步数据操">
+<meta property="og:description" content="it&apos;s better to burn out than to fade away">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://static001.geekbang.org/resource/image/99/c9/999e30f1245495434e8d39186d70c5c9.png">
-<meta property="og:updated_time" content="2020-02-16T05:09:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="构建底层的发布和订阅事件总线">
-<meta name="twitter:description" content="构建底层的发布和订阅事件总线事件总线是对发布和订阅设计模式的一种实现，通过发布，订阅可以将组件间一对一和一对多的耦合关系解开。 一对一：delegate和block，两者只适合做一对一数据传递，局限性较大 一对多：KVO和NSNotificationCenter，两者过于灵活而无法管控和维护 Promise一种专门针对异步数据操作编写的一套统一规则的漠视。本质是通过Promise对象保存异步数据操">
-<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/99/c9/999e30f1245495434e8d39186d70c5c9.png">
+<meta name="twitter:title" content="Wrappers&#39; Studio">
+<meta name="twitter:description" content="it&apos;s better to burn out than to fade away">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>构建底层的发布和订阅事件总线 · Wrappres</title>
+    <title>Wrappres</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -218,23 +215,12 @@
 </head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Wrappres&#39; Studio.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">构建底层的发布和订阅事件总线</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Wrappres' Studio.</a>
 </header>
@@ -246,68 +232,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            构建底层的发布和订阅事件总线
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">405</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/02/16</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -408,86 +350,75 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <h1 id="构建底层的发布和订阅事件总线"><a href="#构建底层的发布和订阅事件总线" class="headerlink" title="构建底层的发布和订阅事件总线"></a>构建底层的发布和订阅事件总线</h1><h2 id="事件总线"><a href="#事件总线" class="headerlink" title="事件总线"></a>事件总线</h2><p>是对发布和订阅设计模式的一种实现，通过发布，订阅可以将组件间一对一和一对多的耦合关系解开。</p>
-<p>一对一：delegate和block，两者只适合做一对一数据传递，局限性较大</p>
-<p>一对多：KVO和NSNotificationCenter，两者过于灵活而无法管控和维护</p>
-<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>一种专门针对异步数据操作编写的一套统一规则的漠视。本质是通过Promise对象保存异步数据操作，同时Promise对象提供统一的异步数据操作事件处理的接口。</p>
-<p><strong>Promise对象的三种状态</strong></p>
-<ul>
-<li>pending 表示Promise对象当前正在等待异步事件处理中</li>
-<li>fulfilled 表示Promise对象当前处理的异步事件已经成功完成</li>
-<li>rejected 表示Promise对象当前处理的异步事件没有成功</li>
-</ul>
-<p><strong>Promise对象的方法</strong></p>
-<p>then 和 catch，执行完后回返回先前的Promise对象，同时根据异步操作结果改变Promise对象的状态。</p>
-<p><img src="https://static001.geekbang.org/resource/image/99/c9/999e30f1245495434e8d39186d70c5c9.png" alt="img"></p>
-<p>then方法就是事件总线中的发布操作，then方法执行完返回Promise对象能够继续同步执行多个then方法，由此实现了一个发布操作对应多个订阅事件。</p>
-<h2 id="PromiseKit"><a href="#PromiseKit" class="headerlink" title="PromiseKit"></a>PromiseKit</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">firstly &#123;</span><br><span class="line">    <span class="comment">// 异步获取当前用户信息</span></span><br><span class="line">    fetchUserInfo()</span><br><span class="line">&#125;.then &#123; userInfo <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// 使用异步获取到的用户信息中的 uid 再去异步获取用户的 timeline</span></span><br><span class="line">    fetchUserTimeline(uid: userInfo.uid)</span><br><span class="line">&#125;.then &#123; timeline <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// 记录 timeline</span></span><br><span class="line">    <span class="keyword">self</span>.timeline = timeline</span><br><span class="line">&#125;.<span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">// 整个方法链的错误都会在这处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    </article>
-    <!-- license  -->
+            <main class="main index-page">
     
-        <div class="license-wrapper">
-            <p>原文作者：<a href="https://wrapperss.github.io">Wrappers</a>
-            <p>原文链接：<a href="https://wrapperss.github.io/2020/02/16/构建底层的发布和订阅事件总线/">https://wrapperss.github.io/2020/02/16/构建底层的发布和订阅事件总线/</a>
-            <p>发表日期：<a href="https://wrapperss.github.io/2020/02/16/构建底层的发布和订阅事件总线/">February 16th 2020, 1:09:10 pm</a>
-            <p>更新日期：<a href="https://wrapperss.github.io/2020/02/16/构建底层的发布和订阅事件总线/">February 16th 2020, 1:09:36 pm</a>
-            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/06/09/Interview-Questions/" >
+            
+                <span>Interview Questions</span>
+        </a>
+        <div class="abstract-content">
+            分类和扩展有什么区别？可以分别用来做什么？分类有哪些局限性？分类的结构体里面有哪些成员？分类
+通常用于将一个功能强大臃肿的类，分布在几个不同的文件。
+只能增加方法，不能增加成员（实例）变量。
+123456789Category 是表示一个指向分类的结构体的指针，其定义如下：typedef struct objc_category *Category;struct objc_category &#123;  char *category_name                          OBJC2_UNAVAILABLE; // 分类名  char *class_name    ...
         </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/06/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2021/06/09/CocoaPods相关/" >
+            
+                <span>CocoaPods相关</span>
+        </a>
+        <div class="abstract-content">
+            摘自这里
+Version Control System (VCS)
+Version control systems are a category of software tools that help a software team manage changes to source code over time. Version control software keeps track of every modification to the code in a special kind of database.
+
+软件工程中，版本控制系统是敏捷开发的重要一环，为后续的持续集成提供了保障...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/06/09</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "iOS">iOS</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/06/12/CocoaPods/" title= "CocoaPods">
-                    <div class="nextTitle">CocoaPods</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/16/GUI-框架/" title= "GUI 框架">
-                    <div class="prevTitle">GUI 框架</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-    <div id="lv-container" data-id="city" data-uid= MTAyMC80MTM1My8xNzkwMA==>
-        <script type="text/javascript">
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
-                if (typeof LivereTower === 'function') { return; }
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
-
-<!-- City版安装代码已完成 -->
     
-    
-    <!-- gitalk评论 -->
-
-    <!-- utteranc评论 -->
-
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -572,24 +503,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#构建底层的发布和订阅事件总线"><span class="toc-number">1.</span> <span class="toc-text">构建底层的发布和订阅事件总线</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件总线"><span class="toc-number">1.1.</span> <span class="toc-text">事件总线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">1.2.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PromiseKit"><span class="toc-number">1.3.</span> <span class="toc-text">PromiseKit</span></a></li></ol></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1496,8 +1409,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
